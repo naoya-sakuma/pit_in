@@ -102,11 +102,11 @@ https://docs.google.com/spreadsheets/d/1JNdn30eWSvzWOYhq7uVBd1YfIeUQhNr7jq3DHI5_
 
 - twitter
 
-
 ## 卒業課題要件
 - 就業Term内の技術
-  - devise (gem)
-  - omniauth (gem)
+  - devise
+  - omniauth
+  - omniauth-google-oauth2
   - AWS
 
 - カリキュラム外の技術
