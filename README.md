@@ -90,6 +90,17 @@ https://docs.google.com/spreadsheets/d/1JNdn30eWSvzWOYhq7uVBd1YfIeUQhNr7jq3DHI5_
 ## 使用予定Gem
 - devise
 - omniauth
+- omniauth-google-oauth2
+
+- carrierwave', '~> 2.0
+- mini_magick
+
+- kaminari', '~> 0.17.0
+
+- ranked-model
+- query-ui-rails
+
+- twitter
 
 
 ## 卒業課題要件
