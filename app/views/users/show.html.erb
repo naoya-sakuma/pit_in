@@ -4,7 +4,11 @@
 
 <p><%= current_user.email %></p>
 
-<p>アイコン<%= current_user.icon %></p>
+<% if current_user.icon.present? %>
+  <%= image_tag current_user.icon.url %>
+<% else %>
+  <p>プロフィール画像を登録してください。</p>
+<% end %>
 
 <p>自己紹介<%= current_user.introduction %></p>
 
