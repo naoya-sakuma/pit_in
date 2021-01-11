@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   mount_uploader :icon, ImageUploader
+  
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
 end
