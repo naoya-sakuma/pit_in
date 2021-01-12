@@ -4,7 +4,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     context '必要情報を入力し、アカウントを登録した場合' do
       it '本人確認用のメールを送信しました。と表示される' do
         visit root_path
-        fill_in '名前', with: 'test'
+        fill_in '名前', with: 'テストユーザー'
         fill_in 'メールアドレス', with: 'test@test.com'
         fill_in 'パスワード', with: 'test@test.com'
         fill_in '確認用パスワード', with: 'test@test.com'
@@ -15,7 +15,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     context '必要情報を入力し、アカウントを登録した場合' do
       it '本人確認用のメールが送信される' do
         visit root_path
-        fill_in '名前', with: 'test'
+        fill_in '名前', with: 'テストユーザー'
         fill_in 'メールアドレス', with: 'test@test.com'
         fill_in 'パスワード', with: 'test@test.com'
         fill_in '確認用パスワード', with: 'test@test.com'
@@ -25,7 +25,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     context 'メールアドレスを入力せずに登録した場合' do
       it 'エラーが発生し、メールアドレスを入力してくださいと表示される' do
         visit root_path
-        fill_in '名前', with: 'test'
+        fill_in '名前', with: 'テストユーザー'
         fill_in 'パスワード', with: 'test@test.com'
         fill_in '確認用パスワード', with: 'test@test.com'
         click_on 'アカウント登録'
@@ -35,7 +35,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     context 'パスワードを入力せずに登録した場合' do
       it 'エラーが発生し、パスワードを入力してくださいと表示される' do
         visit root_path
-        fill_in '名前', with: 'test'
+        fill_in '名前', with: 'テストユーザー'
         fill_in 'メールアドレス', with: 'test@test.com'
         click_on 'アカウント登録'
         expect(page).to have_content 'パスワードを入力してください'
@@ -51,7 +51,13 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     end
     context 'メールアドレスでログインした場合' do
       it 'ログイン状態になる' do
-
+        @user = FactoryBot.create(:user)
+        visit new_user_session_path
+        #click_on 'ログイン', match: :first
+        fill_in 'メールアドレス', with: 'test@test.com'
+        fill_in 'パスワード', with: 'test@test.com'
+        find('.actions').click
+        expect(page).to have_content 'test@test.com'
       end
     end
   end
