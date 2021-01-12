@@ -44,20 +44,21 @@ RSpec.describe 'ユーザー登録機能', type: :system do
   end
 
   describe 'ログイン機能' do
+    context 'メールアドレスでログインした場合' do
+      it 'マイページにアクセスする' do
+        @user = FactoryBot.create(:user)
+        @user.skip_confirmation!
+        @user.save!
+        visit new_user_session_path
+        fill_in 'メールアドレス', with: 'test@test.com'
+        fill_in 'パスワード', with: 'test@test.com'
+        click_button 'ログイン'
+        expect(page).to have_content 'テストユーザー'
+      end
+    end
     context 'Googleアカウントでログインした場合' do
       it 'ログイン状態になる' do
 
-      end
-    end
-    context 'メールアドレスでログインした場合' do
-      it 'ログイン状態になる' do
-        @user = FactoryBot.create(:user)
-        visit new_user_session_path
-        #click_on 'ログイン', match: :first
-        fill_in 'メールアドレス', with: 'test@test.com'
-        fill_in 'パスワード', with: 'test@test.com'
-        find('.actions').click
-        expect(page).to have_content 'test@test.com'
       end
     end
   end
@@ -65,7 +66,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
   describe 'ユーザー編集機能' do
     context 'マイページでユーザー情報を編集した場合' do
       it 'マイページに編集が反映される' do
-
+        
       end
     end
   end
