@@ -79,7 +79,6 @@ RSpec.describe 'ユーザー登録機能', type: :system do
         fill_in '現在のパスワード', with: 'test@test.com'
         click_on '更新'
         expect(page).to have_content 'テストユーザー'
-        #ここまででログインが完了、以下に編集を書いていく
       end
     end
     context 'マイページ編集後、パスワードを入力せずに編集ボタンを押した場合' do
@@ -97,7 +96,6 @@ RSpec.describe 'ユーザー登録機能', type: :system do
         fill_in 'メールアドレス', with: 'test@test.com'
         click_on '更新'
         expect(page).not_to have_content "%現在のパスワードを入力してください%"
-        #ここまででログインが完了、以下に編集を書いていく
       end
     end
   end
