@@ -14,7 +14,7 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     end
     context '必要情報を入力し、アカウントを登録した場合' do
       it '本人確認用のメールが送信される' do
-        
+
       end
     end
     context '本人確認メールで本人確認が完了した場合' do
@@ -34,7 +34,11 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     end
     context 'パスワードを入力せずに登録した場合' do
       it 'エラーが発生し、パスワードを入力してくださいと表示される' do
-
+        visit new_user_registration_path
+        fill_in '名前', with: 'test'
+        fill_in 'メールアドレス', with: 'test@test.com'
+        click_on 'アカウント登録'
+        expect(page).to have_content 'パスワードを入力してください'
       end
     end
   end
