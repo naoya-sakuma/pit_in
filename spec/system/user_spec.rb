@@ -1,9 +1,5 @@
 require 'rails_helper'
 RSpec.describe 'ユーザー登録機能', type: :system do
-  before do
-    ActionMailer::Base.deliveries.clear
-  end
-
   describe 'メールアドレスによるユーザー新規登録' do
     context '必要情報を入力し、アカウントを登録した場合' do
       it '本人確認用のメールを送信しました。と表示される' do
@@ -45,8 +41,24 @@ RSpec.describe 'ユーザー登録機能', type: :system do
         expect(page).to have_content 'パスワードを入力してください'
       end
     end
-    context '本人確認メールで本人確認が完了した場合' do
-      it 'ユーザー情報が登録される' do
+  end
+
+  describe 'ログイン機能' do
+    context 'Googleアカウントでログインした場合' do
+      it 'ログイン状態になる' do
+
+      end
+    end
+    context 'メールアドレスでログインした場合' do
+      it 'ログイン状態になる' do
+
+      end
+    end
+  end
+
+  describe 'ユーザー編集機能' do
+    context 'マイページでユーザー情報を編集した場合' do
+      it 'マイページに編集が反映される' do
 
       end
     end
