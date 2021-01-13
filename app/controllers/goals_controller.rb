@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   def index
-    @goal = Goal.all
+    @goals = Goal.all
   end
 
   def new
@@ -8,6 +8,10 @@ class GoalsController < ApplicationController
   end
 
   def create
+    @goal = current_user.goals.build(goal_params)
+    if @goal.save
+      redirect_to goals_path
+    end
   end
 
   def show
@@ -22,4 +26,8 @@ class GoalsController < ApplicationController
   def destroy
   end
 
+  private
+  def goal_params
+    params.require(:goal).permit(:title, :term, :purpose, :status, :when_succeed, :when_fail)
+  end
 end
