@@ -1,1 +1,49 @@
 <h1>目標作成</h1>
+
+<%= form_with(model: @goal, local: true) do |goal| %>
+  <% if @goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(goal.errors.count, t('error.validation_error')) %></h2>
+
+      <ul>
+      <% @goal.errors.full_messages.each do |goal| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= goal.label :title, 'タイトル' %>
+    <%= goal.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= goal.label :term, '期間' %>
+    <%= goal.text_field :term %>
+  </div>
+
+  <div class="field">
+    <%= goal.label :purpose, '目的' %>
+    <%= goal.text_field :purpose %>
+  </div>
+
+  <div class="field">
+    <%= goal.label :status, '状態' %>
+    <%= goal.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= goal.label :when_succeed, '達成後の未来' %>
+    <%= goal.text_area :when_succeed %>
+  </div>
+
+  <div class="field">
+    <%= goal.label :when_fail, '未達成の未来' %>
+    <%= goal.text_area :when_fail %>
+  </div>
+
+  <div class="actions">
+    <%= goal.submit '作成' %>
+  </div>
+<% end %>
