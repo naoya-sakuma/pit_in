@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       root to: 'devise/registrations#new'
     end
   end
+  resources :goals
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
