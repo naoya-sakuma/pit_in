@@ -1,1 +1,32 @@
 <h1>目標一覧</h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>期間</th>
+      <th>目的</th>
+      <th>状態</th>
+      <th>達成</th>
+      <th>未達成</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr>
+        <td><%= goal.title %></td>
+        <td><%= goal.term %></td>
+        <td><%= goal.purpose %></td>
+        <td><%= goal.status %></td>
+        <td><%= goal.when_succeed %></td>
+        <td><%= goal.when_fail %></td>
+        <td><button><%= link_to '詳細', goal %></button></td>
+        <td><button><%= link_to '編集', edit_goal_path(goal) %></button></td>
+        <td><button><%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
