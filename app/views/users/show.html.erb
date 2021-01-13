@@ -1,0 +1,15 @@
+<h1>マイページ</h1>
+
+<p><%= current_user.name %></p>
+
+<p><%= current_user.email %></p>
+
+<% if current_user.icon.present? %>
+  <%= image_tag current_user.icon.url %>
+<% else %>
+  <p>プロフィール画像を登録してください。</p>
+<% end %>
+
+<p>自己紹介<%= current_user.introduction %></p>
+
+<%= link_to "編集", edit_user_registration_path %>
