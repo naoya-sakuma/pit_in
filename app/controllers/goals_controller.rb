@@ -34,6 +34,8 @@ class GoalsController < ApplicationController
   end
 
   def destroy
+    @goal.destroy
+    redirect_to goals_path, notice: '削除されました'
   end
 
   private
