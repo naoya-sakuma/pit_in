@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_134220) do
+ActiveRecord::Schema.define(version: 2021_01_14_140143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2021_01_14_134220) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_problems_on_goal_id"
+  end
+
+  create_table "solutions", force: :cascade do |t|
+    t.string "title"
+    t.date "day_to_start"
+    t.date "day_to_finish"
+    t.string "status"
+    t.bigint "problem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["problem_id"], name: "index_solutions_on_problem_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,4 +79,5 @@ ActiveRecord::Schema.define(version: 2021_01_14_134220) do
 
   add_foreign_key "goals", "users"
   add_foreign_key "problems", "goals"
+  add_foreign_key "solutions", "problems"
 end
