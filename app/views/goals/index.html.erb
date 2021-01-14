@@ -5,7 +5,8 @@
   <thead>
     <tr>
       <th>タイトル</th>
-      <th>期間</th>
+      <th>開始</th>
+      <th>期限</th>
       <th>目的</th>
       <th>状態</th>
       <th>達成</th>
@@ -18,7 +19,8 @@
     <% @goals.each do |goal| %>
       <tr>
         <td><%= goal.title %></td>
-        <td><%= goal.term %></td>
+        <td><%= goal.day_to_start %></td>
+        <td><%= goal.day_to_finish %></td>
         <td><%= goal.purpose %></td>
         <td><%= goal.status %></td>
         <td><%= goal.when_succeed %></td>

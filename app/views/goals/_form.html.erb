@@ -17,8 +17,13 @@
   </div>
 
   <div class="field">
-    <%= goal.label :term, '期間' %>
-    <%= goal.text_field :term %>
+    <%= goal.label :day_to_start, '開始' %>
+    <%= goal.date_field :day_to_start %>
+  </div>
+
+  <div class="field">
+    <%= goal.label :day_to_finish, '期限' %>
+    <%= goal.date_field :day_to_finish %>
   </div>
 
   <div class="field">
