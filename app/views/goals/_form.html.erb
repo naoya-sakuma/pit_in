@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= goal.label :status, '状態' %>
-    <%= goal.text_field :status %>
+    <%= goal.select :status, [['選択してください', ''], ['未着手', '未着手'], ['着手中', '着手中'], ['期限切れ', '期限切れ'], ['完了', '完了']] %>
   </div>
 
   <div class="field">
