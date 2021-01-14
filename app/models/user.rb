@@ -24,7 +24,6 @@ class User < ApplicationRecord
 
   mount_uploader :icon, ImageUploader
 
-  #以下、アソシエーション
   has_many :goals
 
 end
