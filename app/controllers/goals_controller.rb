@@ -8,6 +8,7 @@ class GoalsController < ApplicationController
 
   def new
     @goal = Goal.new
+    @goal.problems.build
   end
 
   def create
