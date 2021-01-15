@@ -1,39 +1,37 @@
 <h1>目標詳細</h1>
 
 <div>
+  <strong>目標</strong>
+  <p><%= @goal.title %></p>
+  <p><%= @goal.day_to_start %></p>
+  <p><%= @goal.day_to_finish %></p>
+  <p><%= @goal.purpose %></p>
+  <p><%= @goal.status %></p>
+  <p><%= @goal.when_succeed %></p>
+  <p><%= @goal.when_fail %></p>
+</div>
+
+
 <p>
-  <strong>タイトル</strong>
-  <%= @goal.title %>
+  <strong>問題</strong>
+  <% @goal.problems.each do |problem| %>
+   <p><%= problem.title %><p>
+  <% end %>
 </p>
 
 <p>
-  <strong>開始日</strong>
-  <%= @goal.day_to_start %>
+  <strong>解決案</strong>
+
 </p>
 
 <p>
-  <strong>終了日</strong>
-  <%= @goal.day_to_finish %>
+  <strong>タスク</strong>
+
 </p>
 
 <p>
-  <strong>目的</strong>
-  <%= @goal.purpose %>
-</p>
+  <strong>ステップ</strong>
 
-<p>
-  <strong>状態</strong>
-  <%= @goal.status %>
-</p>
-
-<p>
-  <strong>達成</strong>
-  <%= @goal.when_succeed %>
-</p>
-
-<p>
-  <strong>未達成</strong>
-  <%= @goal.when_fail %>
 </p>
 
 <%= link_to '目標一覧', goals_path %>
