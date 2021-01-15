@@ -47,17 +47,20 @@
   </div>
 
  <!-- problem登録フォーム -->
-  <%= goal.fields_for :problems do |problem| %>
-    <h2 >問題</h2>
-    <div class="field">
-      <%= problem.label :title, "問題タイトル" %>
-      <%= problem.text_field :title %>
-    </div>
-    <div class="field">
-      <%= problem.label :status, "状態" %>
-      <%= problem.check_box :status, {}, '解決', '未解決' %>
-    </div>
-  <% end %>
+<h2 >問題</h2>
+<p>ボタンを押したらフォームが増える仕様にしたい</p>
+<% n = 0 %>
+<%= goal.fields_for :problems do |problem| %>
+  <% n += 1%>
+  <div class="field">
+    <%= problem.label :title, "問題#{n}" %>
+    <%= problem.text_field :title %>
+  </div>
+  <div class="field">
+    <%= problem.label :status, '状態' %>
+    <%= problem.check_box :status, {}, '解決', '未解決' %>
+  </div>
+<% end %>
 
   <div class="actions">
     <%= goal.submit '作成' %>
