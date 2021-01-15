@@ -10,6 +10,7 @@
 </div>
 <% end %>
 
+<!-- 目標登録フォーム -->
   <div class="field">
     <%= goal.label :title, 'タイトル' %>
     <%= goal.text_field :title %>
@@ -45,18 +46,18 @@
     <%= goal.text_area :when_fail %>
   </div>
 
- <!-- problemの登録フォーム -->
+ <!-- problem登録フォーム -->
   <%= goal.fields_for :problems do |problem| %>
-  <h2 >問題</h2>
-  <div class="field">
-    <%= problem.label :title, "問題タイトル" %>
-    <%= problem.text_field :title %>
-  </div>
-  <div class="field">
-    <%= problem.label :status, "状態" %>
-    <%= problem.check_box :status, {}, '解決', '未解決' %>
-  </div>
-<% end %>
+    <h2 >問題</h2>
+    <div class="field">
+      <%= problem.label :title, "問題タイトル" %>
+      <%= problem.text_field :title %>
+    </div>
+    <div class="field">
+      <%= problem.label :status, "状態" %>
+      <%= problem.check_box :status, {}, '解決', '未解決' %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= goal.submit '作成' %>

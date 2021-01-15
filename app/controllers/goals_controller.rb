@@ -24,10 +24,16 @@ class GoalsController < ApplicationController
   end
 
   def edit
+    saved_problems = @goal.problems.count
+    if saved_problems == 0
+      @goal.problems.build
+    else
+      saved_problems + 1.times { @goal.problems.build }
+    end
   end
 
   def update
-    if @goal.update(goal_params)
+    if @goal.update(update_goal_params)
       redirect_to goals_path, notice: '変更が保存されました'
     else
       render :edit
@@ -41,7 +47,15 @@ class GoalsController < ApplicationController
 
   private
   def goal_params
-    params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail)
+    params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
+                                 problems_attributes:[:title, :status]
+                               )
+  end
+
+  def update_goal_params
+    params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
+                                 problems_attributes:[:title, :status, :_destroy, :id]
+                               )
   end
 
   def set_goal
