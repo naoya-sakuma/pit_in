@@ -28,6 +28,10 @@ class GoalsController < ApplicationController
   def edit
     saved_problems = @goal.problems.count
     saved_problems + 1.times { @goal.problems.build }
+    @problems.each do |p|
+      saved_solutions = p.solutions.count
+      saved_solutions + 1.times { p.solutions.build }
+    end
   end
 
   def update
@@ -59,6 +63,7 @@ class GoalsController < ApplicationController
   end
 
   def set_goal
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find(params[:id]) # @goal = 編集しようとしている目標1つ
+    @problems = @goal.problems # @problems = 編集しようとしている目標に紐づく問題達
   end
 end

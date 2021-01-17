@@ -47,12 +47,12 @@
   </div>
 
  <!-- problem登録フォーム -->
-<h2 >課題</h2>
 <% p = 0 %>
 <%= goal.fields_for :problems do |problem| %>
   <% p += 1%>
+  <h2 ><%= "問題#{p}" %></h2>
   <div class="field">
-    <%= problem.label :title, "問題#{p}" %>
+    <%= problem.label :title, "問題タイトル" %>
     <%= problem.text_field :title %>
   </div>
   <div class="field">
@@ -61,7 +61,6 @@
   </div>
 
 <!-- solution登録フォーム -->
-  <h2>解決案</h2>
   <% s = 0 %>
   <%= problem.fields_for :solutions do |solution| %>
     <% s += 1%>
