@@ -8,7 +8,9 @@ class GoalsController < ApplicationController
 
   def new
     @goal = Goal.new
-    @goal.problems.build
+    @problem = Problem.new
+    @problem = @goal.problems.build
+    @solution = @problem.solutions.build
   end
 
   def create
@@ -25,11 +27,7 @@ class GoalsController < ApplicationController
 
   def edit
     saved_problems = @goal.problems.count
-    if saved_problems == 0
-      @goal.problems.build
-    else
-      saved_problems + 1.times { @goal.problems.build }
-    end
+    saved_problems + 1.times { @goal.problems.build }
   end
 
   def update
@@ -48,13 +46,15 @@ class GoalsController < ApplicationController
   private
   def goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
-                                 problems_attributes:[:title, :status]
+                                 problems_attributes:[:title, :status,
+                                 solutions_attributes:[:title, :status]]
                                )
   end
 
   def update_goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
-                                 problems_attributes:[:title, :status, :_destroy, :id]
+                                 problems_attributes:[:title, :status, :_destroy, :id,
+                                 solutions_attributes:[:title, :status, :_destroy, :id]]
                                )
   end
 

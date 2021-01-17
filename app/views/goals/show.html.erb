@@ -16,12 +16,13 @@
   <strong>問題</strong>
   <% @goal.problems.each do |problem| %>
    <p><%= problem.title %><p>
-  <% end %>
 </p>
 
 <p>
   <strong>解決案</strong>
 
+   <p><%= problem.solutions.title %><p>
+  <% end %>
 </p>
 
 <p>

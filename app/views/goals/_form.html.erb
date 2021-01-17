@@ -47,20 +47,33 @@
   </div>
 
  <!-- problem登録フォーム -->
-<h2 >問題</h2>
-<p>ボタンを押したらフォームが増える仕様にしたい</p>
-<p>問題単体も削除できるようにしたい</p>
-<% n = 0 %>
+<h2 >課題</h2>
+<% p = 0 %>
 <%= goal.fields_for :problems do |problem| %>
-  <% n += 1%>
+  <% p += 1%>
   <div class="field">
-    <%= problem.label :title, "問題#{n}" %>
+    <%= problem.label :title, "問題#{p}" %>
     <%= problem.text_field :title %>
   </div>
   <div class="field">
     <%= problem.label :status, '状態' %>
     <%= problem.check_box :status, {}, '解決', '未解決' %>
   </div>
+
+<!-- solution登録フォーム -->
+  <h2>解決案</h2>
+  <% s = 0 %>
+  <%= problem.fields_for :solutions do |solution| %>
+    <% s += 1%>
+    <div class="field">
+      <%= solution.label :title, "解決案#{s}" %>
+      <%= solution.text_field :title %>
+    </div>
+    <div class="field">
+      <%= solution.label :status, '状態' %>
+      <%= solution.check_box :status, {}, '解決', '未解決' %>
+    </div>
+  <% end %>
 <% end %>
 
   <div class="actions">
