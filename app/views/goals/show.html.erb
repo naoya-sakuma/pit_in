@@ -19,6 +19,11 @@
 
     <% problem.solutions.each do |solution| %>
       <p><%= solution.title %></p>
+
+      <% solution.tasks.each do |task| %>
+        <p><%= task.title %></p>
+
+        <% end %>
     <% end %>
   <% end %>
 
