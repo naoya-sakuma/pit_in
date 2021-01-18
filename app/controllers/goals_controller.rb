@@ -65,6 +65,15 @@ end
     redirect_to goals_path, notice: '削除されました'
   end
 
+  def montly
+  end
+
+  def weekly
+  end
+
+  def daily
+  end
+
   private
   def goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
