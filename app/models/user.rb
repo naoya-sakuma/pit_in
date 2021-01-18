@@ -25,5 +25,6 @@ class User < ApplicationRecord
   mount_uploader :icon, ImageUploader
 
   has_many :goals
+  #has_many :tasks
 
 end
