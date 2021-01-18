@@ -10,10 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_035543) do
+ActiveRecord::Schema.define(version: 2021_01_14_151342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "goals", force: :cascade do |t|
+    t.string "title"
+    t.date "day_to_start"
+    t.string "purpose"
+    t.string "status"
+    t.text "when_succeed"
+    t.text "when_fail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.date "day_to_finish"
+    t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "problems", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "status"
+    t.bigint "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_problems_on_goal_id"
+  end
+
+  create_table "solutions", force: :cascade do |t|
+    t.string "title"
+    t.date "day_to_start"
+    t.date "day_to_finish"
+    t.string "status"
+    t.bigint "problem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["problem_id"], name: "index_solutions_on_problem_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.string "title"
+    t.string "status"
+    t.bigint "user_id"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_steps_on_task_id"
+    t.index ["user_id"], name: "index_steps_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.string "status"
+    t.bigint "user_id"
+    t.bigint "solution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solution_id"], name: "index_tasks_on_solution_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -43,4 +99,11 @@ ActiveRecord::Schema.define(version: 2021_01_11_035543) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "goals", "users"
+  add_foreign_key "problems", "goals"
+  add_foreign_key "solutions", "problems"
+  add_foreign_key "steps", "tasks"
+  add_foreign_key "steps", "users"
+  add_foreign_key "tasks", "solutions"
+  add_foreign_key "tasks", "users"
 end

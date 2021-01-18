@@ -1,0 +1,33 @@
+<h1>目標詳細</h1>
+
+<div>
+  <strong>目標</strong>
+  <p><%= @goal.title %></p>
+  <p><%= @goal.day_to_start %></p>
+  <p><%= @goal.day_to_finish %></p>
+  <p><%= @goal.purpose %></p>
+  <p><%= @goal.status %></p>
+  <p><%= @goal.when_succeed %></p>
+  <p><%= @goal.when_fail %></p>
+</div>
+
+
+<div>
+  <% @goal.problems.each do |problem| %>
+   <p><%= problem.title %><p>
+
+    <% problem.solutions.each do |solution| %>
+      <p><%= solution.title %></p>
+
+      <% solution.tasks.each do |task| %>
+        <p><%= task.title %></p>
+
+        <% task.steps.each do |step| %>
+          <p><%= step.title %></p>
+          <% end %>
+        <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to '目標一覧', goals_path %>
