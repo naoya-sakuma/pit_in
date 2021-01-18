@@ -14,7 +14,6 @@
 
 <div>
   <% @goal.problems.each do |problem| %>
-  <strong>問題</strong>
    <p><%= problem.title %><p>
 
     <% problem.solutions.each do |solution| %>
@@ -23,13 +22,12 @@
       <% solution.tasks.each do |task| %>
         <p><%= task.title %></p>
 
+        <% task.steps.each do |step| %>
+          <p><%= step.title %></p>
+          <% end %>
         <% end %>
     <% end %>
   <% end %>
-
-  <strong>タスク</strong>
-
-  <strong>ステップ</strong>
 </div>
 
 <%= link_to '目標一覧', goals_path %>
