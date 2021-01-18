@@ -72,6 +72,19 @@
       <%= solution.label :status, '状態' %>
       <%= solution.check_box :status, {}, '解決', '未解決' %>
     </div>
+
+    <% t = 0 %>
+    <%= solution.fields_for :tasks do |task| %>
+      <% t += 1%>
+      <div class="field">
+        <%= task.label :title, "タスク#{t}" %>
+        <%= task.text_field :title %>
+      </div>
+      <div class="field">
+        <%= task.label :status, '状態' %>
+        <%= task.check_box :status, {}, '解決', '未解決' %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
 

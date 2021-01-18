@@ -30,15 +30,19 @@ class GoalsController < ApplicationController
   def edit
     saved_problems = @goal.problems.count
     saved_problems + 1.times { @goal.problems.build }
+
+    @problems = @goal.problems
     @problems.each do |p|
       saved_solutions = p.solutions.count
       saved_solutions + 1.times { p.solutions.build }
+
+      @solutions = p.solutions
       @solutions.each do |s|
         saved_tasks = s.tasks.count
         saved_tasks + 1.times { s.tasks.build }
-      end
     end
   end
+end
 
   def update
     if @goal.update(update_goal_params)
@@ -64,16 +68,16 @@ class GoalsController < ApplicationController
 
   def update_goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
-                                 problems_attributes:[:title, :status, :_destroy, :id,
-                                 solutions_attributes:[:title, :status, :_destroy, :id]]
+                                 problems_attributes: [:title, :status, :_destroy, :id,
+                                 solutions_attributes:[:title, :status, :_destroy, :id,
+                                 tasks_attributes:    [:title, :status, :_destroy, :id]]]
                                )
   end
 
   def set_goal
     @goal = Goal.find(params[:id]) # @goal = 編集しようとしている目標1つ
-    @problems = @goal.problems # @problems = 編集しようとしている目標に紐づく問題達
-    @problems.each do |problem|
-      @solutions = problem.solutions
-    end
+    #@problems = @goal.problems # @problems = 編集しようとしている目標に紐づく問題達
+    #@problems.each do |problem|
+      #@solutions = problem.solutions
   end
 end
