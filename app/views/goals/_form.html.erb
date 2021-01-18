@@ -61,11 +61,11 @@
   </div>
 
 <!-- solution登録フォーム -->
-  <% s = 0 %>
+  <% so = 0 %>
   <%= problem.fields_for :solutions do |solution| %>
-    <% s += 1%>
+    <% so += 1%>
     <div class="field">
-      <%= solution.label :title, "解決案#{s}" %>
+      <%= solution.label :title, "解決案#{so}" %>
       <%= solution.text_field :title %>
     </div>
     <div class="field">
@@ -84,6 +84,19 @@
         <%= task.label :status, '状態' %>
         <%= task.check_box :status, {}, '解決', '未解決' %>
       </div>
+
+      <% st = 0 %>
+      <%= task.fields_for :steps do |step| %>
+        <% st += 1 %>
+        <div class="field">
+          <%= step.label :title, "ステップ#{st}" %>
+          <%= step.text_field :title %>
+        </div>
+        <div class="field">
+          <%= step.label :status, '状態' %>
+          <%= step.check_box :status, {}, '解決', '未解決' %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

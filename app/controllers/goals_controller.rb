@@ -10,9 +10,11 @@ class GoalsController < ApplicationController
     @goal = Goal.new
     @problem = Problem.new
     @solution = Solution.new
+    @task = Task.new
     @problem = @goal.problems.build
     @solution = @problem.solutions.build
     @task = @solution.tasks.build
+    @step = @task.steps.build
   end
 
   def create
@@ -40,6 +42,12 @@ class GoalsController < ApplicationController
       @solutions.each do |s|
         saved_tasks = s.tasks.count
         saved_tasks + 1.times { s.tasks.build }
+
+        @tasks = s.tasks
+        @tasks.each do |t|
+          saved_steps = t.steps.count
+          saved_steps + 1.times { t.steps.build }
+        end
     end
   end
 end
@@ -62,7 +70,8 @@ end
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
                                  problems_attributes: [:title, :status,
                                  solutions_attributes:[:title, :status,
-                                 tasks_attributes:    [:title, :status]]]
+                                 tasks_attributes:    [:title, :status,
+                                 steps_attributes:   [:title, :status]]]]
                                )
   end
 
@@ -70,7 +79,8 @@ end
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
                                  problems_attributes: [:title, :status, :_destroy, :id,
                                  solutions_attributes:[:title, :status, :_destroy, :id,
-                                 tasks_attributes:    [:title, :status, :_destroy, :id]]]
+                                 tasks_attributes:    [:title, :status, :_destroy, :id,
+                                 steps_attributes:   [:title, :status, :_destroy, :id]]]]
                                )
   end
 
