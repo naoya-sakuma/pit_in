@@ -9,8 +9,10 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @problem = Problem.new
+    @solution = Solution.new
     @problem = @goal.problems.build
     @solution = @problem.solutions.build
+    @task = @solution.tasks.build
   end
 
   def create
@@ -31,6 +33,10 @@ class GoalsController < ApplicationController
     @problems.each do |p|
       saved_solutions = p.solutions.count
       saved_solutions + 1.times { p.solutions.build }
+      @solutions.each do |s|
+        saved_tasks = s.tasks.count
+        saved_tasks + 1.times { s.tasks.build }
+      end
     end
   end
 
@@ -50,8 +56,9 @@ class GoalsController < ApplicationController
   private
   def goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
-                                 problems_attributes:[:title, :status,
-                                 solutions_attributes:[:title, :status]]
+                                 problems_attributes: [:title, :status,
+                                 solutions_attributes:[:title, :status,
+                                 tasks_attributes:    [:title, :status]]]
                                )
   end
 
@@ -65,5 +72,8 @@ class GoalsController < ApplicationController
   def set_goal
     @goal = Goal.find(params[:id]) # @goal = 編集しようとしている目標1つ
     @problems = @goal.problems # @problems = 編集しようとしている目標に紐づく問題達
+    @problems.each do |problem|
+      @solutions = problem.solutions
+    end
   end
 end
