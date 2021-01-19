@@ -48,9 +48,9 @@ class GoalsController < ApplicationController
           saved_steps = t.steps.count
           saved_steps + 1.times { t.steps.build }
         end
+      end
     end
   end
-end
 
   def update
     if @goal.update(update_goal_params)
@@ -65,23 +65,13 @@ end
     redirect_to goals_path, notice: '削除されました'
   end
 
-  def montly
-  end
-
-  def weekly
-  end
-
-  def daily
-  end
-
   private
   def goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
                                  problems_attributes: [:title, :status,
                                  solutions_attributes:[:title, :status,
                                  tasks_attributes:    [:title, :status,
-                                 steps_attributes:   [:title, :status]]]]
-                               )
+                                 steps_attributes:   [:title, :status]]]])
   end
 
   def update_goal_params
@@ -89,14 +79,10 @@ end
                                  problems_attributes: [:title, :status, :_destroy, :id,
                                  solutions_attributes:[:title, :status, :_destroy, :id,
                                  tasks_attributes:    [:title, :status, :_destroy, :id,
-                                 steps_attributes:   [:title, :status, :_destroy, :id]]]]
-                               )
+                                 steps_attributes:   [:title, :status, :_destroy, :id]]]])
   end
 
   def set_goal
-    @goal = Goal.find(params[:id]) # @goal = 編集しようとしている目標1つ
-    #@problems = @goal.problems # @problems = 編集しようとしている目標に紐づく問題達
-    #@problems.each do |problem|
-      #@solutions = problem.solutions
+    @goal = Goal.find(params[:id])
   end
 end

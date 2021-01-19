@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  get 'montly', to: 'goals#montly'
-  get 'weekly', to: 'goals#weekly'
-  get 'daily', to: 'goals#daily'
+  get 'montly', to: 'plans#montly'
+  get 'weekly', to: 'plans#weekly'
+  get 'daily',  to: 'plans#daily'
 end
