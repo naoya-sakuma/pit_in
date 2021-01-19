@@ -5,7 +5,7 @@
   </thead>
 
   <tbody>
-  <%= form_tag('montly')%>
+  <%= form_tag('/monthly')%>
     <% @goals.each do |goal| %>
       <P><%= goal.title %></p>
         <% goal.problems.each do |problem| %>
