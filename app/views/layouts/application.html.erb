@@ -13,7 +13,7 @@
     <% if user_signed_in? %>
       <%= link_to "目標一覧", goals_path %>
       <%= link_to "目標作成", new_goal_path %>
-      <%= link_to "Montlyプラン", montly_path %>
+      <%= link_to "Montlyプラン", monthly_path %>
       <%= link_to "Weeklyプラン", weekly_path %>
       <%= link_to "Dailyプラン", daily_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
