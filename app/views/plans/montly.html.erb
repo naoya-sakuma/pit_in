@@ -1,1 +1,26 @@
+<!-- 1、ステータスが実行中の目標とそれに紐づく解決案を表示する -->
 <h1>montly計画</h1>
+<table>
+  <thead>
+  </thead>
+
+  <tbody>
+  <%= form_tag('montly')%>
+    <% @goals.each do |goal| %>
+      <P><%= goal.title %></p>
+        <% goal.problems.each do |problem| %>
+          <% problem.solutions.each do |solution| %>
+          <div>
+            <%= solution.title %>
+            <%= label_tag :working, 'Workingカラム' %>
+            <%= check_box_tag(:working) %>
+            <%= label_tag :done, 'Doneカラム' %>
+            <%= check_box_tag(:done) %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= submit_tag('保存')%>
