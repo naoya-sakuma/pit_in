@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   patch 'daily',   to: 'plans#daily_update'
   put   'daily',   to: 'plans#daily_update'
   get   'todo',    to: 'plans#todo'
+  patch 'todo',    to: 'plans#todo_update'
+  put   'todo',    to: 'plans#todo_update'
 end
