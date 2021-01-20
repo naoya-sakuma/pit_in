@@ -13,7 +13,9 @@
 
 <div>
   <% @goal.problems.each do |problem| %>
-   <p><%= problem.title %><p>
+    <p><%= problem.title %><p>
+    <p>問題working：<%= problem.working %></p>
+    <p>問題done：<%= problem.done %></p>
 
     <% problem.solutions.each do |solution| %>
       <p><%= solution.title %></p>
