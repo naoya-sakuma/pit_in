@@ -17,6 +17,8 @@
 
     <% problem.solutions.each do |solution| %>
       <p><%= solution.title %></p>
+      <p>取り組み中？：<%= solution.working %></p>
+      <p>完了した？：<%= solution.done %></p>
 
       <% solution.tasks.each do |task| %>
         <p><%= task.title %></p>
