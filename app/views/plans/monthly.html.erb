@@ -9,10 +9,17 @@
     <% @goals.each do |goal| %>
       <P><%= goal.title %></p>
         <% goal.problems.each do |problem| %>
-          <% problem.solutions.each do |solution| %>
+          <div>
+            <%= problem.title %>
+            <%= label_tag :working, 'workingカラム' %>
+            <%= check_box_tag :working, '取組中' %>
+            <%= label_tag :done, 'doneカラム' %>
+            <%= check_box_tag :done, '完了' %>
+            <% problem.solutions.each do |solution| %>
+          </div>
           <div>
             <%= solution.title %>
-            <%= label_tag :working, 'Workingカラム' %>
+            <%= label_tag :working, 'workingカラム' %>
             <%= check_box_tag :working, '取組中' %>
             <%= label_tag :done, 'doneカラム' %>
             <%= check_box_tag :done, '完了' %>

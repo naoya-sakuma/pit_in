@@ -9,6 +9,7 @@ class PlansController < ApplicationController
       @problems = goal.problems
       @problems.each do |problem|
         @solutions = problem.solutions
+        problem.update(make_plan_params)
         @solutions.each do |solution|
           solution.update(make_plan_params)
         end
@@ -49,7 +50,7 @@ class PlansController < ApplicationController
   end
 
   def daily_update
-    
+
   end
 
   private
