@@ -70,6 +70,27 @@ class PlansController < ApplicationController
   end
 
   def todo
+    @goals = current_user.goals.where(status: '着手中')
+  end
+
+  def todo_update
+    @goals = current_user.goals.where(status: '着手中')
+    @goals.each do |goal|
+      @problems = goal.problems
+      @problems.each do |problem|
+        @solutions = problem.solutions
+        @solutions.each do |solution|
+          @tasks = solution.tasks
+          @tasks.each do |task|
+            @steps = task.steps
+            @steps.each do |step|
+              step.update(todo_done_check)
+            end
+          end
+        end
+      end
+    end
+    redirect_to todo_path, notice: '保存されました'
   end
 
   private
@@ -77,5 +98,7 @@ class PlansController < ApplicationController
     params.permit(:working, :done)
   end
 
-
+  def todo_done_check
+    params.permit(:done)
+  end
 end
