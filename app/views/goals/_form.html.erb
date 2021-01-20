@@ -82,8 +82,8 @@
           <%= task.text_field :title %>
         </div>
         <div class="field">
-          <%= task.label :status, '状態' %>
-          <%= task.check_box :status, {}, '解決', '未解決' %>
+          <%= task.label :working, '状態' %>
+          <%= task.check_box :working, {}, '解決', '未解決' %>
         </div>
 
 <!-- step登録フォーム -->
@@ -95,8 +95,8 @@
             <%= step.text_field :title %>
           </div>
           <div class="field">
-            <%= step.label :status, '状態' %>
-            <%= step.check_box :status, {}, '解決', '未解決' %>
+            <%= step.label :working, '状態' %>
+            <%= step.check_box :working, {}, '解決', '未解決' %>
           </div>
         <% end %>
       <% end %>

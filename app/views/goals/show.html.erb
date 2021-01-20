@@ -17,14 +17,18 @@
 
     <% problem.solutions.each do |solution| %>
       <p><%= solution.title %></p>
-      <p>取り組み中？：<%= solution.working %></p>
-      <p>完了した？：<%= solution.done %></p>
+      <p>解決案working：<%= solution.working %></p>
+      <p>解決案done：<%= solution.done %></p>
 
       <% solution.tasks.each do |task| %>
         <p><%= task.title %></p>
+        <p>タスクworking：<%= task.working %></p>
+        <p>タスクdone：<%= task.done %></p>
 
         <% task.steps.each do |step| %>
           <p><%= step.title %></p>
+          <p>ステップworking：<%= step.working %></p>
+          <p>ステップdone：<%= step.done %></p>
           <% end %>
         <% end %>
     <% end %>
