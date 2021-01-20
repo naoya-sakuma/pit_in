@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   patch 'weekly',  to: 'plans#weekly_update'
   put   'weekly',  to: 'plans#weekly_update'
   get   'daily',   to: 'plans#daily'
+  patch 'daily',   to: 'plans#daily_update'
+  put   'daily',   to: 'plans#daily_update'
 end

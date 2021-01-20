@@ -50,7 +50,23 @@ class PlansController < ApplicationController
   end
 
   def daily_update
-
+    @goals = current_user.goals.where(status: '着手中')
+    @goals.each do |goal|
+      @problems = goal.problems
+      @problems.each do |problem|
+        @solutions = problem.solutions
+        @solutions.each do |solution|
+          @tasks = solution.tasks
+          @tasks.each do |task|
+            @steps = task.steps
+            @steps.each do |step|
+              step.update(make_plan_params)
+            end
+          end
+        end
+      end
+    end
+    redirect_to daily_path, notice: '保存されました'
   end
 
   private
