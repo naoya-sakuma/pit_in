@@ -1,1 +1,27 @@
 <h1>ToDo</h1>
+<table>
+  <thead>
+  </thead>
+
+  <tbody>
+  <%= form_tag(todo_path, method: 'patch')%>
+    <% @goals.each do |goal| %>
+      <% goal.problems.each do |problem| %>
+        <% problem.solutions.each do |solution| %>
+          <% solution.tasks.each do |task| %>
+          <P><%= task.title %></p>
+            <% task.steps.each do |step| %>
+              <div>
+                <%= step.title %>
+                <%= label_tag :done, 'doneカラム' %>
+                <%= check_box_tag :done, '完了' %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+  <%= submit_tag('保存')%>
