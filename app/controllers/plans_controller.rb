@@ -69,6 +69,9 @@ class PlansController < ApplicationController
     redirect_to daily_path, notice: '保存されました'
   end
 
+  def todo
+  end
+
   private
   def make_plan_params
     params.permit(:working, :done)
