@@ -55,10 +55,6 @@
       <%= problem.label :title, "問題タイトル" %>
       <%= problem.text_field :title %>
     </div>
-    <div class="field">
-      <%= problem.label :status, '状態' %>
-      <%= problem.check_box :status, {}, '解決', '未解決' %>
-    </div>
 
 <!-- solution登録フォーム -->
     <% so = 0 %>
@@ -67,10 +63,6 @@
       <div class="field">
         <%= solution.label :title, "解決案#{so}" %>
         <%= solution.text_field :title %>
-      </div>
-      <div class="field">
-        <%= solution.label :done, '状態' %>
-        <%= solution.check_box :done, {}, '解決', '未解決' %>
       </div>
 
 <!-- task登録フォーム -->
@@ -81,10 +73,6 @@
           <%= task.label :title, "タスク#{t}" %>
           <%= task.text_field :title %>
         </div>
-        <div class="field">
-          <%= task.label :working, '状態' %>
-          <%= task.check_box :working, {}, '解決', '未解決' %>
-        </div>
 
 <!-- step登録フォーム -->
         <% st = 0 %>
@@ -93,10 +81,6 @@
           <div class="field">
             <%= step.label :title, "ステップ#{st}" %>
             <%= step.text_field :title %>
-          </div>
-          <div class="field">
-            <%= step.label :working, '状態' %>
-            <%= step.check_box :working, {}, '解決', '未解決' %>
           </div>
         <% end %>
       <% end %>
