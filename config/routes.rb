@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   get   'monthly', to: 'plans#monthly'
   patch 'monthly', to: 'plans#monthly_update'
-  put  'monthly', to: 'plans#monthly_update'
+  put   'monthly', to: 'plans#monthly_update'
   get   'weekly',  to: 'plans#weekly'
+  patch 'weekly',  to: 'plans#weekly_update'
+  put   'weekly',  to: 'plans#weekly_update'
   get   'daily',   to: 'plans#daily'
 end
