@@ -5,7 +5,7 @@
   </thead>
 
   <tbody>
-  <%= form_tag('/monthly')%>
+  <%= form_tag(monthly_path, method: 'patch')%>
     <% @goals.each do |goal| %>
       <P><%= goal.title %></p>
         <% goal.problems.each do |problem| %>
@@ -13,9 +13,9 @@
           <div>
             <%= solution.title %>
             <%= label_tag :working, 'Workingカラム' %>
-            <%= check_box_tag(:working) %>
-            <%= label_tag :done, 'Doneカラム' %>
-            <%= check_box_tag(:done) %>
+            <%= check_box_tag :working, '取組中' %>
+            <%= label_tag :done, 'doneカラム' %>
+            <%= check_box_tag :done, '完了' %>
           </div>
         <% end %>
       <% end %>
