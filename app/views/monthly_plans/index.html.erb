@@ -22,12 +22,11 @@
             <%= check_box_tag :working, '取組中'%>
             <%= label_tag :done, '終わった？' %>
             <%= hidden_field_tag :done, '未完了' %>
-            <%= check_box_tag :working, '完了' %>
+            <%= check_box_tag :done, '完了' %>
           </div>
         <% end %>
       <% end %>
+      <%= submit_tag('保存')%>
     <% end %>
   </tbody>
 </table>
-
-<%= submit_tag('保存')%>
