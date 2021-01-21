@@ -17,9 +17,11 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  get   'monthly', to: 'plans#monthly'
-  patch 'monthly', to: 'plans#monthly_update'
-  put   'monthly', to: 'plans#monthly_update'
+  resources :monthly_plans
+
+  # get   'monthly', to: 'plans#monthly'
+  # patch 'monthly', to: 'plans#monthly_update'
+  # put   'monthly', to: 'plans#monthly_update'
   get   'weekly',  to: 'plans#weekly'
   patch 'weekly',  to: 'plans#weekly_update'
   put   'weekly',  to: 'plans#weekly_update'
