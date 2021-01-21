@@ -9,10 +9,16 @@
       <% goal.problems.each do |problem| %>
         <% problem.solutions.each do |solution| %>
           <% solution.tasks.each do |task| %>
-          <P><%= task.title %></p>
+            <div>
+              <%= task.title %>
+              <%= label_tag :done, 'doneカラム' %>
+              <%= check_box_tag :done, '完了' %>
+            </div>
             <% task.steps.each do |step| %>
               <div>
                 <%= step.title %>
+                <%= label_tag :working, 'Workingカラム' %>
+                <%= check_box_tag :working, '取組中' %>
                 <%= label_tag :done, 'doneカラム' %>
                 <%= check_box_tag :done, '完了' %>
               </div>

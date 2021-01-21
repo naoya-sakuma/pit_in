@@ -8,8 +8,8 @@ class PlansController < ApplicationController
     @goals.each do |goal|
       @problems = goal.problems
       @problems.each do |problem|
+        problem.update(done_check)
         @solutions = problem.solutions
-        problem.update(make_plan_params)
         @solutions.each do |solution|
           solution.update(make_plan_params)
         end
@@ -35,6 +35,7 @@ class PlansController < ApplicationController
       @problems.each do |problem|
         @solutions = problem.solutions
         @solutions.each do |solution|
+          solution.update(done_check)
           @tasks = solution.tasks
           @tasks.each do |task|
             task.update(make_plan_params)
@@ -58,6 +59,7 @@ class PlansController < ApplicationController
         @solutions.each do |solution|
           @tasks = solution.tasks
           @tasks.each do |task|
+            task.update(done_check)
             @steps = task.steps
             @steps.each do |step|
               step.update(make_plan_params)
@@ -84,7 +86,7 @@ class PlansController < ApplicationController
           @tasks.each do |task|
             @steps = task.steps
             @steps.each do |step|
-              step.update(todo_done_check)
+              step.update(done_check)
             end
           end
         end
@@ -98,7 +100,7 @@ class PlansController < ApplicationController
     params.permit(:working, :done)
   end
 
-  def todo_done_check
+  def done_check
     params.permit(:done)
   end
 end

@@ -8,23 +8,30 @@
     <% @goals.each do |goal| %>
       <% goal.problems.each do |problem| %>
         <% problem.solutions.each do |solution| %>
-        <P><%= solution.title %></p>
           <% solution.tasks.each do |task| %>
-          <P><%= task.title %></p>
-            <% task.steps.each do |step| %>
-              <div>
-                <%= step.title %>
-                <%= label_tag :working, 'Workingカラム' %>
-                <%= check_box_tag :working, '取組中' %>
+            <div>
+              <% solution.tasks.each do |task| %>
+                <h4>タスク：<%= task.title %></h4>
                 <%= label_tag :done, 'doneカラム' %>
                 <%= check_box_tag :done, '完了' %>
-              </div>
+            </div>
+            <div>
+              <% task.steps.each do |step| %>
+                <h5>ステップ：<%= step.title %></h5>
+                <%= label_tag :working, 'Workingカラム' %>
+                <%= hidden_field_tag :working, '待機中' %>
+                <%= check_box_tag :working, '取組中' %>
+                <%= label_tag :done, 'doneカラム' %>
+                <%= hidden_field_tag :done, '未完了' %>
+                <%= check_box_tag :done, '完了' %>
+            </div>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
+  <% end %>
   </tbody>
 </table>
 
-  <%= submit_tag('保存')%>
+<%= submit_tag('保存')%>

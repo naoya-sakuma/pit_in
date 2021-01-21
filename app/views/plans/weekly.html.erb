@@ -7,16 +7,22 @@
   <%= form_tag(weekly_path, method: 'patch')%>
     <% @goals.each do |goal| %>
       <% goal.problems.each do |problem| %>
-        <% problem.solutions.each do |solution| %>
-        <P><%= solution.title %></p>
+        <div>
+          <% problem.solutions.each do |solution| %>
+            <h3>解決案：<%= solution.title %></h3>
+            <%= label_tag :done, 'doneカラム' %>
+            <%= check_box_tag :done, '完了' %>
+        </div>
+        <div>
           <% solution.tasks.each do |task| %>
-            <div>
-              <%= task.title %>
-              <%= label_tag :working, 'Workingカラム' %>
-              <%= check_box_tag :working, '取組中' %>
-              <%= label_tag :done, 'doneカラム' %>
-              <%= check_box_tag :done, '完了' %>
-            </div>
+            <h4>タスク：<%= task.title %></h4>
+            <%= label_tag :working, 'workingカラム' %>
+            <%= hidden_field_tag :working, '待機中' %>
+            <%= check_box_tag :working, '取組中' %>
+            <%= label_tag :done, 'doneカラム' %>
+            <%= hidden_field_tag :done, '未完了' %>
+            <%= check_box_tag :done, '完了' %>
+          </div>
           <% end %>
         <% end %>
       <% end %>
@@ -24,4 +30,4 @@
   </tbody>
 </table>
 
-  <%= submit_tag('保存')%>
+<%= submit_tag('保存')%>
