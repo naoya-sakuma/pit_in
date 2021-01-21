@@ -24,6 +24,15 @@ class WeeklyPlansController < ApplicationController
         end
       end
     end
-    redirect_to weekly_path, notice: '保存されました'
+    redirect_to weekly_plans_path, notice: '保存されました'
+  end
+
+  private
+  def make_plan_params
+    params.permit(:working, :done)
+  end
+
+  def done_check
+    params.permit(:done)
   end
 end
