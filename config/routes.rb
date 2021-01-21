@@ -18,11 +18,12 @@ Rails.application.routes.draw do
   end
 
   resources :monthly_plans
+  patch 'monthly_plans', to: 'monthly_plans#monthly_update'
   resources :weekly_plans
   resources :daily_plans
 
   # get   'monthly', to: 'plans#monthly'
-  # patch 'monthly', to: 'plans#monthly_update'
+  # patch 'monthly_plans', to: 'monthly_plans#monthly_update'
   # put   'monthly', to: 'plans#monthly_update'
   # get   'weekly',  to: 'plans#weekly'
   # patch 'weekly',  to: 'plans#weekly_update'

@@ -15,6 +15,15 @@ class MonthlyPlansController < ApplicationController
         end
       end
     end
-    redirect_to monthly_path, notice: '保存されました'
+    redirect_to monthly_plans_path, notice: '保存されました'
+  end
+
+  private
+  def make_plan_params
+    params.permit(:working, :done)
+  end
+
+  def done_check
+    params.permit(:done)
   end
 end
