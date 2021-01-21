@@ -1,6 +1,6 @@
 class WeeklyPlansController < ApplicationController
   def index
-    @goals = current_user.goals.where(status: '着手中')
+    @goals = current_user.goals.where(status: '取組中')
     # @goals.each do |goal|
     #   @problems = goal.problems
     #   @problems.each do |problem|
@@ -10,7 +10,7 @@ class WeeklyPlansController < ApplicationController
   end
 
   def weekly_update
-    @goals = current_user.goals.where(status: '着手中')
+    @goals = current_user.goals.where(status: '取組中')
     @goals.each do |goal|
       @problems = goal.problems
       @problems.each do |problem|

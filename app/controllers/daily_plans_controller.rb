@@ -1,10 +1,10 @@
 class DailyPlansController < ApplicationController
   def index
-    @goals = current_user.goals.where(status: '着手中')
+    @goals = current_user.goals.where(status: '取組中')
   end
 
   def daily_update
-    @goals = current_user.goals.where(status: '着手中')
+    @goals = current_user.goals.where(status: '取組中')
     @goals.each do |goal|
       @problems = goal.problems
       @problems.each do |problem|
