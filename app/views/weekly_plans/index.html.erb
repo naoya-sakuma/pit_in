@@ -7,14 +7,14 @@
   <%= form_tag(weekly_plans_path, method: 'patch')%>
     <% @goals.each do |goal| %>
       <% goal.problems.each do |problem| %>
-        <div>
-          <% problem.solutions.each do |solution| %>
+        <% problem.solutions.each do |solution| %>
+          <div>
             <h3>解決案：<%= solution.title %></h3>
             <%= label_tag :done, 'doneカラム' %>
             <%= check_box_tag :done, '完了' %>
-        </div>
-        <div>
-          <% solution.tasks.each do |task| %>
+            <% solution.tasks.each do |task| %>
+          </div>
+          <div>
             <h4>タスク：<%= task.title %></h4>
             <%= label_tag :working, 'workingカラム' %>
             <%= hidden_field_tag :working, '待機中' %>
