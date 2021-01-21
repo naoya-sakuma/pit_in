@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :monthly_plans
   resources :weekly_plans
+  resources :daily_plans
 
   # get   'monthly', to: 'plans#monthly'
   # patch 'monthly', to: 'plans#monthly_update'
@@ -26,9 +27,9 @@ Rails.application.routes.draw do
   # get   'weekly',  to: 'plans#weekly'
   # patch 'weekly',  to: 'plans#weekly_update'
   # put   'weekly',  to: 'plans#weekly_update'
-  get   'daily',   to: 'plans#daily'
-  patch 'daily',   to: 'plans#daily_update'
-  put   'daily',   to: 'plans#daily_update'
+  # get   'daily',   to: 'plans#daily'
+  # patch 'daily',   to: 'plans#daily_update'
+  # put   'daily',   to: 'plans#daily_update'
   get   'todo',    to: 'plans#todo'
   patch 'todo',    to: 'plans#todo_update'
   put   'todo',    to: 'plans#todo_update'

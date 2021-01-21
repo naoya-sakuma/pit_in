@@ -4,7 +4,7 @@
   </thead>
 
   <tbody>
-  <%= form_tag(daily_path, method: 'patch')%>
+  <%= form_tag(daily_plans_path, method: 'patch')%>
     <% @goals.each do |goal| %>
       <% goal.problems.each do |problem| %>
         <% problem.solutions.each do |solution| %>
