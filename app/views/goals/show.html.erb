@@ -1,35 +1,54 @@
 <h1>目標詳細</h1>
-
-<div>
+<div class="">
   <strong>目標</strong>
-  <p><%= @goal.title %></p>
-  <p><%= @goal.day_to_start %></p>
-  <p><%= @goal.day_to_finish %></p>
-  <p><%= @goal.purpose %></p>
-  <p><%= @goal.status %></p>
-  <p><%= @goal.when_succeed %></p>
-  <p><%= @goal.when_fail %></p>
+  <%= @goal.title %>
+  <%= @goal.status %>
+
+  <p>
+    <strong>期間：</strong>
+    <%= @goal.day_to_start %>〜<%= @goal.day_to_finish %>
+  </p>
+  <p>
+    <strong>目的：</strong>
+    <%= @goal.purpose %>
+  <p>
+  <p>
+    <strong>達成したら？：</strong>
+    <%= @goal.when_succeed %>
+  </p>
+  <p>
+    <strong>達成しなかったら？：</strong>
+    <%= @goal.when_fail %>
+  </p>
 </div>
 
 <div>
   <% @goal.problems.each do |problem| %>
-    <h2>問題：<%= problem.title %></h2>
-    <p>終わった？：<%= problem.done %></p>
-
     <% problem.solutions.each do |solution| %>
-      <h3>解決案：<%= solution.title %></h3>
-      <p>取り組む？：<%= solution.working %></p>
-      <p>終わった？：<%= solution.done %></p>
-
       <% solution.tasks.each do |task| %>
-        <h4>タスク：<%= task.title %></h4>
-        <p>取り組む？：<%= task.working %></p>
-        <p>終わった？：<%= task.done %></p>
-
         <% task.steps.each do |step| %>
-          <h5>ステップ：<%= step.title %></h5>
-          <p>取り組む？：<%= step.working %></p>
-          <p>終わった？：<%= step.done %></p>
+
+          <table>
+            <h2>問題：<%= problem.title %>：<%= problem.done %></h2>
+            <tr>
+              <th>解決案</th>
+              <th>タスク</th>
+              <th>ステップ</th>
+            </tr>
+
+            <tr>
+              <td><%= solution.title %></td>
+              <td><%= task.title %></td>
+              <td><%= step.title %></td>
+            </tr>
+
+            <tr>
+              <td><%= solution.working %><%= solution.done %></td>
+              <td><%= task.working %><%= task.done %></td>
+              <td><%= step.working %><%= step.done %></td>
+            </tr>
+          </table>
+          
           <% end %>
         <% end %>
     <% end %>

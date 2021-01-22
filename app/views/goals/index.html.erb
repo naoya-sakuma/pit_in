@@ -1,33 +1,28 @@
 <h1>目標一覧</h1>
+<% @goals.each do |goal| %>
+  <div class="">
+    <strong>目標：</strong>
+    <%= goal.title %>
+    <%= goal.status %>
+    <button><%= link_to '詳細', goal %></button>
+    <button><%= link_to '編集', edit_goal_path(goal) %></button>
+    <button><%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></button>
 
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>開始</th>
-      <th>期限</th>
-      <th>目的</th>
-      <th>状態</th>
-      <th>達成</th>
-      <th>未達成</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @goals.each do |goal| %>
-      <tr>
-        <td><%= goal.title %></td>
-        <td><%= goal.day_to_start %></td>
-        <td><%= goal.day_to_finish %></td>
-        <td><%= goal.purpose %></td>
-        <td><%= goal.status %></td>
-        <td><%= goal.when_succeed %></td>
-        <td><%= goal.when_fail %></td>
-        <td><button><%= link_to '詳細', goal %></button></td>
-        <td><button><%= link_to '編集', edit_goal_path(goal) %></button></td>
-        <td><button><%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <p>
+      <strong>期間：</strong>
+      <%= goal.day_to_start %>〜<%= goal.day_to_finish %>
+    </p>
+    <p>
+      <strong>目的：</strong>
+      <%= goal.purpose %>
+    <p>
+    <p>
+      <strong>達成したら？：</strong>
+      <%= goal.when_succeed %>
+    </p>
+    <p>
+      <strong>達成しなかったら？：</strong>
+      <%= goal.when_fail %>
+    </p>
+  </div>
+<% end %>

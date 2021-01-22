@@ -4,29 +4,34 @@
   </thead>
 
   <tbody>
-  <%= form_tag(monthly_plans_path, method: 'patch')%>
-    <% @goals.each do |goal| %>
-      <h1>目標：<%= goal.title %></h1>
-      <% goal.problems.each do |problem| %>
+    <%= form_with(model: @goal, local: true) do |goal| %>
+      <% @goals.each do |g| %>
+      <h1>目標：<%= g.title %></h1>
         <div>
-          <h2>問題：<%= problem.title %></h2>
-          <%= label_tag :done, '終わった？' %>
-          <%= hidden_field_tag :done, '未完了' %>
-          <%= check_box_tag :done, '完了' %>
+          <% g.problems.each do |p| %>
+            <h2>問題：<%= p.title %></h2>
+            <%= goal.fields_for :problems do |problem| %>
+              <%= problem.label :done, '終わった？' %>
+              <%= problem.hidden_field :done, :value => '未完了' %>
+              <%= problem.check_box :done, :value => '完了' %>
         </div>
-        <% problem.solutions.each do |solution| %>
-          <div>
-            <h3>解決案：<%= solution.title %></h3>
-            <%= label_tag :working, '取り組む？' %>
-            <%= hidden_field_tag :working, '待機中' %>
-            <%= check_box_tag :working, '取組中'%>
-            <%= label_tag :done, '終わった？' %>
-            <%= hidden_field_tag :done, '未完了' %>
-            <%= check_box_tag :done, '完了' %>
-          </div>
-        <% end %>
-      <% end %>
-      <%= submit_tag('保存')%>
+        <div>
+          <% p.solutions.each do |so| %>
+            <h3>解決案：<%= so.title %></h3>
+            <%= problem.fields_for :solutions do |solution| %>
+              <%= solution.label :working, '取り組む？' %>
+              <%= solution.hidden_field :working, :value => '待機中' %>
+              <%= solution.check_box :working, :value => '取組中'%>
+              <%= solution.label :done, '終わった？' %>
+              <%= solution.hidden_field :done, :value => '未完了' %>
+              <%= solution.check_box :done, :value => '完了' %>
+            <% end %>
+          <% end %>
+        </div>
+            <% end %>
+          <% end %>
+        <% end%>
+      <%= goal.submit '保存' %>
     <% end %>
   </tbody>
 </table>
