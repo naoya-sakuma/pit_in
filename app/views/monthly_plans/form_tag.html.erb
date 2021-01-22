@@ -1,0 +1,32 @@
+<h1>montly計画</h1>
+<table>
+  <thead>
+  </thead>
+
+  <tbody>
+  <%= form_tag(monthly_plans_path, method: 'patch')%>
+    <% @goals.each do |goal| %>
+      <h1>目標：<%= goal.title %></h1>
+      <% goal.problems.each do |problem| %>
+        <div>
+          <h2>問題：<%= problem.title %></h2>
+          <%= label_tag :done, '終わった？' %>
+          <%= hidden_field_tag :done, '未完了' %>
+          <%= check_box_tag :done, '完了' %>
+        </div>
+        <% problem.solutions.each do |solution| %>
+          <div>
+            <h3>解決案：<%= solution.title %></h3>
+            <%= label_tag :working, '取り組む？' %>
+            <%= hidden_field_tag :working, '待機中' %>
+            <%= check_box_tag :working, '取組中'%>
+            <%= label_tag :done, '終わった？' %>
+            <%= hidden_field_tag :done, '未完了' %>
+            <%= check_box_tag :done, '完了' %>
+          </div>
+        <% end %>
+       <% end %>
+      <%= submit_tag('保存')%>
+    <% end %>
+  </tbody>
+</table>
