@@ -47,74 +47,45 @@
   </div>
 
 <!-- problem登録フォーム -->
+  <% p = 0 %>
   <%= goal.fields_for :problems do |problem| %>
-      <div>
-        <%= problem.label :title, "問題タイトル#{p}" %>
-        <%= problem.text_field :title %>
+    <% p += 1%>
+    <h2 ><%= "問題#{p}" %></h2>
+    <div class="field">
+      <%= problem.label :title, "問題タイトル" %>
+      <%= problem.text_field :title %>
+    </div>
+
+<!-- solution登録フォーム -->
+    <% so = 0 %>
+    <%= problem.fields_for :solutions do |solution| %>
+      <% so += 1%>
+      <div class="field">
+        <%= solution.label :title, "解決案#{so}" %>
+        <%= solution.text_field :title %>
       </div>
 
-    <%= problem.fields_for :solutions do |solution| %>
+<!-- task登録フォーム -->
+      <% t = 0 %>
       <%= solution.fields_for :tasks do |task| %>
+        <% t += 1%>
+        <div class="field">
+          <%= task.label :title, "タスク#{t}" %>
+          <%= task.text_field :title %>
+        </div>
+
+<!-- step登録フォーム -->
+        <% st = 0 %>
         <%= task.fields_for :steps do |step| %>
-
-  <table>
-    <thead>
-      <td></td>
-      <td></td>
-      <td></td>
-    </thead>
-
-    <tbody>
-      <td>
-        <div class="field" id="input_pluralBox">
-          <div id="input_plural">
-            <%= solution.label :title, "解決案" %>
-              <%= solution.text_field :title %>
-              <input type="button" value="＋" class="add pluralBtn">
-              <input type="button" value="－" class="del pluralBtn">
-            </div>
+          <% st += 1 %>
+          <div class="field">
+            <%= step.label :title, "ステップ#{st}" %>
+            <%= step.text_field :title, :class => 'step_form' %>
           </div>
-        </td>
-
-        <td>
-          <div class="field" id="input_pluralBox">
-            <div id="input_plural">
-              <%= task.label :title, "タスク" %>
-              <%= task.text_field :title, :class => "form-control" %>
-              <input type="button" value="＋" class="add pluralBtn">
-              <input type="button" value="－" class="del pluralBtn">
-            </div>
-          </div>
-        </td>
-
-        <td>
-          <div class="field" id="input_pluralBox">
-            <div id="input_plural">
-                <%= step.label :title, 'ステップ' %>
-                <%= step.text_field :title, :class => "form-control" %>
-                <input type="button" value="＋" class="add pluralBtn">
-                <input type="button" value="－" class="del pluralBtn">
-            </div>
-          </div>
-        </td>
-      </tbody>
-  </table>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
-
-  <div>
-    <div class="field" id="input_pluralBox">
-      <div id="input_plural">
-
-          <input type="button" value="＋" class="add pluralBtn">
-          <input type="button" value="－" class="del pluralBtn">
-      </div>
-    </div>
-
-  </div>
-
 
   <div class="actions">
     <%= goal.submit '作成' %>
