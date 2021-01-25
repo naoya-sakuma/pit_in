@@ -24,33 +24,24 @@
 
 <div>
   <% @goal.problems.each do |problem| %>
+    <h2>問題：<%= problem.title %></h2>
     <% problem.solutions.each do |solution| %>
       <% solution.tasks.each do |task| %>
         <% task.steps.each do |step| %>
-
           <table>
-            <h2>問題：<%= problem.title %>：<%= problem.done %></h2>
-            <tr>
+            <thead>
               <th>解決案</th>
               <th>タスク</th>
               <th>ステップ</th>
-            </tr>
-
-            <tr>
+            </thead>
+            <tbody>
               <td><%= solution.title %></td>
               <td><%= task.title %></td>
               <td><%= step.title %></td>
-            </tr>
-
-            <tr>
-              <td><%= solution.working %><%= solution.done %></td>
-              <td><%= task.working %><%= task.done %></td>
-              <td><%= step.working %><%= step.done %></td>
-            </tr>
+            </tbody>
           </table>
-          
-          <% end %>
         <% end %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
