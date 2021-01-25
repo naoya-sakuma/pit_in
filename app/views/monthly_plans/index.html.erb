@@ -3,10 +3,9 @@
 <% @goals.each do |g| %>
   <h1>目標：<%= g.title %></h1>
 
-  <% g.problems.each do |p| %>
-    <h2>問題：<%= p.title %></h2>
-
-    <%= form_with(model: @goal, local: true) do |goal| %>
+  <%= form_with(model: @goal, method: :patch, local: true) do |goal| %>
+    <% g.problems.each do |p| %>
+      <h2>問題：<%= p.title %></h2>
       <%= goal.fields_for :problems do |problem| %>
         <%= problem.label :done, '終わった？' %>
         <%= problem.check_box :done %>
@@ -21,7 +20,7 @@
           <% end %>
         <% end %>
       <% end %>
-    <p><%= goal.submit '保存' %></p>
     <% end %>
+  <p><%= goal.submit '保存' %></p>
   <% end%>
 <% end %>
