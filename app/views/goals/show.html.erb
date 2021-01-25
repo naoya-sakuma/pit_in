@@ -35,9 +35,21 @@
               <th>ステップ</th>
             </thead>
             <tbody>
-              <td><%= solution.title %></td>
-              <td><%= task.title %></td>
-              <td><%= step.title %></td>
+              <td>
+                <p><%= solution.title %></p>
+                <p><%= solution.working %></p>
+                <p><%= solution.done %></p>
+              </td>
+              <td>
+                <p><%= task.title %></p>
+                <p><%= task.working %></p>
+                <p><%= task.done %></p>
+              </td>
+              <td>
+                <p><%= step.title %></p>
+                <p><%= step.working %></p>
+                <p><%= step.done %></p>
+                </td>
             </tbody>
           </table>
         <% end %>
