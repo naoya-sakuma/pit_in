@@ -25,6 +25,6 @@ class MonthlyPlansController < ApplicationController
   end
 
   def done_check
-    params.permit(:done)
+    params.require(:problems).permit(:done, :_destroy, :id)
   end
 end
