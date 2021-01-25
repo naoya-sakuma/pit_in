@@ -18,6 +18,13 @@ class MonthlyPlansController < ApplicationController
     redirect_to monthly_plans_path, notice: '保存されました'
   end
 
+  def monthly_update2
+
+  end
+
+  def create
+  end
+
   private
   def make_plan_params
     params.permit(:working, :done)
