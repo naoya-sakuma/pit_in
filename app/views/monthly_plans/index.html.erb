@@ -1,26 +1,11 @@
-<h1>montly計画</h1>
-
-<% @goals.each do |g| %>
-  <h1>目標：<%= g.title %></h1>
-
-  <%= form_with(model: @goal, method: :patch, local: true) do |goal| %>
-    <% g.problems.each do |p| %>
-      <h2>問題：<%= p.title %></h2>
-      <%= goal.fields_for :problems do |problem| %>
-        <%= problem.label :done, '終わった？' %>
-        <%= problem.check_box :done %>
-
-        <% p.solutions.each do |so| %>
-          <h3>解決案：<%= so.title %></h3>
-          <%= problem.fields_for :solutions do |solution| %>
-            <%= solution.label :working, '取り組む？' %>
-            <%= solution.check_box :working%>
-            <%= solution.label :done, '終わった？' %>
-            <%= solution.check_box :done %>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
-  <p><%= goal.submit '保存' %></p>
-  <% end%>
+<h1>目標一覧</h1>
+<% @goals.each do |goal| %>
+  <div class="">
+    <strong>目標：</strong>
+    <%= goal.title %>
+    <%= goal.status %>
+    <button><%= link_to '詳細', goal %></button>
+    <button><%= link_to '編集', edit_monthly_plan_path(goal) %></button>
+    <button><%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  </div>
 <% end %>
