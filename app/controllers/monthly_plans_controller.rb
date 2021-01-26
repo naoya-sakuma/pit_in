@@ -3,28 +3,25 @@ class MonthlyPlansController < ApplicationController
     @goals = current_user.goals.where(status: '取組中')
   end
 
-  def monthly_update
-    @goals = current_user.goals.where(status: '取組中')
-    @goals.each do |goal|
-      @problems = goal.problems
-      @problems.each do |problem|
-        problem.update(done_check)
-        @solutions = problem.solutions
-        @solutions.each do |solution|
-          solution.update(make_plan_params)
-        end
-      end
+  def edit
+    @goal = Goal.find(params[:id])
+  end
+
+  def update
+    if @goal.update(update_goal_params)
+      redirect_to monthly_plan_path, notice: '変更が保存されました'
+    else
+      render :edit
     end
-    redirect_to monthly_plans_path, notice: '保存されました'
   end
 
   private
-  def make_plan_params
-    params.require(:problems).permit(:done, :_destroy, :id,
-                                     solutions_attributes:[:working, :done, :_destroy, :id,])
+  def update_goal_params
+    params.require(:goal).permit(problems_attributes: [:working, :done, :_destroy, :id,
+                                 solutions_attributes:[:working, :done, :_destroy, :id]])
   end
 
-  def done_check
-    params.require(:problems).permit(:done, :_destroy, :id)
+  def set_goal
+    @goal = Goal.find(params[:id])
   end
 end
