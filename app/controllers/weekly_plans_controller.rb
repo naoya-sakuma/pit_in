@@ -1,38 +1,27 @@
 class WeeklyPlansController < ApplicationController
   def index
     @goals = current_user.goals.where(status: '取組中')
-    # @goals.each do |goal|
-    #   @problems = goal.problems
-    #   @problems.each do |problem|
-    #     @solutions = problem.solutions.where(working: '取組中')
-    #   end
-    # end
   end
 
-  def weekly_update
-    @goals = current_user.goals.where(status: '取組中')
-    @goals.each do |goal|
-      @problems = goal.problems
-      @problems.each do |problem|
-        @solutions = problem.solutions
-        @solutions.each do |solution|
-          solution.update(done_check)
-          @tasks = solution.tasks
-          @tasks.each do |task|
-            task.update(make_plan_params)
-          end
-        end
-      end
+  def edit
+  end
+
+  def update
+    if @goal.update(update_goal_params)
+      redirect_to edit_monthly_plan_path, notice: '変更が保存されました'
+    else
+      render :edit
     end
-    redirect_to weekly_plans_path, notice: '保存されました'
   end
 
   private
-  def make_plan_params
-    params.permit(:working, :done)
+  def update_goal_params
+    params.require(:goal).permit(:_destroy, :id,
+                                 problems_attributes: [:done, :_destroy, :id,
+                                 solutions_attributes:[:working, :done, :_destroy, :id]])
   end
 
-  def done_check
-    params.permit(:done)
+  def set_goal
+    @goal = Goal.find(params[:id])
   end
 end

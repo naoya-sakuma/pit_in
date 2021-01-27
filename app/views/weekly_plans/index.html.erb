@@ -1,33 +1,21 @@
-<h1>weekly計画</h1>
-<table>
-  <thead>
-  </thead>
+<h1>weeklyプラン</h1>
 
-  <tbody>
-  <%= form_tag(weekly_plans_path, method: 'patch')%>
-    <% @goals.each do |goal| %>
-      <% goal.problems.each do |problem| %>
-        <% problem.solutions.each do |solution| %>
-          <div>
-            <h3>解決案：<%= solution.title %></h3>
-            <%= label_tag :done, 'doneカラム' %>
-            <%= check_box_tag :done, '完了' %>
-            <% solution.tasks.each do |task| %>
-          </div>
-          <div>
-            <h4>タスク：<%= task.title %></h4>
-            <%= label_tag :working, 'workingカラム' %>
-            <%= hidden_field_tag :working, '待機中' %>
-            <%= check_box_tag :working, '取組中' %>
-            <%= label_tag :done, 'doneカラム' %>
-            <%= hidden_field_tag :done, '未完了' %>
-            <%= check_box_tag :done, '完了' %>
-          </div>
-          <% end %>
-        <% end %>
+  <% @goals.each do |goal| %>
+    <% goal.problems.each do |problem| %>
+      <% problem.solutions.each do |solution| %>
+
+
+  <div class="">
+    <strong>解決案：</strong>
+    <%= solution.title %>
+    <%= solution.working %>
+    <button><%= link_to '詳細', goal %></button>
+    <button><%= link_to '編集', edit_monthly_plan_path(goal) %></button>
+    <button><%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+      <% solution.tasks.each do |task|%>
+        <p><%= task.title %></p>
       <% end %>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<%= submit_tag('保存')%>
+  <% end %>
+<% end %>
