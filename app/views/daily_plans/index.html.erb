@@ -1,37 +1,22 @@
-<h1>daily計画</h1>
-<table>
-  <thead>
-  </thead>
+<h1>dailyプラン</h1>
 
-  <tbody>
-  <%= form_tag(daily_plans_path, method: 'patch')%>
-    <% @goals.each do |goal| %>
-      <% goal.problems.each do |problem| %>
-        <% problem.solutions.each do |solution| %>
-          <% solution.tasks.each do |task| %>
-            <div>
-              <% solution.tasks.each do |task| %>
-                <h4>タスク：<%= task.title %></h4>
-                <%= label_tag :done, 'doneカラム' %>
-                <%= check_box_tag :done, '完了' %>
-            </div>
-            <div>
-              <% task.steps.each do |step| %>
-                <h5>ステップ：<%= step.title %></h5>
-                <%= label_tag :working, 'Workingカラム' %>
-                <%= hidden_field_tag :working, '待機中' %>
-                <%= check_box_tag :working, '取組中' %>
-                <%= label_tag :done, 'doneカラム' %>
-                <%= hidden_field_tag :done, '未完了' %>
-                <%= check_box_tag :done, '完了' %>
-            </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
+<% @goals.each do |goal| %>
+  <% goal.problems.each do |problem| %>
+    <% problem.solutions.each do |solution| %>
+      <% solution.tasks.each do |task|%>
+
+
+<div class="">
+  <strong>解決案：</strong>
+  <%= task.title %>
+  <%= task.working %>
+  <button><%= link_to '詳細', goal %></button>
+  <button><%= link_to '編集', edit_daily_plan_path(goal) %></button>
+    <% task.steps.each do |step|%>
+      <p><%= step.title %></p>
     <% end %>
+  </div>
   <% end %>
-  </tbody>
-</table>
-
-<%= submit_tag('保存')%>
+  <% end %>
+<% end %>
+<% end %>

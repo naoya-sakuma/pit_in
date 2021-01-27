@@ -1,5 +1,5 @@
-<h1>weekly計画の編集</h1>
-<%= form_with(model: @goal, url: weekly_plan_path, local: true) do |goal| %>
+<h1>daily計画の編集</h1>
+<%= form_with(model: @goal, url: daily_plan_path, local: true) do |goal| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
       <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
@@ -15,26 +15,32 @@
   <div>
     <% @goal.problems.each do |p| %>
       <% p.solutions.each do |so| %>
-        <p><strong><%= so.title %></strong></p>
-
         <% so.tasks.each do |t| %>
-          <p><tr>タスク：<%= t.title %></tr></p>
+
+        <p><strong><%= t.title %></strong></p>
+
+        <% t.steps.each do |st| %>
+
+          <p><tr>ステップ：<%= st.title %></tr></p>
           <% end %>
       <% end %>
     <% end%>
+    <% end %>
   </div>
 
   <div>
     <%= goal.fields_for :problems do |problem| %>
       <%= problem.fields_for :solutions do |solution| %>
-        <%= solution.check_box :done %>
-
         <%= solution.fields_for :tasks do |task| %>
-          <%= task.check_box :working %>
           <%= task.check_box :done %>
+
+        <%= task.fields_for :steps do |step| %>
+          <%= step.check_box :working %>
+          <%= step.check_box :done %>
       <% end %>
     <% end %>
     <% end%>
+    <% end %>
   </div>
 </div>
 

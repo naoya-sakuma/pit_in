@@ -1,35 +1,31 @@
 class DailyPlansController < ApplicationController
+  before_action :set_goal, only: [:edit, :update, :destroy]
+
   def index
     @goals = current_user.goals.where(status: '取組中')
   end
 
-  def daily_update
-    @goals = current_user.goals.where(status: '取組中')
-    @goals.each do |goal|
-      @problems = goal.problems
-      @problems.each do |problem|
-        @solutions = problem.solutions
-        @solutions.each do |solution|
-          @tasks = solution.tasks
-          @tasks.each do |task|
-            task.update(done_check)
-            @steps = task.steps
-            @steps.each do |step|
-              step.update(make_plan_params)
-            end
-          end
-        end
-      end
+  def edit
+  end
+
+  def update
+    if @goal.update(update_params)
+      redirect_to edit_daily_plan_path, notice: '変更が保存されました'
+    else
+      render :edit
     end
-    redirect_to daily_plans_path, notice: '保存されました'
   end
 
   private
-  def make_plan_params
-    params.permit(:working, :done)
+  def update_params
+    params.require(:goal).permit(:_destroy, :id,
+                                 problems_attributes:  [:_destroy, :id,
+                                 solutions_attributes: [:_destroy, :id,
+                                 tasks_attributes:     [:working, :done, :_destroy, :id,
+                                 steps_attributes:     [:working, :done, :_destroy, :id,]]]])
   end
 
-  def done_check
-    params.permit(:done)
+  def set_goal
+    @goal = Goal.find(params[:id])
   end
 end
