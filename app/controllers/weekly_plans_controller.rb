@@ -1,4 +1,6 @@
 class WeeklyPlansController < ApplicationController
+  before_action :set_goal, only: [:edit, :update, :destroy]
+  
   def index
     @goals = current_user.goals.where(status: '取組中')
   end

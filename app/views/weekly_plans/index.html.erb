@@ -10,8 +10,7 @@
     <%= solution.title %>
     <%= solution.working %>
     <button><%= link_to '詳細', goal %></button>
-    <button><%= link_to '編集', edit_monthly_plan_path(goal) %></button>
-    <button><%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+    <button><%= link_to '編集', edit_weekly_plan_path(goal) %></button>
       <% solution.tasks.each do |task|%>
         <p><%= task.title %></p>
       <% end %>
