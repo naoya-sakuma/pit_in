@@ -17,14 +17,8 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-
   resources :monthly_plans
   resources :weekly_plans
   resources :daily_plans
   resources :today_jobs
-
-
-  get   'todo',    to: 'plans#todo'
-  patch 'todo',    to: 'plans#todo_update'
-  put   'todo',    to: 'plans#todo_update'
 end
