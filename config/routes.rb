@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :monthly_plans
   resources :weekly_plans
   resources :daily_plans
+  resources :today_jobs
 
 
   get   'todo',    to: 'plans#todo'
