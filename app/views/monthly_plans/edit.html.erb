@@ -1,6 +1,5 @@
 <h1>monthly計画の編集</h1>
-
-<%= form_with(model: @goal, local: true) do |goal| %>
+<%= form_with(model: @goal, url: monthly_plan_path, local: true) do |goal| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
       <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
@@ -12,31 +11,31 @@
   </div>
   <% end %>
 
+<div>
   <div>
-    <% p = 0%>
-    <%= goal.fields_for :problems do |problem| %><% p += 1 %>
-      <%= problem.label :title, "問題#{p}" %>
-      <%= problem.text_field :title %>
+    <p><strong><%= @goal.title %></strong></p>
 
-        <%= problem.fields_for :solutions do |solution| %>
-          <%= solution.fields_for :tasks do |task| %>
-            <%= task.fields_for :steps do |step| %>
+    <% @goal.problems.each do |p| %>
+      <p><strong>問題：<%= p.title %></strong></p>
 
-                <p><%= solution.check_box :working %></p>
-                <p><%= solution.check_box :done %></p>
+      <% p.solutions.each do |so| %>
+        <p><tr>解決案：<%= so.title %></tr></p>
 
-          <% end %>
-        <% end %>
+      <% end %>
+    <% end%>
+  </div>
+
+  <div>
+    <%= goal.fields_for :problems do |problem| %>
+      <%= problem.check_box :done %>
+
+      <%= problem.fields_for :solutions do |solution| %>
+        <%= solution.check_box :working %>
+        <%= solution.check_box :done %>
       <% end %>
     <% end %>
   </div>
+</div>
 
-  <p class="actions"><%= goal.submit '作成' %></p>
-
-
-
-
-
-
-
+  <p class="actions"><%= goal.submit '保存' %></p>
 <% end %>
