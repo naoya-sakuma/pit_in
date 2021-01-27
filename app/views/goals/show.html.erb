@@ -26,34 +26,15 @@
   <% @goal.problems.each do |problem| %>
     <h2>問題：<%= problem.title %></h2>
     <% problem.solutions.each do |solution| %>
-      <% solution.tasks.each do |task| %>
-        <% task.steps.each do |step| %>
-          <table>
-            <thead>
-              <th>解決案</th>
-              <th>タスク</th>
-              <th>ステップ</th>
-            </thead>
-            <tbody>
-              <td>
-                <p><%= solution.title %></p>
-                <p><%= solution.working %></p>
-                <p><%= solution.done %></p>
-              </td>
-              <td>
-                <p><%= task.title %></p>
-                <p><%= task.working %></p>
-                <p><%= task.done %></p>
-              </td>
-              <td>
-                <p><%= step.title %></p>
-                <p><%= step.working %></p>
-                <p><%= step.done %></p>
-                </td>
-            </tbody>
-          </table>
+    　<div>
+        <span><%= solution.title %>：<%= solution.working %>：<%= solution.done %></span>
+        <% solution.tasks.each do |task| %>
+          <span><%= task.title %><%= task.working %><%= task.done %></span>
+          <% task.steps.each do |step| %>
+            <span><%= step.title %><%= step.working %><%= step.done %></span>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
