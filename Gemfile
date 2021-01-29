@@ -48,3 +48,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem "nested_form"

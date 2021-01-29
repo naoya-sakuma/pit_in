@@ -1,0 +1,16 @@
+<h1>Monthlyプラン</h1>
+<% @goals.each do |goal| %>
+  <div class="">
+    <strong>目標：</strong>
+    <%= goal.title %>
+    <%= goal.status %>
+    <button><%= link_to '詳細', goal %></button>
+    <button><%= link_to '編集', edit_monthly_plan_path(goal) %></button>
+    <button><%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+    <% goal.problems.each do |problem| %>
+      <% problem.solutions.each do |solution|%>
+        <p><%= solution.title %></p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

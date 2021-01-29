@@ -3,14 +3,11 @@ class GoalsController < ApplicationController
 
 
   def index
-    @goals = Goal.all
+    @goals = current_user.goals
   end
 
   def new
     @goal = Goal.new
-    @problem = Problem.new
-    @solution = Solution.new
-    @task = Task.new
     @problem = @goal.problems.build
     @solution = @problem.solutions.build
     @task = @solution.tasks.build
@@ -30,27 +27,7 @@ class GoalsController < ApplicationController
   end
 
   def edit
-    saved_problems = @goal.problems.count
-    saved_problems + 1.times { @goal.problems.build }
-
-    @problems = @goal.problems
-    @problems.each do |p|
-      saved_solutions = p.solutions.count
-      saved_solutions + 1.times { p.solutions.build }
-
-      @solutions = p.solutions
-      @solutions.each do |s|
-        saved_tasks = s.tasks.count
-        saved_tasks + 1.times { s.tasks.build }
-
-        @tasks = s.tasks
-        @tasks.each do |t|
-          saved_steps = t.steps.count
-          saved_steps + 1.times { t.steps.build }
-        end
-    end
   end
-end
 
   def update
     if @goal.update(update_goal_params)
@@ -68,26 +45,21 @@ end
   private
   def goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
-                                 problems_attributes: [:title, :status,
-                                 solutions_attributes:[:title, :status,
-                                 tasks_attributes:    [:title, :status,
-                                 steps_attributes:   [:title, :status]]]]
-                               )
+                                 problems_attributes: [:title,
+                                 solutions_attributes:[:title,
+                                 tasks_attributes:    [:title,
+                                 steps_attributes:    [:title]]]])
   end
 
   def update_goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :when_succeed, :when_fail,
-                                 problems_attributes: [:title, :status, :_destroy, :id,
-                                 solutions_attributes:[:title, :status, :_destroy, :id,
-                                 tasks_attributes:    [:title, :status, :_destroy, :id,
-                                 steps_attributes:   [:title, :status, :_destroy, :id]]]]
-                               )
+                                 problems_attributes: [:title, :_destroy, :id,
+                                 solutions_attributes:[:title, :_destroy, :id,
+                                 tasks_attributes:    [:title, :_destroy, :id,
+                                 steps_attributes:    [:title, :_destroy, :id]]]])
   end
 
   def set_goal
-    @goal = Goal.find(params[:id]) # @goal = 編集しようとしている目標1つ
-    #@problems = @goal.problems # @problems = 編集しようとしている目標に紐づく問題達
-    #@problems.each do |problem|
-      #@solutions = problem.solutions
+    @goal = Goal.find(params[:id])
   end
 end

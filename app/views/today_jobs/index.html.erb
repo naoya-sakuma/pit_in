@@ -1,0 +1,24 @@
+<h1>ToDo</h1>
+
+<% @goals.each do |goal| %>
+  <% goal.problems.each do |problem| %>
+    <% problem.solutions.each do |solution| %>
+      <% solution.tasks.each do |task|%>
+        <% task.steps.each do |step|%>
+
+
+<div class="">
+  <strong>タスク：</strong>
+  <%= task.title %>
+  <%= task.working %>
+  <button><%= link_to '詳細', goal %></button>
+  <button><%= link_to '編集', edit_today_job_path(goal) %></button>
+    <% task.steps.each do |step|%>
+      <p><%= step.title %></p>
+    <% end %>
+  </div>
+  <% end %>
+  <% end %>
+  <% end %>
+<% end %>
+<% end %>

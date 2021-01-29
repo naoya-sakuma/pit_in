@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_151342) do
+ActiveRecord::Schema.define(version: 2021_01_20_144447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,18 +31,18 @@ ActiveRecord::Schema.define(version: 2021_01_14_151342) do
 
   create_table "problems", force: :cascade do |t|
     t.string "title", null: false
-    t.string "status"
+    t.string "done"
     t.bigint "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "working"
     t.index ["goal_id"], name: "index_problems_on_goal_id"
   end
 
   create_table "solutions", force: :cascade do |t|
     t.string "title"
-    t.date "day_to_start"
-    t.date "day_to_finish"
-    t.string "status"
+    t.string "working"
+    t.string "done"
     t.bigint "problem_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,22 +51,24 @@ ActiveRecord::Schema.define(version: 2021_01_14_151342) do
 
   create_table "steps", force: :cascade do |t|
     t.string "title"
-    t.string "status"
+    t.string "done"
     t.bigint "user_id"
     t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "working"
     t.index ["task_id"], name: "index_steps_on_task_id"
     t.index ["user_id"], name: "index_steps_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
-    t.string "status"
+    t.string "done"
     t.bigint "user_id"
     t.bigint "solution_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "working"
     t.index ["solution_id"], name: "index_tasks_on_solution_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end

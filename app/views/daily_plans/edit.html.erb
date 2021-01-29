@@ -1,0 +1,47 @@
+<h1>daily計画の編集</h1>
+<%= form_with(model: @goal, url: daily_plan_path, local: true) do |goal| %>
+  <% if @goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @goal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div>
+    <div>
+      <% @goal.problems.each do |p| %>
+        <% p.solutions.each do |so| %>
+          <% so.tasks.each do |t| %>
+
+            <p><strong><%= t.title %></strong></p>
+
+            <% t.steps.each do |st| %>
+              <p><tr>ステップ：<%= st.title %></tr></p>
+            <% end %>
+          <% end %>
+        <% end%>
+      <% end %>
+    </div>
+
+    <div>
+      <%= goal.fields_for :problems do |problem| %>
+        <%= problem.fields_for :solutions do |solution| %>
+          <%= solution.fields_for :tasks do |task| %>
+            <%= task.check_box :done %>
+
+            <%= task.fields_for :steps do |step| %>
+              <%= step.check_box :working %>
+              <%= step.check_box :done %>
+            <% end %>
+          <% end %>
+        <% end%>
+      <% end %>
+    </div>
+  </div>
+
+<p class="actions"><%= goal.submit '保存' %></p>
+<% end %>

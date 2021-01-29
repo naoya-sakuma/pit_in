@@ -1,0 +1,18 @@
+<h1>weeklyプラン</h1>
+<% @goals.each do |goal| %>
+  <% goal.problems.each do |problem| %>
+    <% problem.solutions.each do |solution| %>
+
+      <div class="">
+        <strong>解決案：</strong>
+        <%= solution.title %>
+        <%= solution.working %>
+        <button><%= link_to '詳細', goal %></button>
+        <button><%= link_to '編集', edit_weekly_plan_path(goal) %></button>
+        <% solution.tasks.each do |task|%>
+          <p><%= task.title %></p>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
