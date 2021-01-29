@@ -11,38 +11,37 @@
   </div>
   <% end %>
 
-<div>
   <div>
-    <% @goal.problems.each do |p| %>
-      <% p.solutions.each do |so| %>
-        <% so.tasks.each do |t| %>
+    <div>
+      <% @goal.problems.each do |p| %>
+        <% p.solutions.each do |so| %>
+          <% so.tasks.each do |t| %>
 
-        <p><strong><%= t.title %></strong></p>
+            <p><strong><%= t.title %></strong></p>
 
-        <% t.steps.each do |st| %>
-
-          <p><tr>ステップ：<%= st.title %></tr></p>
+            <% t.steps.each do |st| %>
+              <p><tr>ステップ：<%= st.title %></tr></p>
+            <% end %>
           <% end %>
+        <% end%>
       <% end %>
-    <% end%>
-    <% end %>
-  </div>
+    </div>
 
-  <div>
-    <%= goal.fields_for :problems do |problem| %>
-      <%= problem.fields_for :solutions do |solution| %>
-        <%= solution.fields_for :tasks do |task| %>
-          <%= task.check_box :done %>
+    <div>
+      <%= goal.fields_for :problems do |problem| %>
+        <%= problem.fields_for :solutions do |solution| %>
+          <%= solution.fields_for :tasks do |task| %>
+            <%= task.check_box :done %>
 
-        <%= task.fields_for :steps do |step| %>
-          <%= step.check_box :working %>
-          <%= step.check_box :done %>
+            <%= task.fields_for :steps do |step| %>
+              <%= step.check_box :working %>
+              <%= step.check_box :done %>
+            <% end %>
+          <% end %>
+        <% end%>
       <% end %>
-    <% end %>
-    <% end%>
-    <% end %>
+    </div>
   </div>
-</div>
 
 <p class="actions"><%= goal.submit '保存' %></p>
 <% end %>

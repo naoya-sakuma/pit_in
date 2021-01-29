@@ -1,7 +1,5 @@
 <h1>Monthlyプラン</h1>
-
-
-  <% @goals.each do |goal| %>
+<% @goals.each do |goal| %>
   <div class="">
     <strong>目標：</strong>
     <%= goal.title %>
@@ -14,5 +12,5 @@
         <p><%= solution.title %></p>
       <% end %>
     <% end %>
-    </div>
-  <% end %>
+  </div>
+<% end %>

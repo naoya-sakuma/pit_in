@@ -11,31 +11,31 @@
   </div>
   <% end %>
 
-<div>
   <div>
-    <h4><%= @goal.title %></h4>
+    <div>
+      <h4><%= @goal.title %></h4>
 
-    <% @goal.problems.each do |p| %>
-      <p><strong>問題：<%= p.title %></strong></p>
+      <% @goal.problems.each do |p| %>
+        <p><strong>問題：<%= p.title %></strong></p>
 
-      <% p.solutions.each do |so| %>
-        <p><tr>解決案：<%= so.title %></tr></p>
+        <% p.solutions.each do |so| %>
+          <p><tr>解決案：<%= so.title %></tr></p>
 
+        <% end %>
+      <% end%>
+    </div>
+
+    <div>
+      <%= goal.fields_for :problems do |problem| %>
+        <%= problem.check_box :done %>
+
+        <%= problem.fields_for :solutions do |solution| %>
+          <%= solution.check_box :working %>
+          <%= solution.check_box :done %>
+        <% end %>
       <% end %>
-    <% end%>
+    </div>
   </div>
-
-  <div>
-    <%= goal.fields_for :problems do |problem| %>
-      <%= problem.check_box :done %>
-
-      <%= problem.fields_for :solutions do |solution| %>
-        <%= solution.check_box :working %>
-        <%= solution.check_box :done %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
 
   <p class="actions"><%= goal.submit '保存' %></p>
 <% end %>
