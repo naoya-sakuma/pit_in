@@ -9,7 +9,7 @@ class MonthlyPlansController < ApplicationController
   end
 
   def update
-    if @goal.update(update_goal_params)
+    if @goal.update(monthly_plan_params)
       redirect_to edit_monthly_plan_path, notice: '変更が保存されました'
     else
       render :edit
@@ -17,7 +17,7 @@ class MonthlyPlansController < ApplicationController
   end
 
   private
-  def update_goal_params
+  def monthly_plan_params
     params.require(:goal).permit(:_destroy, :id,
                                  problems_attributes: [:done, :_destroy, :id,
                                  solutions_attributes:[:working, :done, :_destroy, :id]])

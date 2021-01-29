@@ -9,7 +9,7 @@ class WeeklyPlansController < ApplicationController
   end
 
   def update
-    if @goal.update(update_goal_params)
+    if @goal.update(weekly_plan_params)
       redirect_to edit_weekly_plan_path, notice: '変更が保存されました'
     else
       render :edit
@@ -17,7 +17,7 @@ class WeeklyPlansController < ApplicationController
   end
 
   private
-  def update_goal_params
+  def weekly_plan_params
     params.require(:goal).permit(:_destroy, :id,
                                  problems_attributes: [:done, :_destroy, :id,
                                  solutions_attributes:[:working, :done, :_destroy, :id,

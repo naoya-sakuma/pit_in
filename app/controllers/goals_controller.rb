@@ -8,9 +8,6 @@ class GoalsController < ApplicationController
 
   def new
     @goal = Goal.new
-    @problem = Problem.new
-    @solution = Solution.new
-    @task = Task.new
     @problem = @goal.problems.build
     @solution = @problem.solutions.build
     @task = @solution.tasks.build
@@ -30,26 +27,6 @@ class GoalsController < ApplicationController
   end
 
   def edit
-    saved_problems = @goal.problems.count
-    saved_problems + 1.times { @goal.problems.build }
-
-    @problems = @goal.problems
-    @problems.each do |p|
-      saved_solutions = p.solutions.count
-      saved_solutions + 1.times { p.solutions.build }
-
-      @solutions = p.solutions
-      @solutions.each do |s|
-        saved_tasks = s.tasks.count
-        saved_tasks + 1.times { s.tasks.build }
-
-        @tasks = s.tasks
-        @tasks.each do |t|
-          saved_steps = t.steps.count
-          saved_steps + 1.times { t.steps.build }
-        end
-      end
-    end
   end
 
   def update
