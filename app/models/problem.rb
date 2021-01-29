@@ -3,5 +3,5 @@ class Problem < ApplicationRecord
   has_many :solutions, inverse_of: :problem, dependent: :destroy
   accepts_nested_attributes_for :solutions, allow_destroy: true
 
-  validates :title,  presence: true
+  #validates :title,  presence: true
 end
