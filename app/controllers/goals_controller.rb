@@ -4,6 +4,11 @@ class GoalsController < ApplicationController
 
   def index
     @goals = current_user.goals
+
+    respond_to do |format|
+      format.html
+      format.csv {send_data @goals.generate_csv, filename: "goals-#{Time.zone.now.strftime('%y%m%d%s')}.csv"}
+    end
   end
 
   def new
