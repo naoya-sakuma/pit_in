@@ -1,0 +1,16 @@
+.user_info_edit {
+  margin-bottom: 30px;
+}
+
+.user_info_edit_each {
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+.user_info_edit_each label {
+  margin-bottom: .2rem;
+}
+
+.change_password {
+  margin-bottom: 30px;
+}
