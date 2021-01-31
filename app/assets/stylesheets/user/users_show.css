@@ -4,11 +4,11 @@
 .img-thumbnail {
   margin-top: 30px;
   margin-left: 50px;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   text-align: center;
-  vertical-align: middle;
-
+  vertical-align: bottom;
+  border-radius: 50%;
 }
 
 .user_info {
