@@ -1,0 +1,25 @@
+.user_container {
+  margin-top: 50px;
+}
+.img-thumbnail {
+  margin-top: 30px;
+  margin-left: 50px;
+  height: 250px;
+  width: 250px;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.user_info {
+  margin-top: 30px;
+}
+
+.card {
+  height: 200px;
+  width: 500px;
+}
+
+#self_introduction {
+  margin-bottom: 5px;
+}
