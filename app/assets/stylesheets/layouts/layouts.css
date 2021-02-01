@@ -1,0 +1,24 @@
+footer {
+  border-top: 1px solid #DDDDDD;
+  background-color: #F7F7F7;
+  margin-top: 2rem;
+}
+
+footer section {
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.footer_container {
+  width: 70%;
+}
+
+.footer_letter {
+  color: black;
+  text-decoration:underline;
+  text-decoration-color: black;
+}
+
+.copyright {
+  color: black;
+  text-align: center;
+}

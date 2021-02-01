@@ -40,9 +40,9 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">計画</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/monthly_plans">Monthly</a>
-                  <a class="dropdown-item" href="/weekly_plans">Weekly</a>
-                  <a class="dropdown-item" href="/daily_plans">Daily</a>
+                  <a class="dropdown-item" href="/monthly_plans">今月の計画</a>
+                  <a class="dropdown-item" href="/weekly_plans">今週の計画</a>
+                  <a class="dropdown-item" href="/daily_plans">今日の計画</a>
                 </div>
               </li>
 
@@ -80,4 +80,38 @@
     <% end %>
     <%= yield %>
   </body>
+
+  <footer class="py-4 text-light fixed-bottom">
+    <div class="container-fluid footer_container">
+      <section class="row">
+
+        <ul class="col-4">
+          <h6 class="footer_letter">マイページ</h6>
+          <a class="dropdown-item" href="/">登録情報</a>
+          <a class="dropdown-item" href="/users/edit">情報変更</a>
+          <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
+        </ul>
+
+        <ul class="col-4">
+          <h6 class="footer_letter">目標</h6>
+          <a class="dropdown-item" href="/goals">目標一覧</a>
+          <a class="dropdown-item" href="/goals/new">目標作成</a>
+        </ul>
+
+        <ul class="col-4">
+          <h6 class="footer_letter">計画</h6>
+          <a class="dropdown-item" href="/monthly_plans">今月の計画</a>
+          <a class="dropdown-item" href="/weekly_plans">今週の計画</a>
+          <a class="dropdown-item" href="/daily_plans">今日の計画</a>
+          <a class="dropdown-item" href="/today_jobs">今日のTodo</a>
+        </ul>
+
+        <!-- <ul class="col-3">
+          <a class="dropdown-item" href="/users/sign_out" data-method="delete">ログアウト</a>
+        </ul> -->
+      </section>
+
+      <p class="copyright"><small>Copyright ©︎2021 Pit In, All Rights Reserved</small></p>
+    </div>
+  </footer>
 </html>
