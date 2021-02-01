@@ -1,5 +1,7 @@
 .user_info_edit {
-  margin-bottom: 30px;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  width: 90%;
 }
 
 .user_info_edit_each {
@@ -11,6 +13,9 @@
   margin-bottom: .2rem;
 }
 
-.change_password {
-  margin-bottom: 30px;
+.decide_to_change {
+  width: 90%;
+  border-top: 1px solid;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
 }
