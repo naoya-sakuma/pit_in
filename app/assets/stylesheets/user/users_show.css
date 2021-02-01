@@ -1,19 +1,24 @@
 .user_container {
   margin-top: 50px;
 }
+
 .img-thumbnail {
-  margin-top: 30px;
-  margin-left: 50px;
+  margin-right: 1rem;
   height: 200px;
   width: 200px;
   text-align: center;
-  vertical-align: bottom;
   border-radius: 50%;
 }
+.user_icon {
+  margin-left: auto;
+}
 
-.user_info {
-  margin-top: 30px;
-  margin-left: 10px;
+.user_icon img {
+  padding-top: 12.5px;
+}
+
+.user_name_and_intro {
+  margin-right: auto;
 }
 
 .card {
