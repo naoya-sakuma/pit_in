@@ -1,0 +1,26 @@
+.goal_info_edit {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  width: 90%;
+}
+
+.goal_info_edit_each {
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.goal_info_edit_each .col-4 {
+  padding-right: 0;
+}
+
+.goal_info_edit_each label {
+  margin-bottom: .2rem;
+}
+
+.goal_info_edit_each .col-4 input {
+  padding-right: 0;
+}
+
+.goal_info_edit_each .col-4 select {
+  padding-right: 0;
+}
