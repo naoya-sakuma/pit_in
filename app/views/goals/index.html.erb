@@ -1,5 +1,4 @@
 <div class="container_fluid goal_index">
-  <h1>目標一覧</h1>
   <% @goals.each do |goal| %>
     <div class="card goal_card">
       <div class="row goal_card_row">
@@ -20,9 +19,6 @@
     </div>
   <% end %>
 
+  <button class="csv_export btn btn-outline-secondary"><%= link_to 'CSV出力', goals_path(format: :csv) %></button>
   <%= paginate @goals %>
-
-  <button class="csv_export"><%= link_to 'エクスポート', goals_path(format: :csv) %></button>
-
-
 </div>
