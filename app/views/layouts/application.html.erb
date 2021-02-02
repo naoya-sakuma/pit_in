@@ -81,37 +81,44 @@
     <%= yield %>
   </body>
 
-  <footer class="py-4 text-light fixed-bottom">
-    <div class="container-fluid footer_container">
-      <section class="row">
+  <footer class="py-4 text-light">
+    <div class="container-fluid footer_container text-center">
 
-        <ul class="col-4">
-          <h6 class="footer_letter">マイページ</h6>
-          <a class="dropdown-item" href="/">登録情報</a>
-          <a class="dropdown-item" href="/users/edit">情報変更</a>
-          <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
-        </ul>
+      <section class="row footer_section">
+        <% if user_signed_in? %>
+            <ul class="col-4 logedin_items">
+              <h6 class="footer_item_titles">マイページ</h6>
+              <a class="dropdown-item" href="/">登録情報</a>
+              <a class="dropdown-item" href="/users/edit">情報変更</a>
+              <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
+            </ul>
 
-        <ul class="col-4">
-          <h6 class="footer_letter">目標</h6>
-          <a class="dropdown-item" href="/goals">目標一覧</a>
-          <a class="dropdown-item" href="/goals/new">目標作成</a>
-        </ul>
+            <ul class="col-4 logedin_items">
+              <h6 class="footer_item_titles">目標</h6>
+              <a class="dropdown-item" href="/goals">目標一覧</a>
+              <a class="dropdown-item" href="/goals/new">目標作成</a>
+            </ul>
 
-        <ul class="col-4">
-          <h6 class="footer_letter">計画</h6>
-          <a class="dropdown-item" href="/monthly_plans">今月の計画</a>
-          <a class="dropdown-item" href="/weekly_plans">今週の計画</a>
-          <a class="dropdown-item" href="/daily_plans">今日の計画</a>
-          <a class="dropdown-item" href="/today_jobs">今日のTodo</a>
-        </ul>
+            <ul class="col-4 logedin_items">
+              <h6 class="footer_item_titles">計画</h6>
+              <a class="dropdown-item" href="/monthly_plans">今月の計画</a>
+              <a class="dropdown-item" href="/weekly_plans">今週の計画</a>
+              <a class="dropdown-item" href="/daily_plans">今日の計画</a>
+              <a class="dropdown-item" href="/today_jobs">今日のTodo</a>
+            </ul>
+        <% else %>
+            <ul class="col-6 unlogedin_items">
+              <a class="dropdown-item" href="/users/sign_up">新規登録<span class="sr-only">(current)</span></a>
+            </ul>
 
-        <!-- <ul class="col-3">
-          <a class="dropdown-item" href="/users/sign_out" data-method="delete">ログアウト</a>
-        </ul> -->
+            <ul class="col-6 unlogedin_items">
+              <a class="dropdown-item" href="/users/sign_in">ログイン<span class="sr-only">(current)</span></a>
+            </ul>
+        <% end %>
       </section>
 
       <p class="copyright"><small>Copyright ©︎2021 Pit In, All Rights Reserved</small></p>
     </div>
   </footer>
+
 </html>
