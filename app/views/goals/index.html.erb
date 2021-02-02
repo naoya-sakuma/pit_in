@@ -19,6 +19,9 @@
       </div>
     </div>
   <% end %>
+
+  <%= paginate @goals %>
+
   <button class="csv_export"><%= link_to 'エクスポート', goals_path(format: :csv) %></button>
 
 
