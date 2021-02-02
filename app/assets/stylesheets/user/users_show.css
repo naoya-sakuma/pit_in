@@ -4,8 +4,8 @@
 
 .img-thumbnail {
   margin-right: 1rem;
-  height: 200px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
   text-align: center;
   border-radius: 50%;
 }
@@ -14,7 +14,7 @@
 }
 
 .user_icon img {
-  padding-top: 12.5px;
+  padding-top: 32px;
 }
 
 .user_name_and_intro {
