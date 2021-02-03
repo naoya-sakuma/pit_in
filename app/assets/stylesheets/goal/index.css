@@ -9,6 +9,17 @@
   margin-right: auto;
 }
 
+.goal_badges {
+  height: 20px;
+  width: 46px;
+  font-size: 11px;
+  vertical-align: top;
+  margin-top: 4px;
+  margin-right: 4px;
+  padding-top: 4px;
+  color: white;
+}
+
 .goal_title {
   padding-top: 5px;
   padding-left: 15px;

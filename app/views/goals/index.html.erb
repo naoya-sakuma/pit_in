@@ -3,7 +3,18 @@
     <div class="card goal_card">
       <div class="row goal_card_row">
         <div class="col-8">
-          <h4 class="goal_title"><%= goal.title %></h4>
+          <% case goal.status %>
+            <% when "" %>
+              <h4 class="goal_title"><span class="badge badge-warning badge-pill goal_badges">未登録</span><%= goal.title %></h4>
+            <% when "保留" %>
+              <h4 class="goal_title"><span class="badge badge-danger badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
+            <% when "取組中" %>
+              <h4 class="goal_title"><span class="badge badge-primary badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
+            <% when "完了" %>
+              <h4 class="goal_title"><span class="badge badge-warning badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
+          <% end %>
+
+
           <ul class="goal_info"><small>期間：<%= goal.day_to_start %>〜<%= goal.day_to_finish %></small></ul>
           <ul class="goal_info"><small>目的：<%= goal.purpose %></small></ul>
           <ul class="goal_info"><small>達成すると？：<%= goal.when_succeed %></small></ul>
