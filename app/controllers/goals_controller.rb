@@ -1,10 +1,8 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
-  PER = 4
-
   def index
-    @goals = current_user.goals.page(params[:page]).per(PER)
+    @goals = current_user.goals.page(params[:page]).per(4)
 
     respond_to do |format|
       format.html
