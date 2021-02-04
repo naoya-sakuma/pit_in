@@ -1,7 +1,9 @@
+/* 目標データに関する部分 */
 .goal_info_edit {
   margin-top: 2rem;
   margin-bottom: 4rem;
   width: 90%;
+  border-bottom: 1px solid #DDDDDD;
 }
 
 .goal_info_edit_each {
@@ -23,4 +25,18 @@
 
 .goal_info_edit_each .col-4 select {
   padding-right: 0;
+}
+
+
+/* 問題以下に関する部分 */
+.goal_related_info {
+  width: 90%;
+}
+
+.goal_related_info_forms {
+  width: 75%;
+}
+
+.problem_form {
+  float: right;
 }
