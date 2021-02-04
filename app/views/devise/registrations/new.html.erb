@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid registration_form">
   <h4 id="sign_up_title"><%= t('.sign_up') %></h4>
 
-  <div class="form-group registration_form">
+  <div class="form-group">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
