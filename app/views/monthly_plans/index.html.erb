@@ -8,7 +8,6 @@
         <strong class="card-title goal_title_in_monthly col-8"><%= goal.title %></strong>
         <div class="col-4"><%= link_to '編集', edit_monthly_plan_path(goal), class: "btn btn-outline-primary planning_btn" %></div>
       </div>
-      
       <ul class="list-group list-group-flush">
         <% goal.problems.each do |problem| %>
           <% problem.solutions.each do |solution|%>
