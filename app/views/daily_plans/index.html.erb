@@ -1,20 +1,27 @@
-<h1>dailyプラン</h1>
-<% @goals.each do |goal| %>
-  <% goal.problems.each do |problem| %>
-    <% problem.solutions.each do |solution| %>
-      <% solution.tasks.each do |task|%>
+<div class="container-fluid daily_plan_index">
+  <h4 class="daily_plan_page_title">今日の計画</h4>
+  <small class="daily_plan_guide">今週取組中のタスクとそのステップを表示しています。編集ボタンから今日取り組むステップを選択してください。</small>
 
-        <div class="">
-          <strong>タスク：</strong>
-          <%= task.title %>
-          <%= task.working %>
-          <button><%= link_to '詳細', goal %></button>
-          <button><%= link_to '編集', edit_daily_plan_path(goal) %></button>
-          <% task.steps.each do |step|%>
-            <p><%= step.title %></p>
-          <% end %>
-        </div>
+
+  <% @goals.each do |goal| %>
+    <% goal.problems.each do |problem| %>
+      <% problem.solutions.each do |solution| %>
+        <% solution.tasks.each do |task|%>
+
+          <div class="card daily_plan_card">
+            <div class="row">
+              <strong class="card-title task_title_in_daily col-8"><%= task.title %></strong>
+              <div class="col-4"><%= link_to '編集', edit_daily_plan_path(goal), class: "btn btn-outline-primary planning_btn_in_daily" %></div>
+            </div>
+
+            <ul class="list-group list-group-flush">
+              <% task.steps.each do |step|%>
+                <li class="list-group-item step_title_in_daily"><%= step.title %></li>
+              <% end %>
+            </ul>
+          </div>
+
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
