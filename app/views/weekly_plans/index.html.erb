@@ -1,6 +1,6 @@
 <div class="container-fluid weekly_plan_index">
-  <h4 class="weekly_plan_page_title">今月の計画</h4>
-  <small class="weekly_plan_guide">現在取組中の目標とその解決案を表示しています。編集ボタンから今月取り組む解決案を選択してください。</small>
+  <h4 class="weekly_plan_page_title">今週の計画</h4>
+  <small class="weekly_plan_guide">今月取組中の解決案とそのタスクを表示しています。編集ボタンから今月取り組むタスクを選択してください。</small>
 
   <% @goals.each do |goal| %>
     <% goal.problems.each do |problem| %>
@@ -9,7 +9,7 @@
         <div class="card weekly_plan_card">
           <div class="row">
             <strong class="card-title solution_title_in_weekly col-8"><%= solution.title %></strong>
-            <div class="col-4"><%= link_to '編集', edit_weekly_plan_path(goal), class: "btn btn-outline-primary planning_btn" %></div>
+            <div class="col-4"><%= link_to '編集', edit_weekly_plan_path(goal), class: "btn btn-outline-primary planning_btn_in_weekly" %></div>
           </div>
 
           <ul class="list-group list-group-flush">
