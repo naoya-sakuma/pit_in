@@ -1,16 +1,20 @@
-<h1>Monthlyプラン</h1>
-<% @goals.each do |goal| %>
-  <div class="">
-    <strong>目標：</strong>
-    <%= goal.title %>
-    <%= goal.status %>
-    <button><%= link_to '詳細', goal %></button>
-    <button><%= link_to '編集', edit_monthly_plan_path(goal) %></button>
-    <button><%= link_to '削除', goal, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-    <% goal.problems.each do |problem| %>
-      <% problem.solutions.each do |solution|%>
-        <p><%= solution.title %></p>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+<div class="container-fluid monthly_plan_index">
+  <h4 class="monthly_plan_page_title">今月の計画</h4>
+  <small class="monthly_plan_guide">現在取組中の目標とその解決案を表示しています。編集ボタンから今月取り組む解決案を選択してください。</small>
+
+  <% @goals.each do |goal| %>
+    <div class="card monthly_plan_card">
+      <div class="row">
+        <strong class="card-title goal_title_in_monthly col-8"><%= goal.title %></strong>
+        <div class="col-4"><%= link_to '編集', edit_monthly_plan_path(goal), class: "btn btn-outline-primary planning_btn" %></div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% goal.problems.each do |problem| %>
+          <% problem.solutions.each do |solution|%>
+            <li class="list-group-item solution_title_in_monthly"><%= solution.title %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
