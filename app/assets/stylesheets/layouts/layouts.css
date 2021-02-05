@@ -2,11 +2,13 @@ html {
   position: relative;
   width: 100%;
   /* max-height: 1000rem; */
-  min-height: 80rem;
+  /* height: 1000rem; */
+  min-height: 60rem;
 }
 
 body {
-  height: 1000rem;
+  padding-bottom: 500px;
+  /* height: 1000rem; */
 }
 
 footer {
