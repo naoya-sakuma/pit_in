@@ -14,7 +14,7 @@
               <% case solution.status %>
                 <% when "保留中" %>
                   <li class="list-group-item solution_title_in_monthly"><span class="badge badge-danger badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
-                <% when "取組中"　%>
+                <% when "取組中" %>
                   <li class="list-group-item solution_title_in_monthly"><span class="badge badge-primary badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
                 <% when "完了" %>
                   <li class="list-group-item solution_title_in_monthly"><span class="badge badge-warning badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
