@@ -8,19 +8,21 @@
         <% goal.problems.each do |problem| %>
           <% problem.solutions.each do |solution| %>
             <% solution.tasks.each do |task|%>
-              <strong class="card-title task_title_in_daily"><%= task.title %></strong>
-              <ul class="list-group list-group-flush">
-                <% task.steps.each do |step|%>
-                  <% case task.status %>
-                    <% when "保留中" %>
-                      <li class="list-group-item step_title_in_daily"><span class="badge badge-danger badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
-                    <% when "取組中" %>
-                      <li class="list-group-item step_title_in_daily"><span class="badge badge-primary badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
-                    <% when "完了" %>
-                      <li class="list-group-item step_title_in_daily"><span class="badge badge-warning badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+              <% if task.status == "取組中" %>
+                <strong class="card-title task_title_in_daily"><%= task.title %></strong>
+                <ul class="list-group list-group-flush">
+                  <% task.steps.each do |step|%>
+                    <% case task.status %>
+                      <% when "保留中" %>
+                        <li class="list-group-item step_title_in_daily"><span class="badge badge-danger badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                      <% when "取組中" %>
+                        <li class="list-group-item step_title_in_daily"><span class="badge badge-primary badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                      <% when "完了" %>
+                        <li class="list-group-item step_title_in_daily"><span class="badge badge-warning badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </ul>
+                </ul>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
