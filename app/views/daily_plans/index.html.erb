@@ -11,7 +11,14 @@
               <strong class="card-title task_title_in_daily"><%= task.title %></strong>
               <ul class="list-group list-group-flush">
                 <% task.steps.each do |step|%>
-                  <li class="list-group-item step_title_in_daily"><%= step.title %></li>
+                  <% case task.status %>
+                    <% when "保留中" %>
+                      <li class="list-group-item step_title_in_daily"><span class="badge badge-danger badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                    <% when "取組中" %>
+                      <li class="list-group-item step_title_in_daily"><span class="badge badge-primary badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                    <% when "完了" %>
+                      <li class="list-group-item step_title_in_daily"><span class="badge badge-warning badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                  <% end %>
                 <% end %>
               </ul>
             <% end %>
