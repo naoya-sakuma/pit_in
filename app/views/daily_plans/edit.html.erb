@@ -36,10 +36,10 @@
           <%= goal.fields_for :problems do |problem| %>
             <%= problem.fields_for :solutions do |solution| %>
               <%= solution.fields_for :tasks do |task| %>
-                <li class="list-group-item done_checkbox"><%= task.select :status, [['選択してください', '保留中'], ['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %></li>
+                <li class="list-group-item done_checkbox"><%= task.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %></li>
                 <%= task.fields_for :steps do |step| %>
                   <li class="list-group-item working_and_done_checkbox">
-                    <%= step.select :status, [['選択してください', '保留中'], ['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %>
+                    <%= step.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %>
                   </li>
                 <% end %>
               <% end %>

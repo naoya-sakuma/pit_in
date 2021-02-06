@@ -31,10 +31,10 @@
         <ul class="list-group">
 
           <%= goal.fields_for :problems do |problem| %>
-            <li class="list-group-item done_checkbox"><%= problem.select :status, [['選択してください', '保留中'], ['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %></li>
+            <li class="list-group-item done_checkbox"><%= problem.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %></li>
             <%= problem.fields_for :solutions do |solution| %>
               <li class="list-group-item working_and_done_checkbox">
-                <%= solution.select :status, [['選択してください', '保留中'], ['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %>
+                <%= solution.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %>
               </li>
             <% end %>
           <% end %>
