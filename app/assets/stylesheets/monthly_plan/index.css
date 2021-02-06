@@ -19,9 +19,5 @@
 }
 
 .planning_btn_in_monthly {
-  height: 25px;
-  width: 45px;
-  font-size: 15px;
-  padding: 0;
-  vertical-align: baseline;
+  margin-top: 1rem;
 }

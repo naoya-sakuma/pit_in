@@ -12,18 +12,13 @@
 
 .solution_title_in_weekly {
   font-size: 18px;
-  padding-left: 2rem;
+  padding-left: 1rem;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 0;
 }
 
 .planning_btn_in_weekly {
-  display: block;
-  height: 25px;
-  width: 45px;
-  font-size: 15px;
-  padding: 0;
-  margin-top: 6px;
-  margin-left: 5rem;
+  margin-top: 1rem;
+
 }
