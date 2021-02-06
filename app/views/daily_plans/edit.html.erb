@@ -18,7 +18,6 @@
     <div class="row monthly_edit_zone">
       <div class="col-4 problem_and_solution_title">
         <ul class="list-group">
-          <li class="list-group-item title_head">タイトル</li>
           <% @goal.problems.each do |p| %>
             <% p.solutions.each do |so| %>
               <% so.tasks.each do |t| %>
@@ -34,20 +33,13 @@
 
       <div class="col-2 problem_and_solution_checkbox">
         <ul class="list-group">
-          <li class="list-group-item checkbox_title">
-            <span class="working_title">完了</span>
-            <span class="done_title">取組</span>
-          </li>
-
           <%= goal.fields_for :problems do |problem| %>
             <%= problem.fields_for :solutions do |solution| %>
               <%= solution.fields_for :tasks do |task| %>
-                <li class="list-group-item done_checkbox"><%= task.check_box :done %></li>
+                <li class="list-group-item done_checkbox"><%= task.select :status, [['選択してください', '保留中'], ['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %></li>
                 <%= task.fields_for :steps do |step| %>
                   <li class="list-group-item working_and_done_checkbox">
-                    <%= step.check_box :working %>
-                    <span>&emsp;</span>
-                    <%= step.check_box :done %>
+                    <%= step.select :status, [['選択してください', '保留中'], ['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %>
                   </li>
                 <% end %>
               <% end %>
