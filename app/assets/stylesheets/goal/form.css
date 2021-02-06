@@ -3,7 +3,7 @@
   margin-top: 2rem;
   margin-bottom: 4rem;
   width: 90%;
-  border-bottom: 1px solid #DDDDDD;
+  /* border-bottom: 1px solid #DDDDDD; */
 }
 
 .goal_info_edit_each {
@@ -27,16 +27,15 @@
   padding-right: 0;
 }
 
-
-/* 問題以下に関する部分 */
-.goal_related_info {
-  width: 90%;
+.forms_for_goals_table {
+  margin-bottom: 2rem;
 }
 
+/* 問題以下に関する部分 */
 .goal_related_info_forms {
   width: 75%;
 }
 
-.problem_form {
-  float: right;
+.goal_submit {
+  margin-top: 2rem;
 }
