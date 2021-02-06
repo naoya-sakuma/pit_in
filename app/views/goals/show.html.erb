@@ -1,43 +1,30 @@
 <div class="container_fluid">
-  <div>
-    <strong>目標</strong>
-    <%= @goal.title %>
-    <%= @goal.status %>
+  <div class="goal_show">
+    <h4 class="goal_title_in_show"><%= @goal.title %></h4>
 
-    <p>
-      <strong>期間：</strong>
-      <%= @goal.day_to_start %>〜<%= @goal.day_to_finish %>
-    </p>
-    <p>
-      <strong>目的：</strong>
-      <%= @goal.purpose %>
-    <p>
-    <p>
-      <strong>達成したら？：</strong>
-      <%= @goal.when_succeed %>
-    </p>
-    <p>
-      <strong>達成しなかったら？：</strong>
-      <%= @goal.when_fail %>
-    </p>
-  </div>
+    <ul class="list-group">
+      <li class="list-group-item">期間：<%= @goal.day_to_start %>〜<%= @goal.day_to_finish %></li>
+      <li class="list-group-item">目的：<%= @goal.purpose %></li>
+      <li class="list-group-item">達成すると？：<%= @goal.when_succeed %></li>
+      <li class="list-group-item">達成しないと？：<%= @goal.when_fail %></li>
+    </ul>
 
-  <div>
     <% @goal.problems.each do |problem| %>
-      <h2>問題：<%= problem.title %>：<%= problem.working %>：<%= problem.done %></h2>
-      <% problem.solutions.each do |solution| %>
-    　  <div>
-          <span><%= solution.title %>：<%= solution.working %>：<%= solution.done %></span>
-          <% solution.tasks.each do |task| %>
-            <span><%= task.title %><%= task.working %><%= task.done %></span>
-            <% task.steps.each do |step| %>
-              <span><%= step.title %><%= step.working %><%= step.done %></span>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+      <%= problem.title %>
 
-  <%= link_to '目標一覧', goals_path %>
+      <% problem.solutions.each do |solution| %>
+        <%= solution.title %>
+
+        <% solution.tasks.each do |task| %>
+          <%= task.title %>
+
+          <% task.steps.each do |step| %>
+            <%= step.title %>
+          <% end %><!--step-->
+        <% end %><!--task-->
+      <% end %><!--solution-->
+    <% end %><!--problem-->
+
+  <%= link_to '一覧へ戻る', goals_path %>
+  </div>
 <div>
