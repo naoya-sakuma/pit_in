@@ -18,17 +18,23 @@
   padding-left: 0;
 }
 
+.select_box_in_planning {
+  font-size: 10px;
+  height: 30px;
+}
+
 .checkbox_title {
   padding-left: 0;
   padding-right: 0;
   text-align: center;
 }
 
-.done_checkbox {
-  padding-left: 60px;
+.status_selectbox {
+  padding-top: 9px;
+  padding-bottom: 9px;
   margin: 0;
 }
 
-.working_and_done_checkbox {
-  padding-left: 60px;
+.plan_save {
+  margin-top: 1rem;
 }
