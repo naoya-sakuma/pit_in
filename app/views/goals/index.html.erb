@@ -6,7 +6,7 @@
           <% case goal.status %>
             <% when "" %>
               <h4 class="goal_title"><span class="badge badge-warning badge-pill goal_badges">未登録</span><%= goal.title %></h4>
-            <% when "保留" %>
+            <% when "保留中" %>
               <h4 class="goal_title"><span class="badge badge-danger badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
             <% when "取組中" %>
               <h4 class="goal_title"><span class="badge badge-primary badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
