@@ -10,7 +10,7 @@ class MonthlyPlansController < ApplicationController
 
   def update
     if @goal.update(monthly_plan_params)
-      redirect_to edit_monthly_plan_path, notice: '変更が保存されました'
+      redirect_to monthly_plans_path, notice: '変更が保存されました'
     else
       render :edit
     end

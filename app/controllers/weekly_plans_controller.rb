@@ -10,7 +10,7 @@ class WeeklyPlansController < ApplicationController
 
   def update
     if @goal.update(weekly_plan_params)
-      redirect_to edit_weekly_plan_path, notice: '変更が保存されました'
+      redirect_to weekly_plans_path, notice: '変更が保存されました'
     else
       render :edit
     end
