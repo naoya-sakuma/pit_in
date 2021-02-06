@@ -1,0 +1,41 @@
+/* 目標データに関する部分 */
+.goal_info_edit {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  width: 90%;
+  /* border-bottom: 1px solid #DDDDDD; */
+}
+
+.goal_info_edit_each {
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.goal_info_edit_each .col-4 {
+  padding-right: 0;
+}
+
+.goal_info_edit_each label {
+  margin-bottom: .2rem;
+}
+
+.goal_info_edit_each .col-4 input {
+  padding-right: 0;
+}
+
+.goal_info_edit_each .col-4 select {
+  padding-right: 0;
+}
+
+.forms_for_goals_table {
+  margin-bottom: 2rem;
+}
+
+/* 問題以下に関する部分 */
+.goal_related_info_forms {
+  width: 75%;
+}
+
+.goal_submit {
+  margin-top: 2rem;
+}
