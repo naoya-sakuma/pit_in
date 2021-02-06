@@ -19,9 +19,9 @@ class WeeklyPlansController < ApplicationController
   private
   def weekly_plan_params
     params.require(:goal).permit(:_destroy, :id,
-                                 problems_attributes: [:done, :_destroy, :id,
-                                 solutions_attributes:[:working, :done, :_destroy, :id,
-                                 tasks_attributes:[:working, :done, :_destroy, :id]]])
+                                 problems_attributes: [:status, :_destroy, :id,
+                                 solutions_attributes:[:status, :_destroy, :id,
+                                 tasks_attributes:    [:status, :_destroy, :id]]])
   end
 
   def set_goal

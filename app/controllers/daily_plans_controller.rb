@@ -21,8 +21,8 @@ class DailyPlansController < ApplicationController
     params.require(:goal).permit(:_destroy, :id,
                                  problems_attributes:  [:_destroy, :id,
                                  solutions_attributes: [:_destroy, :id,
-                                 tasks_attributes:     [:working, :done, :_destroy, :id,
-                                 steps_attributes:     [:working, :done, :_destroy, :id,]]]])
+                                 tasks_attributes:     [:status, :_destroy, :id,
+                                 steps_attributes:     [:status, :_destroy, :id,]]]])
   end
 
   def set_goal
