@@ -3,18 +3,20 @@
   <small class="monthly_plan_guide">現在取組中の目標とその解決案を表示しています。編集ボタンから今月取り組む解決案を選択してください。</small>
 
   <% @goals.each do |goal| %>
-    <div class="card monthly_plan_card">
-      <div class="row">
-        <strong class="card-title goal_title_in_monthly col-8"><%= goal.title %></strong>
-        <div class="col-4"><%= link_to '編集', edit_monthly_plan_path(goal), class: "btn btn-outline-primary planning_btn_in_monthly" %></div>
-      </div>
-      <ul class="list-group list-group-flush">
-        <% goal.problems.each do |problem| %>
-          <% problem.solutions.each do |solution|%>
-            <li class="list-group-item solution_title_in_monthly"><%= solution.title %></li>
+    <div class="goals_and_solutions">
+      <div class="card monthly_plan_card">
+        <strong class="card-title goal_title_in_monthly col-8">
+          <%= goal.title %>
+        </strong>
+        <ul class="list-group list-group-flush">
+          <% goal.problems.each do |problem| %>
+            <% problem.solutions.each do |solution|%>
+              <li class="list-group-item solution_title_in_monthly"><%= solution.title %></li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
+    <%= link_to '編集', edit_monthly_plan_path(goal), class: "btn btn-outline-secondary planning_btn_in_monthly" %>
     </div>
   <% end %>
 </div>

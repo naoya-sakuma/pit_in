@@ -3,24 +3,22 @@
   <small class="weekly_plan_guide">今月取組中の解決案とそのタスクを表示しています。編集ボタンから今月取り組むタスクを選択してください。</small>
 
   <% @goals.each do |goal| %>
-    <% goal.problems.each do |problem| %>
-      <% problem.solutions.each do |solution| %>
+    <div class="solutions_and_tasks">
+      <div class="card weekly_plan_card">
 
-        <div class="card weekly_plan_card">
-          <div class="row">
-            <strong class="card-title solution_title_in_weekly col-8"><%= solution.title %></strong>
-            <div class="col-4"><%= link_to '編集', edit_weekly_plan_path(goal), class: "btn btn-outline-primary planning_btn_in_weekly" %></div>
-          </div>
-
-          <ul class="list-group list-group-flush">
-            <% solution.tasks.each do |task|%>
-              <li class="list-group-item task_title_in_weekly"><%= task.title %></li>
-            <% end %>
-          </ul>
-        </div>
-
-      <% end %>
-    <% end %>
+        <% goal.problems.each do |problem| %>
+          <% problem.solutions.each do |solution| %>
+            <strong class="card-title solution_title_in_weekly"><%= solution.title %></strong>
+            <ul class="list-group list-group-flush">
+              <% solution.tasks.each do |task|%>
+                <li class="list-group-item task_title_in_weekly"><%= task.title %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+      <%= link_to '編集', edit_weekly_plan_path(goal), class: "btn btn-outline-secondary planning_btn_in_weekly" %>
+    </div>
   <% end %>
 
 </div>

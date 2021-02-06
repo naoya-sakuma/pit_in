@@ -4,24 +4,22 @@
 
 
   <% @goals.each do |goal| %>
-    <% goal.problems.each do |problem| %>
-      <% problem.solutions.each do |solution| %>
-        <% solution.tasks.each do |task|%>
-
-          <div class="card daily_plan_card">
-            <div class="row">
-              <strong class="card-title task_title_in_daily col-8"><%= task.title %></strong>
-              <div class="col-4"><%= link_to '編集', edit_daily_plan_path(goal), class: "btn btn-outline-primary planning_btn_in_daily" %></div>
-            </div>
-
-            <ul class="list-group list-group-flush">
-              <% task.steps.each do |step|%>
-                <li class="list-group-item step_title_in_daily"><%= step.title %></li>
-              <% end %>
-            </ul>
-          </div>
-
+    <div class="solutions_and_tasks">
+      <div class="card daily_plan_card">
+        <% goal.problems.each do |problem| %>
+          <% problem.solutions.each do |solution| %>
+            <% solution.tasks.each do |task|%>
+              <strong class="card-title task_title_in_daily"><%= task.title %></strong>
+              <ul class="list-group list-group-flush">
+                <% task.steps.each do |step|%>
+                  <li class="list-group-item step_title_in_daily"><%= step.title %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+      <%= link_to '編集', edit_daily_plan_path(goal), class: "btn btn-outline-secondary planning_btn_in_daily" %>
+    </div>
   <% end %>
+</div>
