@@ -1,14 +1,14 @@
-<h1>today_jobsの編集</h1>
-<%= form_with(model: @goal, url: today_job_path, local: true) do |goal| %>
-  <% if @goal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
-      <ul>
-      <% @goal.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
+<div class="container-fluid">
+  <%= form_with(model: @goal, url: today_job_path, local: true) do |goal| %>
+    <% if @goal.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
+        <ul>
+        <% @goal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
 <div>

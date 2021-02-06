@@ -1,0 +1,34 @@
+.goal_title_in_monthly_edit {
+  margin-top: 2rem;
+}
+
+.monthly_edit_zone {
+  margin-top: 2rem;
+}
+
+.problem_and_solution_title {
+  padding-right: 0;
+}
+
+.title_head {
+  text-align: center;
+}
+
+.problem_and_solution_checkbox {
+  padding-left: 0;
+}
+
+.checkbox_title {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.done_checkbox {
+  padding-left: 60px;
+  margin: 0;
+}
+
+.working_and_done_checkbox {
+  padding-left: 60px;
+}
