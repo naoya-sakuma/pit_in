@@ -19,12 +19,12 @@
         <ul class="list-group">
           <% @goal.problems.each do |p| %>
             <% p.solutions.each do |so| %>
-            <li class="list-group-item"><strong><%= so.title %></strong></li>
-            <% so.tasks.each do |t| %>
-              <li class="list-group-item"><%= t.title %></li>
+              <li class="list-group-item"><strong><%= so.title %></strong></li>
+              <% so.tasks.each do |t| %>
+                <li class="list-group-item"><%= t.title %></li>
+              <% end %>
             <% end %>
-          <% end %>
-        <% end%>
+          <% end%>
         </ul>
       </div>
 
