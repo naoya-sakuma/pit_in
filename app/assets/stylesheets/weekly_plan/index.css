@@ -6,8 +6,11 @@
   border-bottom: 1px solid #dddddd
 }
 
-.weekly_plan_card {
+.goal_title_in_weekly {
+  font-size: 22px;
+  padding-left: 1rem;
   margin-top: 2rem;
+  margin-bottom: 0;
 }
 
 .solution_title_in_weekly {
@@ -20,5 +23,6 @@
 
 .planning_btn_in_weekly {
   margin-top: 1rem;
+  margin-bottom: .5rem;
 
 }

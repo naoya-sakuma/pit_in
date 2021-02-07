@@ -4,8 +4,8 @@
 
   <% @goals.each do |goal| %>
     <div class="solutions_and_tasks">
+      <p class="goal_title_in_weekly"><strong><%= goal.title %></strong></p>
       <div class="card weekly_plan_card">
-
         <% goal.problems.each do |problem| %>
           <% problem.solutions.each do |solution| %>
             <% if solution.status == "取組中" %>

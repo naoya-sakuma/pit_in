@@ -4,6 +4,7 @@
 
   <% @goals.each do |goal| %>
     <div class="solutions_and_tasks">
+      <p class="goal_title_in_daily"><strong><%= goal.title %></strong></p>
       <div class="card daily_plan_card">
         <% goal.problems.each do |problem| %>
           <% problem.solutions.each do |solution| %>
