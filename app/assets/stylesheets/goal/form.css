@@ -3,7 +3,6 @@
   margin-top: 2rem;
   margin-bottom: 4rem;
   width: 90%;
-  /* border-bottom: 1px solid #DDDDDD; */
 }
 
 .goal_info_edit_each {
@@ -31,11 +30,49 @@
   margin-bottom: 2rem;
 }
 
+.form_title {
+  margin-top: 20px;
+}
+
 /* 問題以下に関する部分 */
 .goal_related_info_forms {
   width: 75%;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .goal_submit {
   margin-top: 2rem;
+}
+
+#problem_form_delete {
+  color: #007bff;
+}
+
+#problem_form_add {
+  color: #007bff;
+}
+
+#solution_form_delete {
+  color: #dc3545;
+}
+
+#solution_form_add {
+  color: #dc3545;
+}
+
+#task_form_delete {
+  color: #ffc107;
+}
+
+#task_form_add {
+  color: #ffc107;
+}
+
+#step_form_delete {
+  color: #28a745;
+}
+
+#step_form_add {
+  color: #28a745;
 }
