@@ -1,9 +1,16 @@
-.goal_title_in_monthly_edit {
+.monthly_plan_edit {
   margin-top: 2rem;
 }
 
-.monthly_edit_zone {
+.goal_title_in_monthly_edit {
+  font-size: 22px;
+  padding-left: 1rem;
   margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.monthly_edit_zone {
+  /* margin-top: 2rem; */
 }
 
 .problem_and_solution_title {
