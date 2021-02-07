@@ -9,22 +9,22 @@
       <li class="list-group-item">達成しないと？：<%= @goal.when_fail %></li>
     </ul>
 
-    <% @goal.problems.each do |problem| %>
-      <%= problem.title %>
 
-      <% problem.solutions.each do |solution| %>
-        <%= solution.title %>
+    <ul class="list-group problems_list">
+      <li class="list-group-item"><strong>未解決の問題</strong></li>
+      <% @goal.problems.each do |problem| %>
+        <% if problem.status != "完了" %>
+          <li class="list-group-item"><%= problem.title %></li>
+        <% end %>
+      <% end %>
 
-        <% solution.tasks.each do |task| %>
-          <%= task.title %>
-
-          <% task.steps.each do |step| %>
-            <%= step.title %>
-          <% end %><!--step-->
-        <% end %><!--task-->
-      <% end %><!--solution-->
-    <% end %><!--problem-->
-
-  <%= link_to '一覧へ戻る', goals_path %>
+      <li class="list-group-item"><strong>解決済みの問題</strong></li>
+      <% @goal.problems.each do |problem| %>
+        <% if problem.status == "完了" %>
+          <li class="list-group-item"><%= problem.title %></li>
+        <% end %>
+      <% end %><!--problem-->
+    </ul>
+  <%= link_to '一覧', goals_path, class: 'btn btn-outline-secondary to_goal_index' %>
   </div>
-<div>
+</div>
