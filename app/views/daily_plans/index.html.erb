@@ -12,7 +12,7 @@
                 <strong class="card-title task_title_in_daily"><%= task.title %></strong>
                 <ul class="list-group list-group-flush">
                   <% task.steps.each do |step|%>
-                    <% case task.status %>
+                    <% case step.status %>
                       <% when "保留中" %>
                         <li class="list-group-item step_title_in_daily"><span class="badge badge-danger badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
                       <% when "取組中" %>
