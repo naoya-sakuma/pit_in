@@ -45,49 +45,59 @@
     </div>
 
     <!-- problem -->
-    <div class="container-fluid bg-info" id="goal_related_info_top">
+    <div class="container-fluid card border-primary problem_form_card" id="goal_related_info_top">
       <%= goal.fields_for :problems do |problem| %>
-        <h4>problem</h4>
-        <%= problem.text_field :title, class: 'form-control goal_related_info_forms' %>
-        <%= problem.link_to_remove "削除" %>
+      <h4 class="form_title">課題</h4>
+        <div class="row form_row">
+
+          <%= problem.text_field :title, class: 'form-control goal_related_info_forms border-primary col-8' %>
+          <%= problem.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "problem_form_delete" %>
+        </div>
 
   　　  <!-- solution -->
-        <div class="problem container-fluid bg-danger">
-          <h4>solution</h4>
+        <div class="problem container-fluid card border-danger solution_form_card">
           <%= problem.fields_for :solutions do |solution| %>
-            <%= solution.text_field :title, class: 'form-control goal_related_info_forms' %>
-            <%= solution.link_to_remove "削除" %>
+          <h4 class="form_title">解決案</h4>
+            <div class="row form_row">
+
+              <%= solution.text_field :title, class: 'form-control goal_related_info_forms border-danger col-8' %>
+              <%= solution.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "solution_form_delete" %>
+            </div>
 
             <!-- task -->
-            <div class="container-fluid bg-success">
-              <h4>task</h4>
+            <div class="container-fluid card border-warning task_form_card">
               <%= solution.fields_for :tasks do |task| %>
-                <%= task.text_field :title, class: 'form-control goal_related_info_forms' %>
-                <%= task.link_to_remove "削除" %>
+                <h4 class="form_title">タスク</h4>
+                <div class="row form_row">
+                  <%= task.text_field :title, class: 'form-control goal_related_info_forms border-warning col-8' %>
+                  <%= task.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "task_form_delete" %>
+                </div>
 
                 <!-- step -->
-                <div class="container-fluid bg-warning">
-                  <h4>step</h4>
+                <div class="container-fluid card border-success step_form_card">
+                  <h4 class="form_title">ステップ</h4>
                   <%= task.fields_for :steps do |step| %>
-                    <%= step.text_field :title, class: 'form-control goal_related_info_forms' %>
-                    <%= step.link_to_remove "削除" %>
+                    <div class="row form_row">
+                      <%= step.text_field :title, class: 'form-control goal_related_info_forms border-success col-8' %>
+                      <%= step.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "step_form_delete" %>
+                    </div>
                   <% end %>
-                  <%= task.link_to_add "ステップ追加", :steps %>
+                  <%= task.link_to_add "ステップ追加", :steps, id: "step_form_add"  %>
                 </div>
                 <!-- step -->
 
               <% end %>
-              <%= solution.link_to_add "タスク追加", :tasks %>
+              <%= solution.link_to_add "タスク追加", :tasks, id: "task_form_add" %>
             </div>
             <!-- task -->
 
           <% end %>
-          <%= problem.link_to_add "解決案追加", :solutions %>
+          <%= problem.link_to_add "解決案追加", :solutions, id: "solution_form_add" %>
         </div>
         <!-- solution -->
 
         <% end %>
-        <%= goal.link_to_add "問題追加", :problems %>
+        <%= goal.link_to_add "問題追加", :problems, id: "problem_form_add" %>
       </div>
       <!-- problem -->
 
