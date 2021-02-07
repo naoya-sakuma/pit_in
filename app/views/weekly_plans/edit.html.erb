@@ -22,7 +22,7 @@
               <% if so.status == "取組中" %>
                 <li class="list-group-item"><strong><%= so.title %></strong></li>
                 <% so.tasks.each do |t| %>
-                  <% case so.status %>
+                  <% case t.status %>
                     <% when "保留中" %>
                       <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= t.status %></span><%= t.title %></li>
                     <% when "取組中" %>
