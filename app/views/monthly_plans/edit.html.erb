@@ -38,7 +38,7 @@
         <ul class="list-group">
 
           <%= goal.fields_for :problems do |problem| %>
-            <li class="list-group-item status_selectbox"><%= problem.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %></li>
+            <li class="list-group-item status_selectbox"><%= problem.select :status, [['未解決', '未解決'], ['解決', '解決']], {}, class: 'form-control select_box_in_planning' %></li>
             <%= problem.fields_for :solutions do |solution| %>
               <li class="list-group-item status_selectbox">
                 <%= solution.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %>
