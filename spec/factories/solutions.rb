@@ -1,9 +1,15 @@
 FactoryBot.define do
   factory :solution do
-    title { "MyString" }
-    day_tostart { "2021-01-14" }
-    day_to_finish { "2021-01-14" }
-    status { "MyString" }
-    problem { nil }
+    title { "取組中のテスト解決案" }
+    status { "取組中" }
+
+    association :problem
+  end
+
+  factory :second_solution, class: Solution do
+    title { "保留中のテスト解決案" }
+    status { "保留中" }
+
+    association :problem
   end
 end
