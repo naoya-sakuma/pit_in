@@ -50,7 +50,7 @@
       <h4 class="form_title">課題</h4>
         <div class="row form_row">
 
-          <%= problem.text_field :title, class: 'form-control goal_related_info_forms border-primary col-8' %>
+          <%= problem.text_field :title, class: 'form-control goal_related_info_forms border-primary col-8', id: "problem_form" %>
           <%= problem.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "problem_form_delete" %>
         </div>
 
