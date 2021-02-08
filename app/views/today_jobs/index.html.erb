@@ -10,7 +10,9 @@
             <% task.steps.each do |step|%>
               <ul class="list-group">
                 <% task.steps.each do |step|%>
-                  <li class="list-group-item today_job"><%= step.title %></li>
+                  <% if step.status == '取組中' %>
+                    <li class="list-group-item today_job"><%= step.title %></li>
+                  <% end %>
                 <% end %>
               </ul>
             <% end %>
