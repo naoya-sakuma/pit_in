@@ -1,4 +1,5 @@
 class WeeklyPlansController < ApplicationController
+  before_action :check_logged_in
   before_action :set_goal, only: [:edit, :update, :destroy]
 
   def index
@@ -6,6 +7,10 @@ class WeeklyPlansController < ApplicationController
   end
 
   def edit
+    @problems_form = @goal.problems
+    @problems_form.each do |problem|
+      @solutions_form = problem.solutions.where(status: '取組中')
+    end
   end
 
   def update

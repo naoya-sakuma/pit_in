@@ -1,4 +1,5 @@
 class DailyPlansController < ApplicationController
+  before_action :check_logged_in
   before_action :set_goal, only: [:edit, :update, :destroy]
 
   def index

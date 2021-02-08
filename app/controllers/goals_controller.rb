@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+  before_action :check_logged_in
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   def index
