@@ -19,7 +19,7 @@
         <ul class="list-group">
           <% @goal.problems.each do |p| %>
             <% p.solutions.each do |so| %>
-              <% if so.status == "取組中" %>
+              <%# if so.status == "取組中" %>
                 <li class="list-group-item"><strong><%= so.title %></strong></li>
                 <% so.tasks.each do |t| %>
                   <% case t.status %>
@@ -31,7 +31,7 @@
                       <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= t.status %></span><%= t.title %></li>
                   <% end %>
                 <% end %>
-              <% end %><!-- if分のend -->
+              <%# end %><!-- if分のend -->
             <% end %>
           <% end%>
         </ul>
@@ -40,11 +40,11 @@
       <div class="col-2 problem_and_solution_checkbox">
         <ul class="list-group">
           <%= goal.fields_for :problems do |problem| %>
-            <%= problem.fields_for :solutions do |solution| %>
+            <%= problem.fields_for :solutions, @solutions_form do |solution| %>
             <li class="list-group-item status_selectbox"><%= solution.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %></li>
             <%= solution.fields_for :tasks do |task| %>
               <li class="list-group-item status_selectbox">
-                <%= task.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %>
+                  <%= task.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %>
               </li>
             <% end %>
           <% end %>
