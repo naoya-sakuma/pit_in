@@ -22,6 +22,7 @@ class User < ApplicationRecord
     user
   end
 
+  validates :name,  presence: true
   mount_uploader :icon, ImageUploader
 
   has_many :goals
