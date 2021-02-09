@@ -18,7 +18,7 @@
           <ul class="goal_info"><small>期間：<%= goal.day_to_start %>〜<%= goal.day_to_finish %></small></ul>
           <ul class="goal_info"><small>目的：<%= goal.purpose %></small></ul>
           <ul class="goal_info"><small>達成すると？：<%= goal.when_succeed %></small></ul>
-          <ul class="goal_info"><small>達成しないと？：</small></ul>
+          <ul class="goal_info"><small>達成しないと？：<%= goal.when_fail %></small></ul>
         </div>
 
         <div class="col-4 goal_buttons">
