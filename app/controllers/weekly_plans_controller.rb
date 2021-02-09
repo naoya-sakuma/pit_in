@@ -10,6 +10,7 @@ class WeeklyPlansController < ApplicationController
     @problems_form = @goal.problems
     @problems_form.each do |problem|
       @solutions_form = problem.solutions.where(status: '取組中')
+      #binding.pry
     end
   end
 

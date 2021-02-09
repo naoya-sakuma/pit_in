@@ -6,8 +6,7 @@ class TodayJobsController < ApplicationController
     @goals = current_user.goals.where(status: '取組中')
     @goals.each do |goal|
       @problems = goal.problems
-
-
+    end
   end
 
   def edit
