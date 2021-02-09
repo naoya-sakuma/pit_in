@@ -1,6 +1,3 @@
-<!-- readonlyを使用 -->
-
-
 <div class="container-fluid weekly_plan_edit">
   <%= form_with(model: @goal, url: weekly_plan_path, local: true) do |goal| %>
     <% if @goal.errors.any? %>
@@ -47,10 +44,7 @@
             <li class="list-group-item status_selectbox"><%= solution.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %></li>
             <%= solution.fields_for :tasks do |task| %>
               <li class="list-group-item status_selectbox">
-                <%# if task.label :status == "取組中" %>
-                  <%= task.text_field :title, readonly: :title, class: "form-control-plaintext" %>
-                  <%= task.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %>
-                <%# end %>
+                <%= task.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %>
               </li>
             <% end %>
           <% end %>

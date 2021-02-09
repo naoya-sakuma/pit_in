@@ -7,11 +7,11 @@ class WeeklyPlansController < ApplicationController
   end
 
   def edit
-    @problems_form = @goal.problems
-    @problems_form.each do |problem|
-      @solutions_form = problem.solutions.where(status: '取組中')
-      #binding.pry
-    end
+    # @problems_form = @goal.problems
+    # @problems_form.each do |problem|
+    #   @solutions_form = problem.solutions.where(status: '取組中')
+    @solutions = Solution.joins(problems: :goal)
+    #end
   end
 
   def update
