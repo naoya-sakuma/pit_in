@@ -1,0 +1,27 @@
+.plan_index_container {
+  margin-top: 2rem;
+}
+
+.plan_index_guide {
+  border-bottom: 1px solid #dddddd
+}
+
+.goal_title_in_planning {
+  font-size: 22px;
+  padding-left: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.planning_btn {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.info_title_in_plan {
+  font-size: 18px;
+  padding-left: 1rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0;
+}

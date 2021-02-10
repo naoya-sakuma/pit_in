@@ -1,6 +1,5 @@
 <div class="container-fluid today_jobs_index">
   <h4 class="today_jobs_page_title">今日のToDo</h4>
-  <small class="today_jobs_guide">今週取組中のタスクとそのステップを表示しています。編集ボタンから今日取り組むステップを選択してください。</small>
 
   <div class="today_jobs_list">
     <% @goals.each do |goal| %>
@@ -8,11 +7,13 @@
         <% problem.solutions.each do |solution| %>
           <% solution.tasks.each do |task|%>
             <% task.steps.each do |step|%>
-              <ul class="list-group">
-                <% task.steps.each do |step|%>
-                  <li class="list-group-item today_job"><%= step.title %></li>
-                <% end %>
-              </ul>
+              <% if step.status == "取組中" %>
+                <ul class="list-group">
+                  <% task.steps.each do |step|%>
+                    <li class="list-group-item today_job"><%= step.title %></li>
+                  <% end %>
+                </ul>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>

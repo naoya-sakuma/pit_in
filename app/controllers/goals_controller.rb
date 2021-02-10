@@ -1,13 +1,9 @@
 class GoalsController < ApplicationController
+  before_action :check_logged_in
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @goals = current_user.goals.page(params[:page]).per(4)
-
-    respond_to do |format|
-      format.html
-      format.csv {send_data @goals.generate_csv, filename: "goals-#{Time.zone.now.strftime('%y%m%d%s')}.csv"}
-    end
+    @goals = current_user.goals.page(params[:page]).per(6)
   end
 
   def new

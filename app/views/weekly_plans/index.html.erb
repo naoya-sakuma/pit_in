@@ -1,15 +1,15 @@
-<div class="container-fluid weekly_plan_index">
-  <h4 class="weekly_plan_page_title">今週の計画</h4>
-  <small class="weekly_plan_guide">今月取組中の解決案とそのタスクを表示しています。編集ボタンから今週取り組むタスクを選択してください。</small>
+<div class="container-fluid plan_index_container">
+  <h4 class="title_in_plan_index">今週の計画</h4>
+  <small class="plan_index_guide">今月取組中の解決案とそのタスクを表示しています。編集ボタンから今週取り組むタスクを選択してください。</small>
 
   <% @goals.each do |goal| %>
-    <div class="solutions_and_tasks">
-      <div class="card weekly_plan_card">
-
+    <div class="planning_information">
+      <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
+      <div class="card plan_card">
         <% goal.problems.each do |problem| %>
           <% problem.solutions.each do |solution| %>
             <% if solution.status == "取組中" %>
-              <strong class="card-title solution_title_in_weekly"><%= solution.title %></strong>
+              <strong class="card-title info_title_in_plan"><%= solution.title %></strong>
               <ul class="list-group list-group-flush">
                 <% solution.tasks.each do |task|%>
                   <% case task.status %>
@@ -26,7 +26,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= link_to '編集', edit_weekly_plan_path(goal), class: "btn btn-outline-secondary planning_btn_in_weekly" %>
+      <%= link_to '編集', edit_weekly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
     </div>
   <% end %>
 

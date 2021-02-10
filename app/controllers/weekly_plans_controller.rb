@@ -1,4 +1,5 @@
 class WeeklyPlansController < ApplicationController
+  before_action :check_logged_in
   before_action :set_goal, only: [:edit, :update, :destroy]
 
   def index
@@ -6,6 +7,9 @@ class WeeklyPlansController < ApplicationController
   end
 
   def edit
+    @test = Goal.joins(problems: :solutions)
+    @test2 = Solution.joins(:problems)
+    #binding.pry
   end
 
   def update
