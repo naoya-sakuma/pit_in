@@ -19,11 +19,11 @@
       <div class="goal_info_edit_each row">
         <div class="col-4" id="day_to_start_col">
         <%= goal.label :day_to_start, '開始' %>
-        <%= goal.month_field :day_to_start, class: 'form-control' %>
+        <%= goal.date_field :day_to_start, class: 'form-control' %>
         </div>
         <div class="col-4" id="day_to_finish_col">
         <%= goal.label :day_to_finish, '期限' %>
-        <%= goal.month_field :day_to_finish, class: 'form-control' %>
+        <%= goal.date_field :day_to_finish, class: 'form-control' %>
         </div>
         <div class="col-4" id="status_col">
           <%= goal.label :status, '状態' %>
@@ -35,11 +35,11 @@
         <%= goal.text_field :purpose, class: 'form-control' %>
       </div>
       <div class="goal_info_edit_each">
-        <%= goal.label :when_succeed, '達成後の未来' %>
+        <%= goal.label :when_succeed, '達成すると？' %>
         <%= goal.text_area :when_succeed, class: 'form-control' %>
       </div>
       <div class="goal_info_edit_each" id="goal_info_edit_each_end">
-        <%= goal.label :when_fail, '未達成の未来' %>
+        <%= goal.label :when_fail, '達成しないと？' %>
         <%= goal.text_area :when_fail, class: 'form-control' %>
       </div>
     </div>
@@ -50,7 +50,8 @@
       <h4 class="form_title">課題</h4>
         <div class="row form_row">
 
-          <%= problem.text_field :title, class: 'form-control goal_related_info_forms border-primary col-8', id: "problem_form" %>
+
+          <%= problem.text_field :title, class: 'form-control goal_related_info_forms border-primary col-8', id: 'problem_form' %>
           <%= problem.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "problem_form_delete" %>
         </div>
 

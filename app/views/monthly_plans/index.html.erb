@@ -1,15 +1,14 @@
-<div class="container-fluid monthly_plan_index">
-  <h4 class="monthly_plan_page_title">今月の計画</h4>
-  <small class="monthly_plan_guide">現在取組中の目標とその解決案を表示しています。編集ボタンから今月取り組む解決案を選択してください。</small>
+<div class="container-fluid plan_index_container">
+  <h4 class="title_in_plan_index">今月の計画</h4>
+  <small class="plan_index_guide">現在取組中の目標とその解決案を表示しています。編集ボタンから今月取り組む解決案を選択してください。</small>
 
   <% @goals.each do |goal| %>
-    <div class="goals_and_solutions">
-      <div class="card monthly_plan_card">
-        <strong class="card-title goal_title_in_monthly col-8">
-          <%= goal.title %>
-        </strong>
+    <div class="planning_information">
+      <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
+      <div class="card plan_card">
         <ul class="list-group list-group-flush">
           <% goal.problems.each do |problem| %>
+            <li class="list-group-item info_title_in_plan"><strong><%= problem.title %></strong></li>
             <% problem.solutions.each do |solution|%>
               <% case solution.status %>
                 <% when "保留中" %>
@@ -23,7 +22,7 @@
           <% end %>
         </ul>
       </div>
-    <%= link_to '編集', edit_monthly_plan_path(goal), class: "btn btn-outline-secondary planning_btn_in_monthly" %>
+    <%= link_to '編集', edit_monthly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
     </div>
   <% end %>
 </div>

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid plan_edit_container">
   <%= form_with(model: @goal, url: monthly_plan_path, local: true) do |goal| %>
     <% if @goal.errors.any? %>
       <div id="error_explanation">
@@ -11,30 +11,36 @@
       </div>
     <% end %>
 
-
-    <h4 class="goal_title_in_monthly_edit"><%= @goal.title %></h4>
-    <small class="monthly_plan_guide">今月取り組む解決案を選択して保存を押してください。</small>
-
-    <div class="row monthly_edit_zone">
-      <div class="col-10 problem_and_solution_title">
+    <h4 class="title_in_plan_edit">今月の計画</h4>
+    <small class="plan_edit_guide">今月取り組む解決案を選択して保存を押してください。</small>
+    <p class="goal_title_in_edit"><strong><%= @goal.title %></strong></p>
+    <div class="row plan_edit_zone">
+      <div class="col-10 plan_edit_title">
         <ul class="list-group">
           <% @goal.problems.each do |p| %>
-            <li class="list-group-item"><strong><%= p.title %></strong></li>
+            <li class="list-group-item "><strong><%= p.title %></strong></li>
             <% p.solutions.each do |so| %>
-              <li class="list-group-item"><%= so.title %></li>
+              <% case so.status %>
+                <% when "保留中" %>
+                  <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+                <% when "取組中" %>
+                  <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+                <% when "完了" %>
+                  <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+              <% end %>
             <% end %>
           <% end%>
         </ul>
       </div>
 
-      <div class="col-2 problem_and_solution_checkbox">
+      <div class="col-2 status_edit_form">
         <ul class="list-group">
 
           <%= goal.fields_for :problems do |problem| %>
-            <li class="list-group-item status_selectbox"><%= problem.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %></li>
+            <li class="list-group-item status_selectbox"><%= problem.select :status, [['未解決', '未解決'], ['解決', '解決']], {}, class: 'form-control status_edit_select_box' %></li>
             <%= problem.fields_for :solutions do |solution| %>
               <li class="list-group-item status_selectbox">
-                <%= solution.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control select_box_in_planning' %>
+                <%= solution.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control status_edit_select_box' %>
             <% end %>
           <% end %>
         </ul>
