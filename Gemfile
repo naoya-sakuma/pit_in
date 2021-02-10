@@ -13,6 +13,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'spring'
   gem 'rspec-rails'
@@ -42,16 +47,15 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rubocop', require: false
-
 gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-
 gem 'carrierwave'
 gem 'mini_magick'
-
 gem "nested_form"
 gem 'kaminari', '~> 0.17.0'
 gem 'fog-aws'
 gem 'dotenv-rails'
+gem 'unicorn'
+gem 'mini_racer', platforms: :ruby
