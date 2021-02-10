@@ -19,11 +19,11 @@
       <div class="goal_info_edit_each row">
         <div class="col-4" id="day_to_start_col">
         <%= goal.label :day_to_start, '開始' %>
-        <%= goal.month_field :day_to_start, class: 'form-control' %>
+        <%= goal.date_field :day_to_start, class: 'form-control' %>
         </div>
         <div class="col-4" id="day_to_finish_col">
         <%= goal.label :day_to_finish, '期限' %>
-        <%= goal.month_field :day_to_finish, class: 'form-control' %>
+        <%= goal.date_field :day_to_finish, class: 'form-control' %>
         </div>
         <div class="col-4" id="status_col">
           <%= goal.label :status, '状態' %>
