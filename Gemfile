@@ -50,3 +50,5 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem "nested_form"
 gem 'kaminari', '~> 0.17.0'
+gem 'fog-aws'
+gem 'dotenv-rails'
