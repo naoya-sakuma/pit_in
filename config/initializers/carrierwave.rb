@@ -21,4 +21,5 @@ CarrierWave.configure do |config|
       config.fog_directory = 'pitin-production'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/pitin-production'
   end
+  
 end
