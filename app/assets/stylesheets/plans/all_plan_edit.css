@@ -1,35 +1,29 @@
-.monthly_plan_edit {
+.plan_edit_container {
   margin-top: 2rem;
 }
 
-.goal_title_in_monthly_edit {
+.plan_edit_guide {
+  border-bottom: 1px solid #dddddd
+}
+
+.goal_title_in_edit {
   font-size: 22px;
   padding-left: 1rem;
   margin-top: 2rem;
   margin-bottom: 0;
 }
 
-.problem_and_solution_title {
+.plan_edit_title {
   padding-right: 0;
 }
 
-.title_head {
-  text-align: center;
-}
-
-.problem_and_solution_checkbox {
+.status_edit_form {
   padding-left: 0;
 }
 
-.select_box_in_planning {
+.status_edit_select_box {
   font-size: 10px;
   height: 30px;
-}
-
-.checkbox_title {
-  padding-left: 0;
-  padding-right: 0;
-  text-align: center;
 }
 
 .status_selectbox {
