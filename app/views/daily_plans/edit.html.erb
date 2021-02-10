@@ -22,16 +22,14 @@
               <% so.tasks.each do |t| %>
                 <li class="list-group-item"><strong><%= t.title %></strong></li>
                 <% t.steps.each do |st| %>
-                <% case st.status %>
-                  <% when "保留中" %>
-                    <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
-                  <% when "取組中" %>
-                    <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
-                  <% when "完了" %>
-                    <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
-                <% end %>
-
-                  <li class="list-group-item"><%= st.title %></li>
+                  <% case st.status %>
+                    <% when "保留中" %>
+                      <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
+                    <% when "取組中" %>
+                      <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
+                    <% when "完了" %>
+                      <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end%>
