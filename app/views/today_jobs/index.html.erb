@@ -9,9 +9,7 @@
             <% task.steps.each do |step|%>
               <% if step.status == t('view.working') %>
                 <ul class="list-group">
-                  <% task.steps.each do |step|%>
-                    <li class="list-group-item today_job"><%= step.title %></li>
-                  <% end %>
+                  <li class="list-group-item today_job"><%= step.title %></li>
                 </ul>
               <% end %>
             <% end %>

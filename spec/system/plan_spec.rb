@@ -7,7 +7,7 @@ RSpec.describe '計画機能', type: :system do
       user = FactoryBot.create(:user)
       goal = FactoryBot.create(:goal, user: user)
       goal = FactoryBot.create(:second_goal, user: user)
-      user.skip_confirmation!
+      #user.skip_confirmation!
       user.save!
       visit new_user_session_path
       fill_in 'メールアドレス', with: 'test@test.com'
@@ -35,7 +35,7 @@ RSpec.describe '計画機能', type: :system do
       problem = FactoryBot.create(:problem, goal: goal)
       solution = FactoryBot.create(:solution, problem: problem)
       solution = FactoryBot.create(:second_solution, problem: problem)
-      user.skip_confirmation!
+      #user.skip_confirmation!
       user.save!
       visit new_user_session_path
       fill_in 'メールアドレス', with: 'test@test.com'
@@ -64,7 +64,7 @@ RSpec.describe '計画機能', type: :system do
       solution = FactoryBot.create(:solution, problem: problem)
       task = FactoryBot.create(:task, solution: solution)
       task = FactoryBot.create(:second_task, solution: solution)
-      user.skip_confirmation!
+      #user.skip_confirmation!
       user.save!
       visit new_user_session_path
       fill_in 'メールアドレス', with: 'test@test.com'
@@ -94,7 +94,7 @@ RSpec.describe '計画機能', type: :system do
       task = FactoryBot.create(:task, solution: solution)
       step = FactoryBot.create(:step, task: task)
       step = FactoryBot.create(:second_step, task: task)
-      user.skip_confirmation!
+      #user.skip_confirmation!
       user.save!
       visit new_user_session_path
       fill_in 'メールアドレス', with: 'test@test.com'
