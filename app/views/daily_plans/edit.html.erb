@@ -12,7 +12,7 @@
     <% end %>
 
     <h4 class="page_title_in_edit">今日の計画</h4>
-    <small class="plan_edit_guide">今月取り組む解決案を選択して保存を押してください。</small>
+    <small class="plan_edit_guide">今日取り組むステップを選択して更新してください。</small>
     <p class="goal_title_in_edit"><strong><%= @goal.title %></strong></p>
     <div class="row plan_edit_zone">
       <div class="col-10 plan_edit_title">
@@ -20,15 +20,17 @@
           <% @goal.problems.each do |p| %>
             <% p.solutions.each do |so| %>
               <% so.tasks.each do |t| %>
-                <li class="list-group-item"><strong><%= t.title %></strong></li>
-                <% t.steps.each do |st| %>
-                  <% case st.status %>
-                    <% when t('view.holding') %>
-                      <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
-                    <% when t('view.working') %>
-                      <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
-                    <% when t('view.done') %>
-                      <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
+              　<% if t.status == t('view.working') %>
+                  <li class="list-group-item"><strong><%= t.title %></strong></li>
+                  <% t.steps.each do |st| %>
+                    <% case st.status %>
+                      <% when t('view.holding') %>
+                        <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
+                      <% when t('view.working') %>
+                        <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
+                      <% when t('view.done') %>
+                        <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= st.status %></span><%= st.title %></li>
+                    <% end %>
                   <% end %>
                 <% end %>
               <% end %>

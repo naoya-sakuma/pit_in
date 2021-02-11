@@ -18,15 +18,17 @@
       <div class="col-10 plan_edit_title">
         <ul class="list-group">
           <% @goal.problems.each do |p| %>
-            <li class="list-group-item "><strong><%= p.title %></strong></li>
-            <% p.solutions.each do |so| %>
-              <% case so.status %>
-                <% when t('view.holding') %>
-                  <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
-                <% when t('view.working') %>
-                  <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
-                <% when t('view.done') %>
-                  <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+            <% if p.title != "" %>
+              <li class="list-group-item "><strong><%= p.title %></strong></li>
+              <% p.solutions.each do |so| %>
+                <% case so.status %>
+                  <% when t('view.holding') %>
+                    <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+                  <% when t('view.working') %>
+                    <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+                  <% when t('view.done') %>
+                    <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+                <% end %>
               <% end %>
             <% end %>
           <% end%>
