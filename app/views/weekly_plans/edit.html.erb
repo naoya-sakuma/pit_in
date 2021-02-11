@@ -12,7 +12,7 @@
     <% end %>
 
     <h4 class="page_title_in_edit">今週の計画</h4>
-    <small class="plan_edit_guide">今週取り組むタスクを選択して保存を押してください。</small>
+    <small class="plan_edit_guide">今週取り組むタスクを取組中に変更して更新してください。解決案が完了した場合は完了を選択してください。</small>
     <p class="goal_title_in_edit"><strong><%= @goal.title %></strong></p>
     <div class="row plan_edit_zone">
       <div class="col-10 plan_edit_title">
@@ -20,7 +20,7 @@
           <% @goal.problems.each do |p| %>
             <% p.solutions.each do |so| %>
               <% if so.status == t('view.working') %>
-                <li class="list-group-item"><strong><%= so.title %></strong></li>
+                <li class="list-group-item"><strong>解決案：<%= so.title %></strong></li>
                 <% so.tasks.each do |t| %>
                   <% case t.status %>
                     <% when t('view.holding') %>
