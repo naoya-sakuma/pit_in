@@ -22,6 +22,11 @@
   padding-right: 0;
 }
 
+.from-explanation {
+  display: block;
+  margin-left: 1.05rem;
+}
+
 .goal_info_edit_each .col-4 select {
   padding-right: 0;
 }
