@@ -11,18 +11,18 @@
             <li class="list-group-item info_title_in_plan"><strong><%= problem.title %></strong></li>
             <% problem.solutions.each do |solution|%>
               <% case solution.status %>
-                <% when "保留中" %>
+                <% when t('view.holding') %>
                   <li class="list-group-item solution_title_in_monthly"><span class="badge badge-danger badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
-                <% when "取組中" %>
+                <% when t('view.working') %>
                   <li class="list-group-item solution_title_in_monthly"><span class="badge badge-primary badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
-                <% when "完了" %>
+                <% when t('view.done') %>
                   <li class="list-group-item solution_title_in_monthly"><span class="badge badge-warning badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
                 <% end %>
             <% end %>
           <% end %>
         </ul>
       </div>
-    <%= link_to "編集", edit_monthly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
+    <%= link_to t('view.button.edit'), edit_monthly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
     </div>
   <% end %>
 </div>

@@ -13,14 +13,14 @@
     <ul class="list-group problems_list">
       <li class="list-group-item"><strong>未解決の問題</strong></li>
       <% @goal.problems.each do |problem| %>
-        <% if problem.status != "完了" %>
+        <% if problem.status == t('view.unsolved') %>
           <li class="list-group-item"><%= problem.title %></li>
         <% end %>
       <% end %>
 
       <li class="list-group-item"><strong>解決済みの問題</strong></li>
       <% @goal.problems.each do |problem| %>
-        <% if problem.status == "完了" %>
+        <% if problem.status == t('view.solved') %>
           <li class="list-group-item"><%= problem.title %></li>
         <% end %>
       <% end %><!--problem-->

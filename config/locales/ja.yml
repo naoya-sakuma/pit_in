@@ -204,3 +204,33 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  view:
+    self_intro: 自己紹介
+    holding: 保留中
+    working: 取組中
+    done: 完了
+    solved: 解決
+    unsolved: 未解決
+    goal_info:
+      title: タイトル
+      day_to_start: 開始
+      day_to_finish: 期限
+      status: 状態
+      purpose: 目的
+      when_succeed: 達成すると？
+      when_fail: 達成しないと？
+    goal_related_info:
+      problem: 問題
+      solution: 解決案
+      task: タスク
+      step: ステップ
+    button:
+      delete: 削除
+      show: 詳細
+      edit: 編集
+      update: 更新
+      save: 保存
+      add_problem: 問題追加
+      add_solution: 解決案追加
+      add_task: タスク追加
+      add_step: ステップ追加

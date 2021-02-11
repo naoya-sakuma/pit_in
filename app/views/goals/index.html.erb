@@ -4,16 +4,13 @@
       <div class="row goal_card_row">
         <div class="col-8">
           <% case goal.status %>
-            <% when "" %>
-              <h4 class="goal_title"><span class="badge badge-warning badge-pill goal_badges">未登録</span><%= goal.title %></h4>
-            <% when "保留中" %>
+            <% when t('view.holding') %>
               <h4 class="goal_title"><span class="badge badge-danger badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
-            <% when "取組中" %>
+            <% when t('view.working') %>
               <h4 class="goal_title"><span class="badge badge-primary badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
-            <% when "完了" %>
+            <% when t('view.done') %>
               <h4 class="goal_title"><span class="badge badge-warning badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
           <% end %>
-
 
           <ul class="goal_info"><small>期間：<%= goal.day_to_start %>〜<%= goal.day_to_finish %></small></ul>
           <ul class="goal_info"><small>目的：<%= goal.purpose %></small></ul>
@@ -22,9 +19,9 @@
         </div>
 
         <div class="col-4 goal_buttons">
-          <ul class="goal_button_ul"><%= link_to "詳細", goal, class: "btn btn-outline-secondary goal_button" %></ul>
-          <ul class="goal_button_ul"><%= link_to "編集", edit_goal_path(goal), class: "btn btn-outline-secondary goal_button" %></ul>
-          <ul class="goal_button_ul"><%= link_to "削除", goal, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary goal_button" %></ul>
+          <ul class="goal_button_ul"><%= link_to t('view.button.show'), goal, class: "btn btn-outline-secondary goal_button" %></ul>
+          <ul class="goal_button_ul"><%= link_to t('view.button.edit'), edit_goal_path(goal), class: "btn btn-outline-secondary goal_button" %></ul>
+          <ul class="goal_button_ul"><%= link_to t('view.button.delete'), goal, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary goal_button" %></ul>
         </div>
       </div>
     </div>
