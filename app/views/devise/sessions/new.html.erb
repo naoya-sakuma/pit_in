@@ -21,15 +21,10 @@
       <% end %>
 
       <div class="actions" id="login_button">
-        <%= f.submit t('.sign_in') %>
+        <%= f.submit t('.sign_in'), class: "btn btn-outline-secondary" %>
       </div>
-      <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "login" %></li>
     <% end %>
   </div>
 
 <%= render "devise/shared/links" %>
-
-<p>ログイン用アドレス</p>
-<p>sakuma@test.com</p>
-<p>sakuma_test@test.com</p>
 </div>
