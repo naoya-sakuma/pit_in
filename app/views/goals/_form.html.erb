@@ -13,34 +13,34 @@
   <div class="goal_info_edit container-fluid form-group">
     <div class="forms_for_goals_table">
       <div class="goal_info_edit_each">
-        <%= goal.label :title, 'タイトル' %>
-        <%= goal.text_field :title, class: 'form-control' %>
+        <%= goal.label :title, "タイトル" %>
+        <%= goal.text_field :title, class: "form-control" %>
       </div>
       <div class="goal_info_edit_each row">
         <div class="col-4" id="day_to_start_col">
-        <%= goal.label :day_to_start, '開始' %>
-        <%= goal.date_field :day_to_start, class: 'form-control' %>
+        <%= goal.label :day_to_start, "開始" %>
+        <%= goal.date_field :day_to_start, class: "form-control" %>
         </div>
         <div class="col-4" id="day_to_finish_col">
         <%= goal.label :day_to_finish, '期限' %>
-        <%= goal.date_field :day_to_finish, class: 'form-control' %>
+        <%= goal.date_field :day_to_finish, class: "form-control" %>
         </div>
         <div class="col-4" id="status_col">
-          <%= goal.label :status, '状態' %>
-          <%= goal.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control' %>
+          <%= goal.label :status, "状態" %>
+          <%= goal.select :status, [["保留中", "保留中"], ["取組中", "取組中"], ["完了", "完了"]], {}, class: "form-control" %>
         </div>
       </div>
       <div class="goal_info_edit_each">
-        <%= goal.label :purpose, '目的' %>
-        <%= goal.text_field :purpose, class: 'form-control' %>
+        <%= goal.label :purpose, "目的" %>
+        <%= goal.text_field :purpose, class: "form-control" %>
       </div>
       <div class="goal_info_edit_each">
-        <%= goal.label :when_succeed, '達成すると？' %>
-        <%= goal.text_area :when_succeed, class: 'form-control' %>
+        <%= goal.label :when_succeed, "達成すると？" %>
+        <%= goal.text_area :when_succeed, class: "form-control" %>
       </div>
       <div class="goal_info_edit_each" id="goal_info_edit_each_end">
-        <%= goal.label :when_fail, '達成しないと？' %>
-        <%= goal.text_area :when_fail, class: 'form-control' %>
+        <%= goal.label :when_fail, "達成しないと？" %>
+        <%= goal.text_area :when_fail, class: "form-control" %>
       </div>
     </div>
 
@@ -51,7 +51,7 @@
         <div class="row form_row">
 
 
-          <%= problem.text_field :title, class: 'form-control goal_related_info_forms border-primary col-8', id: 'problem_form' %>
+          <%= problem.text_field :title, class: "form-control goal_related_info_forms border-primary col-8", id: "problem_form" %>
           <%= problem.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "problem_form_delete" %>
         </div>
 
@@ -61,7 +61,7 @@
           <h4 class="form_title">解決案</h4>
             <div class="row form_row">
 
-              <%= solution.text_field :title, class: 'form-control goal_related_info_forms border-danger col-8' %>
+              <%= solution.text_field :title, class: "form-control goal_related_info_forms border-danger col-8" %>
               <%= solution.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "solution_form_delete" %>
             </div>
 
@@ -70,7 +70,7 @@
               <%= solution.fields_for :tasks do |task| %>
                 <h4 class="form_title">タスク</h4>
                 <div class="row form_row">
-                  <%= task.text_field :title, class: 'form-control goal_related_info_forms border-warning col-8' %>
+                  <%= task.text_field :title, class: "form-control goal_related_info_forms border-warning col-8" %>
                   <%= task.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "task_form_delete" %>
                 </div>
 
@@ -79,7 +79,7 @@
                   <h4 class="form_title">ステップ</h4>
                   <%= task.fields_for :steps do |step| %>
                     <div class="row form_row">
-                      <%= step.text_field :title, class: 'form-control goal_related_info_forms border-success col-8' %>
+                      <%= step.text_field :title, class: "form-control goal_related_info_forms border-success col-8" %>
                       <%= step.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "step_form_delete" %>
                     </div>
                   <% end %>
@@ -102,6 +102,6 @@
       </div>
       <!-- problem -->
 
-    <%= goal.submit '作成', class: "btn btn-outline-secondary goal_submit" %>
+    <%= goal.submit "作成", class: "btn btn-outline-secondary goal_submit" %>
   <% end %>
 </div>

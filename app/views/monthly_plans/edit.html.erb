@@ -37,16 +37,16 @@
         <ul class="list-group">
 
           <%= goal.fields_for :problems do |problem| %>
-            <li class="list-group-item status_selectbox"><%= problem.select :status, [['未解決', '未解決'], ['解決', '解決']], {}, class: 'form-control status_edit_select_box' %></li>
+            <li class="list-group-item status_selectbox"><%= problem.select :status, [["未解決", "未解決"], ["解決", "解決"]], {}, class: "form-control status_edit_select_box" %></li>
             <%= problem.fields_for :solutions do |solution| %>
               <li class="list-group-item status_selectbox">
-                <%= solution.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control status_edit_select_box' %>
+                <%= solution.select :status, [["保留中", "保留中"], ["取組中", "取組中"], ["完了", "完了"]], {}, class: "form-control status_edit_select_box" %>
             <% end %>
           <% end %>
         </ul>
       </div>
     </div>
 
-  <p class="actions"><%= goal.submit '保存', class: "btn btn-outline-secondary plan_save" %></p>
+  <p class="actions"><%= goal.submit "保存", class: "btn btn-outline-secondary plan_save" %></p>
   <% end %>
 </div>
