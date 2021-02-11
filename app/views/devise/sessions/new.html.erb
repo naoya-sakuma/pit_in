@@ -23,6 +23,7 @@
       <div class="actions" id="login_button">
         <%= f.submit t('.sign_in') %>
       </div>
+      <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "login" %></li>
     <% end %>
   </div>
 
