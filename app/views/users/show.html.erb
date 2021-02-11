@@ -1,7 +1,7 @@
 <div class="container user_container">
   <div class="row user_info">
 
-    <div class="user_icon img-thumbnail float-left">
+    <div class="img-thumbnail float-left user_icon">
       <% if current_user.icon.present? %>
         <%= image_tag current_user.icon.url %>
       <% else %>
@@ -11,9 +11,9 @@
 
     <div class="user_name_and_intro">
       <h4><%= current_user.name %></h4>
-      <p id="self_introduction">自己紹介</p>
+      <p id="self_introduction"><%= t('view.self_intro') %></p>
       <p class="card intro_card"><%= current_user.introduction %></p>
-      <%= link_to "編集", edit_user_registration_path, class: "btn btn-outline-secondary" %>
+      <%= link_to t('view.button.edit'), edit_user_registration_path, class: "btn btn-outline-secondary" %>
     </div>
 
   </div>

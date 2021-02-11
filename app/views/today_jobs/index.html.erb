@@ -7,7 +7,7 @@
         <% problem.solutions.each do |solution| %>
           <% solution.tasks.each do |task|%>
             <% task.steps.each do |step|%>
-              <% if step.status == "取組中" %>
+              <% if step.status == t('view.working') %>
                 <ul class="list-group">
                   <% task.steps.each do |step|%>
                     <li class="list-group-item today_job"><%= step.title %></li>

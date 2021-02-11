@@ -8,16 +8,16 @@
       <div class="card plan_card">
         <% goal.problems.each do |problem| %>
           <% problem.solutions.each do |solution| %>
-            <% if solution.status == "取組中" %>
+            <% if solution.status == t('view.working') %>
               <strong class="card-title info_title_in_plan"><%= solution.title %></strong>
               <ul class="list-group list-group-flush">
                 <% solution.tasks.each do |task|%>
                   <% case task.status %>
-                    <% when "保留中" %>
+                    <% when t('view.holding') %>
                       <li class="list-group-item task_title_in_weekly"><span class="badge badge-danger badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                    <% when "取組中" %>
+                    <% when t('view.working') %>
                       <li class="list-group-item task_title_in_weekly"><span class="badge badge-primary badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                    <% when "完了" %>
+                    <% when t('view.done') %>
                       <li class="list-group-item task_title_in_weekly"><span class="badge badge-warning badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
                   <% end %>
                 <% end %>
@@ -26,7 +26,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= link_to '編集', edit_weekly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
+      <%= link_to t('view.button.edit'), edit_weekly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
     </div>
   <% end %>
 

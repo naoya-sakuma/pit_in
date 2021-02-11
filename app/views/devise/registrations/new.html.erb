@@ -29,7 +29,8 @@
       </div>
 
       <div class="actions" id="sign_up_button">
-        <%= f.submit t('.sign_up') %>
+        <%= f.submit t('.sign_up'), class: "btn btn-outline-secondary" %>
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login btn btn-outline-secondary" %>
       </div>
     <% end %>
   </div>

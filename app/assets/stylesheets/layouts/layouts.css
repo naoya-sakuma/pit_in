@@ -4,6 +4,7 @@ html {
 }
 
 body {
+  min-height: 700px;
   padding-bottom: 450px;
 }
 

@@ -21,11 +21,11 @@
             <li class="list-group-item "><strong><%= p.title %></strong></li>
             <% p.solutions.each do |so| %>
               <% case so.status %>
-                <% when "保留中" %>
+                <% when t('view.holding') %>
                   <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
-                <% when "取組中" %>
+                <% when t('view.working') %>
                   <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
-                <% when "完了" %>
+                <% when t('view.done') %>
                   <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
               <% end %>
             <% end %>
@@ -37,16 +37,16 @@
         <ul class="list-group">
 
           <%= goal.fields_for :problems do |problem| %>
-            <li class="list-group-item status_selectbox"><%= problem.select :status, [['未解決', '未解決'], ['解決', '解決']], {}, class: 'form-control status_edit_select_box' %></li>
+            <li class="list-group-item status_selectbox"><%= problem.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %></li>
             <%= problem.fields_for :solutions do |solution| %>
               <li class="list-group-item status_selectbox">
-                <%= solution.select :status, [['保留中', '保留中'], ['取組中', '取組中'], ['完了', '完了']], {}, class: 'form-control status_edit_select_box' %>
+                <%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
             <% end %>
           <% end %>
         </ul>
       </div>
     </div>
 
-  <p class="actions"><%= goal.submit '保存', class: "btn btn-outline-secondary plan_save" %></p>
+  <p class="actions"><%= goal.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %></p>
   <% end %>
 </div>
