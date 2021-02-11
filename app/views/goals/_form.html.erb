@@ -51,7 +51,7 @@
         <div class="row form_row">
 
 
-          <%= problem.text_field :title, class: "form-control goal_related_info_forms border-primary col-8", id: "problem_form" %>
+          <%= problem.text_field :title, class: "col-8 form-control goal_related_info_forms border-primary", id: "problem_form" %>
           <%= problem.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "problem_form_delete" %>
         </div>
 
@@ -61,7 +61,7 @@
           <h4 class="form_title">解決案</h4>
             <div class="row form_row">
 
-              <%= solution.text_field :title, class: "form-control goal_related_info_forms border-danger col-8" %>
+              <%= solution.text_field :title, class: "col-8 form-control goal_related_info_forms border-danger" %>
               <%= solution.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "solution_form_delete" %>
             </div>
 
@@ -70,7 +70,7 @@
               <%= solution.fields_for :tasks do |task| %>
                 <h4 class="form_title">タスク</h4>
                 <div class="row form_row">
-                  <%= task.text_field :title, class: "form-control goal_related_info_forms border-warning col-8" %>
+                  <%= task.text_field :title, class: "col-8 form-control goal_related_info_forms border-warning" %>
                   <%= task.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "task_form_delete" %>
                 </div>
 
@@ -79,7 +79,7 @@
                   <h4 class="form_title">ステップ</h4>
                   <%= task.fields_for :steps do |step| %>
                     <div class="row form_row">
-                      <%= step.text_field :title, class: "form-control goal_related_info_forms border-success col-8" %>
+                      <%= step.text_field :title, class: "col-8 form-control goal_related_info_forms border-success" %>
                       <%= step.link_to_remove "削除", class: "col-2 goal_related_info_forms_delete", id: "step_form_delete" %>
                     </div>
                   <% end %>

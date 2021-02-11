@@ -1,7 +1,7 @@
 <div class="container user_container">
   <div class="row user_info">
 
-    <div class="user_icon img-thumbnail float-left">
+    <div class="img-thumbnail float-left user_icon">
       <% if current_user.icon.present? %>
         <%= image_tag current_user.icon.url %>
       <% else %>
