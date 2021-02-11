@@ -10,7 +10,9 @@ User.create(
   name: 'シード',
   email: 'seed@test.com',
   password: 'seed@test.com',
-  confirmed_at: Time.now
+  confirmed_at: Time.now,
+  uid: 'aaa',
+  provider: 'bbb'
 )
 
 2.times do |n|
