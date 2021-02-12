@@ -22,6 +22,7 @@
 
       <div class="actions" id="login_button">
         <%= f.submit t('.sign_in'), class: "btn btn-outline-secondary" %>
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "login btn btn-outline-secondary" %>
       </div>
     <% end %>
   </div>
