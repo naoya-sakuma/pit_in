@@ -7,6 +7,15 @@ class DailyPlansController < ApplicationController
   end
 
   def edit
+    @problems = @goal.problems
+    @problems.each do |problem|
+      @solutions = problem.solutions
+      @solutions.each do |solution|
+        @tasks = solution.tasks
+      end
+    end
+    binding.pry
+    @working_tasks = @tasks.where(status: '取組中')
   end
 
   def update

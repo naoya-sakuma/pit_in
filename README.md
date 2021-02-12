@@ -109,5 +109,8 @@ https://docs.google.com/spreadsheets/d/1JNdn30eWSvzWOYhq7uVBd1YfIeUQhNr7jq3DHI5_
   - AWS
 
 - カリキュラム外の技術
-  - 目標のCSV出力
   - nested_form
+  
+  目標のCSV出力機能をカリキュラム外の技術として採用しておりましたが、アプリ制作過程で使われる場面がないと考え外しました。
+  なお、この機能はカタログ設計で「高」に含んでおりません。
+  代わりに、目標作成ページで関連テーブルへのフォームを動的に追加するためにnested_form（Gem）を使用しました。こちらをカリキュラム外の技術としています。
