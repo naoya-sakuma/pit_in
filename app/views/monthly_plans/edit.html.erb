@@ -12,14 +12,14 @@
     <% end %>
 
     <h4 class="title_in_plan_edit">今月の計画</h4>
-    <small class="plan_edit_guide">今月取り組む解決案を選択して保存を押してください。</small>
+    <small class="plan_edit_guide">今月取り組む解決案を取組中に変更して更新してください。問題が解決した場合は解決を選択してください。</small>
     <p class="goal_title_in_edit"><strong><%= @goal.title %></strong></p>
     <div class="row plan_edit_zone">
       <div class="col-10 plan_edit_title">
         <ul class="list-group">
           <% @goal.problems.each do |p| %>
             <% if p.title != "" %>
-              <li class="list-group-item "><strong><%= p.title %></strong></li>
+              <li class="list-group-item "><strong>問題：<%= p.title %></strong></li>
               <% p.solutions.each do |so| %>
                 <% case so.status %>
                   <% when t('view.holding') %>

@@ -1,6 +1,6 @@
 <div class="container-fluid plan_index_container">
   <h4 class="title_in_plan_index">今月の計画</h4>
-  <small class="plan_index_guide">現在取組中の目標とその解決案を表示しています。編集ボタンから今月取り組む解決案を選択してください。</small>
+  <small class="plan_index_guide">現在取組中の目標に設定されている問題と解決案を表示しています。編集ボタンから今月取り組む解決案を選択してください。</small>
 
   <% @goals.each do |goal| %>
     <div class="planning_information">
@@ -9,7 +9,7 @@
         <ul class="list-group list-group-flush">
           <% goal.problems.each do |problem| %>
             <% if problem.title != "" %>
-            <li class="list-group-item info_title_in_plan"><strong><%= problem.title %></strong></li>
+            <li class="list-group-item info_title_in_plan"><strong>問題：<%= problem.title %></strong></li>
             <% problem.solutions.each do |solution|%>
               <% case solution.status %>
                 <% when t('view.holding') %>

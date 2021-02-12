@@ -9,7 +9,7 @@
         <% goal.problems.each do |problem| %>
           <% problem.solutions.each do |solution| %>
             <% if solution.status == t('view.working') %>
-              <strong class="card-title info_title_in_plan"><%= solution.title %></strong>
+              <strong class="card-title info_title_in_plan">解決案：<%= solution.title %></strong>
               <ul class="list-group list-group-flush">
                 <% solution.tasks.each do |task|%>
                   <% case task.status %>

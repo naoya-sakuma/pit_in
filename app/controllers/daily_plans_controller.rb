@@ -1,6 +1,6 @@
 class DailyPlansController < ApplicationController
   before_action :check_logged_in
-  before_action :set_goal, only: [:edit, :update, :destroy]
+  before_action :set_goal, only: [:edit, :update]
 
   def index
     @goals = current_user.goals.where(status: '取組中')

@@ -7,9 +7,6 @@ class WeeklyPlansController < ApplicationController
   end
 
   def edit
-    # @test = Goal.joins(problems: :solutions)
-    # @test2 = Solution.joins(:problems)
-    #binding.pry
   end
 
   def update
