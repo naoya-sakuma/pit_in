@@ -43,13 +43,14 @@
         <ul class="list-group">
           <%= goal.fields_for :problems do |problem| %>
             <%= problem.fields_for :solutions do |solution| %>
-            <%# binding.pry %>
-              <%= solution.fields_for :tasks, @working_tasks do |task| %>
-                <li class="list-group-item status_selectbox"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %></li>
-                <%= task.fields_for :steps do |step| %>
-                  <li class="list-group-item status_selectbox">
-                    <%= step.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
-                  </li>
+              <%= solution.fields_for :tasks do |task| %>
+                <% if task.object.status == t('view.working') %>
+                  <li class="list-group-item status_selectbox"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %></li>
+                  <%= task.fields_for :steps do |step| %>
+                    <li class="list-group-item status_selectbox">
+                      <%= step.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
+                    </li>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>

@@ -7,16 +7,6 @@ class WeeklyPlansController < ApplicationController
   end
 
   def edit
-    # @test = Goal.joins(problems: :solutions)
-    # @test2 = Solution.joins(problems: :goals)
-    # @test3 = Goal.includes(:problems, :solutions)
-    # @test4 = Solution.includes(:goals, :problems)
-
-    @problems = @goal.problems
-    @problems.each do |problem|
-      @solutions = problem.solutions
-    end
-    @working_solution = @solutions.where(status: '取組中')
   end
 
   def update
