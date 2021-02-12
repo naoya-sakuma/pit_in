@@ -9,7 +9,7 @@
         <ul class="list-group list-group-flush">
           <% goal.problems.each do |problem| %>
             <% if problem.title != "" %>
-            <li class="list-group-item info_title_in_plan"><strong>問題：<%= problem.title %></strong></li>
+            <li class="list-group-item info_title_in_plan list_head_in_index"><strong>問題：<%= problem.title %></strong></li>
             <% problem.solutions.each do |solution|%>
               <% case solution.status %>
                 <% when t('view.holding') %>

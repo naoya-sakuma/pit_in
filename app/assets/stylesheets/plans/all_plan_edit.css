@@ -32,6 +32,10 @@
   margin: 0;
 }
 
+.list_head_in_edit {
+  background-color: #DDDDDD;
+}
+
 .plan_save {
   margin-top: 1rem;
 }

@@ -21,7 +21,7 @@
             <% p.solutions.each do |so| %>
               <% so.tasks.each do |t| %>
                 <% if t.status == t('view.working') %>
-                  <li class="list-group-item"><strong>タスク：<%= t.title %></strong></li>
+                  <li class="list-group-item list_head_in_edit"><strong>タスク：<%= t.title %></strong></li>
                   <% t.steps.each do |s| %>
                     <% case s.status %>
                       <% when t('view.holding') %>
@@ -45,7 +45,7 @@
             <%= problem.fields_for :solutions do |solution| %>
               <%= solution.fields_for :tasks do |task| %>
                 <% if task.object.status == t('view.working') %>
-                  <li class="list-group-item status_selectbox"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %></li>
+                  <li class="list-group-item status_selectbox list_head_in_edit"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %></li>
                   <%= task.fields_for :steps do |step| %>
                     <li class="list-group-item status_selectbox">
                       <%= step.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
