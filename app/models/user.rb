@@ -23,13 +23,13 @@ class User < ApplicationRecord
   end
 
   def self.guest
-  find_or_create_by!(email: 'aaa@aaa.com') do |user|
-    user.name = 'ゲストユーザー'
-    user.password = SecureRandom.urlsafe_base64
-    user.password_confirmation = user.password
-    user.confirmed_at = Time.now
+    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+      user.name = 'ゲストユーザー'
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.confirmed_at = Time.now
+    end
   end
-end
 
   validates :name,  presence: true
   mount_uploader :icon, ImageUploader
