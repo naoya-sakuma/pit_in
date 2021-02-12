@@ -1,1 +1,25 @@
-<h1>問題一覧</h1>
+<div class="container-fluid plan_index_container">
+  <h4 class="title_in_plan_index">問題の管理</h4>
+  <small class="plan_index_guide">現在取組中の目標に設定されている問題を表示しています。編集ボタンから問題の進捗を変更してください。</small>
+
+  <% @goals.each do |goal| %>
+    <div class="planning_information">
+      <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
+      <div class="card plan_card">
+        <ul class="list-group list-group-flush">
+          <% goal.problems.each do |problem| %>
+            <% if problem.title != "" %>
+              <% case problem.status %>
+                <% when t('view.unsolved') %>
+                  <li class="list-group-item solution_title_in_monthly"><span class="badge badge-danger badge-pill goal_badges"><%= problem.status %></span><%= problem.title %></li>
+                <% when t('view.solved') %>
+                  <li class="list-group-item solution_title_in_monthly"><span class="badge badge-primary badge-pill goal_badges"><%= problem.status %></span><%= problem.title %></li>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <%= link_to t('view.button.edit'), edit_problem_path(goal), class: "btn btn-outline-secondary planning_btn" %>
+    </div>
+  <% end %>
+</div>

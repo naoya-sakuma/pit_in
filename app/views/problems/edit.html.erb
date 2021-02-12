@@ -1,1 +1,46 @@
-<h1>問題編集</h1>
+<div class="container-fluid plan_edit_container">
+  <%= form_with(model: @goal, url: problem_path, local: true) do |goal| %>
+    <% if @goal.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @goal.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h4 class="title_in_plan_edit">問題の管理</h4>
+    <small class="plan_edit_guide">解決した問題は解決済みに変更してください。</small>
+    <p class="goal_title_in_edit"><strong><%= @goal.title %></strong></p>
+    <div class="row plan_edit_zone">
+      <div class="col-10 plan_edit_title">
+        <ul class="list-group">
+          <% @goal.problems.each do |p| %>
+            <% if p.title != "" %>
+              <% case p.status %>
+                <% when t('view.unsolved') %>
+                  <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= p.status %></span><%= p.title %></li>
+                <% when t('view.solved') %>
+                  <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= p.status %></span><%= p.title %></li>
+              <% end %>
+            <% end %>
+          <% end%>
+        </ul>
+      </div>
+
+      <div class="col-2 status_edit_form">
+        <ul class="list-group">
+          <%= goal.fields_for :problems do |problem| %>
+            <li class="list-group-item status_selectbox">
+              <%= problem.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+  <p class="actions"><%= goal.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %></p>
+  <% end %>
+</div>
