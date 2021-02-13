@@ -1,0 +1,30 @@
+.app_explanation_container {
+  margin-top: 2rem;
+}
+
+.app_explanation_sub_container {
+  margin-left: 3rem;
+}
+
+.app_direction_title {
+  color: #555555;
+  margin-top: 2.5rem;
+}
+
+.app_direction_title strong {
+  border-bottom: 1px solid #555555;
+}
+
+.app_direction_p {
+  margin-bottom: .5rem;
+  color: #555555;
+}
+
+.app_explanation_conclusion {
+  margin-top: 2.5rem;
+}
+
+.app_explanation_conclusion_p {
+  margin-bottom: .5rem;
+  color: #555555;
+}
