@@ -1,12 +1,13 @@
 ja:
   activerecord:
     models:
-      blog: ブログ
       user: ユーザー
+      goal: 目標
+      problem: 問題
+      solution: 解決案
+      task: タスク
+      step: ステップ
     attributes:
-      blog:
-        title: タイトル
-        content: 内容
       user:
         title: タイトル
         name: 名前
@@ -17,3 +18,5 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+      goal:
+        title: タイトル
