@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   resources :weekly_plans
   resources :daily_plans
   resources :today_jobs
+  resources :problems
 end

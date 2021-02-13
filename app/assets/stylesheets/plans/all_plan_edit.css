@@ -32,6 +32,15 @@
   margin: 0;
 }
 
+.list_head_in_edit {
+  background-color: #DDDDDD;
+}
+
+.list_head_for_select_box {
+  text-align: center;
+  font-size: 14px;
+}
+
 .plan_save {
   margin-top: 1rem;
 }

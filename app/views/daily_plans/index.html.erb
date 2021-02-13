@@ -10,7 +10,7 @@
           <% problem.solutions.each do |solution| %>
             <% solution.tasks.each do |task|%>
               <% if task.status == t('view.working') %>
-                <strong class="card-title info_title_in_plan">タスク：<%= task.title %></strong>
+                <strong class="card-title info_title_in_plan list_head_in_index"><%= task.title %></strong>
                 <ul class="list-group list-group-flush">
                   <% task.steps.each do |step|%>
                     <% case step.status %>
