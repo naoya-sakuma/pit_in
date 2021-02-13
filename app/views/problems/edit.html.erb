@@ -33,9 +33,7 @@
       <div class="col-2 status_edit_form">
         <ul class="list-group">
           <%= goal.fields_for :problems do |problem| %>
-            <li class="list-group-item status_selectbox">
-              <%= problem.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %>
-            </li>
+            <li class="list-group-item status_selectbox"><%= problem.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %>
           <% end %>
         </ul>
       </div>
