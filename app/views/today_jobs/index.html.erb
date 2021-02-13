@@ -9,7 +9,7 @@
           <% problem.solutions.each do |solution| %>
             <% solution.tasks.each do |task|%>
               <% task.steps.each do |step|%>
-                <% if step.status == t('view.working') %>
+                <% if step.status == t('view.working') && step.title != "" %>
                   <% the_number_of_contents += 1%>
                   <ul class="list-group">
                     <li class="list-group-item today_job"><%= step.title %></li>
@@ -23,7 +23,8 @@
     <% end %>
     <div>
       <% if the_number_of_contents == 0 %>
-        <small small class="plan_index_guide">現在取り組み中のステップはありません。</small>
+        <small small class="plan_index_guide">現在取り組み中のステップはありません。</small><br/>
+        <small class="plan_index_guide">今日の計画から取り組むステップを登録してください。</small>
       <% else %>
         <small class="plan_index_guide">今日取組中のステップ一覧です。</small>
       <% end %>

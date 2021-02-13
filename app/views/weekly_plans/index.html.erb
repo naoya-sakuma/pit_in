@@ -10,7 +10,7 @@
         <div class="card plan_card">
           <% goal.problems.each do |problem| %>
             <% problem.solutions.each do |solution| %>
-              <% if solution.status == t('view.working') %>
+              <% if solution.status == t('view.working') && solution.title != "" %>
                 <% the_number_of_working_solutions += 1 %>
                 <strong class="card-title info_title_in_plan list_head_in_index"><%= solution.title %></strong>
                 <ul class="list-group list-group-flush">
@@ -39,7 +39,8 @@
       <% if the_number_of_working_solutions == 0 %>
         <small class="plan_index_guide">現在取組中の解決案はありません。</small>
       <% else %>
-        <small class="plan_index_guide">今月取組中の解決案とそのタスクを表示しています。編集ボタンから今週取り組むタスクを選択してください。</small>
+        <small class="plan_index_guide">今月取組中の解決案とそのタスクを表示しています。編集ボタンから今週取り組むタスクを選択してください。</small><br/>
+        <small class="plan_index_guide">タスクがない場合は、目標の編集から登録してください。</small>
       <% end %>
     </div>
   </div>
