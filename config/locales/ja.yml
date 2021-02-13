@@ -216,6 +216,8 @@ ja:
       day_to_start: 開始
       day_to_finish: 期限
       status: 状態
+      private: 非公開
+      public: 公開
       purpose: 目的
       when_succeed: 達成すると？
       when_fail: 達成しないと？
