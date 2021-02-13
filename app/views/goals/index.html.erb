@@ -1,6 +1,11 @@
 <div class="container-fluid goal_index_container">
   <h4 class="title_in_goal_index">目標一覧</h4>
-  <small class="plan_index_guide">現在作成されている目標一覧です。編集から取り組む目標を設定してください。</small>
+  <% if @goals.count == 0 %>
+    <small class="plan_index_guide">現在登録されている目標はありません。目標作成から目標を作成してください。</small>
+  <% else %>
+    <small class="plan_index_guide">現在作成されている目標一覧です。編集から取り組む目標を設定してください。</small>
+  <% end %>
+
   <% @goals.each do |goal| %>
     <div class="card goal_card">
       <div class="row goal_card_row">

@@ -1,33 +1,47 @@
 <div class="container-fluid plan_index_container">
   <h4 class="title_in_plan_index">今週の計画</h4>
-  <small class="plan_index_guide">今月取組中の解決案とそのタスクを表示しています。編集ボタンから今週取り組むタスクを選択してください。</small>
 
-  <% @goals.each do |goal| %>
-    <div class="planning_information">
-      <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
-      <div class="card plan_card">
-        <% goal.problems.each do |problem| %>
-          <% problem.solutions.each do |solution| %>
-            <% if solution.status == t('view.working') %>
-              <strong class="card-title info_title_in_plan list_head_in_index"><%= solution.title %></strong>
-              <ul class="list-group list-group-flush">
-                <% solution.tasks.each do |task|%>
-                  <% case task.status %>
-                    <% when t('view.holding') %>
-                      <li class="list-group-item task_title_in_weekly"><span class="badge badge-danger badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                    <% when t('view.working') %>
-                      <li class="list-group-item task_title_in_weekly"><span class="badge badge-primary badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                    <% when t('view.done') %>
-                      <li class="list-group-item task_title_in_weekly"><span class="badge badge-warning badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+  <div class="d-flex flex-column-reverse"  >
+    <% the_number_of_working_solutions = 0 %>
+    <% the_number_of_tasks = 0 %>
+    <% @goals.each do |goal| %>
+      <div class="planning_information">
+        <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
+        <div class="card plan_card">
+          <% goal.problems.each do |problem| %>
+            <% problem.solutions.each do |solution| %>
+              <% if solution.status == t('view.working') && solution.title != "" %>
+                <% the_number_of_working_solutions += 1 %>
+                <strong class="card-title info_title_in_plan list_head_in_index"><%= solution.title %></strong>
+                <ul class="list-group list-group-flush">
+                  <% solution.tasks.each do |task|%>
+                  <% the_number_of_tasks += 1 %>
+                    <% case task.status %>
+                      <% when t('view.holding') %>
+                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-danger badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+                      <% when t('view.working') %>
+                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-primary badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+                      <% when t('view.done') %>
+                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-warning badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </ul>
+                </ul>
+              <% end %>
             <% end %>
           <% end %>
+        </div>
+        <% if the_number_of_tasks != 0 %>
+          <%= link_to t('view.button.edit'), edit_weekly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
         <% end %>
       </div>
-      <%= link_to t('view.button.edit'), edit_weekly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
+    <% end %>
+    <div>
+      <% if the_number_of_working_solutions == 0 %>
+        <small class="plan_index_guide">現在取組中の解決案はありません。</small>
+      <% else %>
+        <small class="plan_index_guide">今月取組中の解決案とそのタスクを表示しています。編集ボタンから今週取り組むタスクを選択してください。</small><br/>
+        <small class="plan_index_guide">タスクがない場合は、目標の編集から登録してください。</small>
+      <% end %>
     </div>
-  <% end %>
-
+  </div>
 </div>
