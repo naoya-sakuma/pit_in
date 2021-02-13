@@ -1,7 +1,7 @@
 <div class="container-fluid plan_index_container">
   <h4 class="title_in_plan_index">今日の計画</h4>
-  <small class="plan_index_guide">今週取組中のタスクとそのステップを表示しています。編集ボタンから今日取り組むステップを選択してください。</small>
 
+  <% the_number_of_contents = 0 %>
   <% @goals.each do |goal| %>
     <div class="planning_information">
       <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
@@ -10,6 +10,7 @@
           <% problem.solutions.each do |solution| %>
             <% solution.tasks.each do |task|%>
               <% if task.status == t('view.working') %>
+              <% the_number_of_contents += 1 %>
                 <strong class="card-title info_title_in_plan list_head_in_index"><%= task.title %></strong>
                 <ul class="list-group list-group-flush">
                   <% task.steps.each do |step|%>
@@ -30,5 +31,10 @@
       </div>
       <%= link_to t('view.button.edit'), edit_daily_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
     </div>
+  <% end %>
+  <% if the_number_of_contents == 0 %>
+    <small class="plan_index_guide">現在未取組中のタスクはありません。</small>
+  <% else %>
+    <small class="plan_index_guide">今週取組中のタスクとそのステップを表示しています。編集ボタンから今日取り組むステップを選択してください。</small>
   <% end %>
 </div>
