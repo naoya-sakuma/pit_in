@@ -42,12 +42,9 @@
           <%= goal.fields_for :problems do |problem| %>
             <%= problem.fields_for :solutions do |solution| %>
               <% if solution.object.status == t('view.working') %>
-                <!-- <li class="list-group-item status_selectbox"><%#= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %></li> -->
                 <li class="list-group-item status_selectbox list_head_in_edit"><%= solution.text_field :status, readonly: :status, class: "form-control-plaintext status_edit_select_box list_head_for_select_box" %></li>
                 <%= solution.fields_for :tasks do |task| %>
-                  <li class="list-group-item status_selectbox">
-                    <%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
-                  </li>
+                  <li class="list-group-item status_selectbox"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                 <% end %>
               <% end %>
             <% end %>

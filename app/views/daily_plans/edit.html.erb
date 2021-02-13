@@ -49,7 +49,6 @@
                   <%= task.fields_for :steps do |step| %>
                     <li class="list-group-item status_selectbox">
                       <%= step.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
-                    </li>
                   <% end %>
                 <% end %>
               <% end %>

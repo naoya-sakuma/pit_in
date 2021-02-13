@@ -8,7 +8,7 @@
       <div class="card plan_card">
         <ul class="list-group list-group-flush">
           <% goal.problems.each do |problem| %>
-            <% if problem.title != "" %>
+            <% if problem.status == t('view.unsolved') %>
             <li class="list-group-item info_title_in_plan list_head_in_index"><strong><%= problem.title %></strong></li>
             <% problem.solutions.each do |solution|%>
               <% case solution.status %>
