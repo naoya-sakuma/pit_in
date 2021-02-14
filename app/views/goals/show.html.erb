@@ -9,6 +9,55 @@
       <li class="list-group-item">達成しないと？：<%= @goal.when_fail %></li>
     </ul>
 
+    <table class="table">
+      <thead>
+        <tr>
+          <th>問題</th>
+          <th>解決案</th>
+          <th>タスク</th>
+          <th>ステップ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <% @goal.problems.each do |problem| %>
+              <p><%= problem.title %></p>
+            <% end %>
+          </td>
+
+          <td>
+            <% @goal.problems.each do |problem| %>
+              <% problem.solutions.each do |solution| %>
+                <p><%= solution.title %></p>
+              <% end %>
+            <% end %>
+          </td>
+
+          <td>
+            <% @goal.problems.each do |problem| %>
+              <% problem.solutions.each do |solution| %>
+                <% solution.tasks.each do |task| %>
+                  <p><%= task.title %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+
+          <td>
+            <% @goal.problems.each do |problem| %>
+              <% problem.solutions.each do |solution| %>
+                <% solution.tasks.each do |task| %>
+                  <% task.steps.each do |step| %>
+                    <p><%= step.title %></p>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+
 
     <ul class="list-group problems_list">
       <li class="list-group-item"><strong>未解決の問題</strong></li>
