@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_074721) do
+ActiveRecord::Schema.define(version: 2021_02_14_225952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_074721) do
     t.bigint "user_id"
     t.date "day_to_finish"
     t.string "share", default: "非公開"
+    t.string "author"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
@@ -108,8 +109,10 @@ ActiveRecord::Schema.define(version: 2021_02_11_074721) do
     t.string "unconfirmed_email"
     t.string "provider", default: "", null: false
     t.string "uid", default: "", null: false
+    t.string "nickname"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end

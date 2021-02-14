@@ -8,6 +8,11 @@
     </div>
 
     <div class="user_info_edit_each">
+      <%= f.label :nickname %>
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: 'form-control'%>
+    </div>
+
+    <div class="user_info_edit_each">
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
 

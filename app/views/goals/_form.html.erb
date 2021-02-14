@@ -16,18 +16,25 @@
         <%= goal.label :title, t('view.goal_info.title') %>
         <%= goal.text_field :title, class: "form-control" %>
       </div>
+      <div class="goal_info_edit_each">
+        <%= goal.hidden_field :author, value: current_user.nickname %>
+      </div>
       <div class="goal_info_edit_each row">
-        <div class="col-4" id="day_to_start_col">
+        <div class="col-3" id="day_to_start_col">
         <%= goal.label :day_to_start, t('view.goal_info.day_to_start') %>
         <%= goal.date_field :day_to_start, class: "form-control" %>
         </div>
-        <div class="col-4" id="day_to_finish_col">
+        <div class="col-3" id="day_to_finish_col">
         <%= goal.label :day_to_finish, t('view.goal_info.day_to_finish') %>
         <%= goal.date_field :day_to_finish, class: "form-control" %>
         </div>
-        <div class="col-4" id="status_col">
+        <div class="col-3" id="status_col">
           <%= goal.label :status, t('view.goal_info.status') %>
           <%= goal.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control" %>
+        </div>
+        <div class="col-3" id="status_col">
+          <%= goal.label :share, t('view.goal_info.public') %>
+          <%= goal.select :share, [[t('view.goal_info.private'), t('view.goal_info.private')], [t('view.goal_info.public'), t('view.goal_info.public')]], {}, class: "form-control" %>
         </div>
       </div>
       <div class="goal_info_edit_each">
