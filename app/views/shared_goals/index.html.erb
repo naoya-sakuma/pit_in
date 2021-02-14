@@ -27,8 +27,7 @@
 
         <div class="col-4 goal_buttons">
           <ul class="goal_button_ul"><%= link_to t('view.button.show'), goal, class: "btn btn-outline-secondary goal_button" %></ul>
-          <ul class="goal_button_ul"><%= link_to t('view.button.edit'), edit_goal_path(goal), class: "btn btn-outline-secondary goal_button" %></ul>
-          <ul class="goal_button_ul"><%= link_to t('view.button.delete'), goal, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary goal_button" %></ul>
+          <ul class="goal_button_ul"><%= link_to t('view.button.take_in'), shared_goal_path(goal), method: :patch, class: "btn btn-outline-secondary goal_button" %></ul>
         </div>
       </div>
     </div>
