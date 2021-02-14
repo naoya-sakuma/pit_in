@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_223451) do
+ActiveRecord::Schema.define(version: 2021_02_14_225952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2021_02_14_223451) do
     t.date "day_to_finish"
     t.string "share", default: "非公開"
     t.string "author"
-    t.index ["author"], name: "index_goals_on_author", unique: true
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 

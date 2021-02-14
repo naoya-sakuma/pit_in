@@ -16,6 +16,9 @@
         <%= goal.label :title, t('view.goal_info.title') %>
         <%= goal.text_field :title, class: "form-control" %>
       </div>
+      <div class="goal_info_edit_each">
+        <%= goal.hidden_field :author, value: current_user.nickname %>
+      </div>
       <div class="goal_info_edit_each row">
         <div class="col-3" id="day_to_start_col">
         <%= goal.label :day_to_start, t('view.goal_info.day_to_start') %>
