@@ -11,6 +11,7 @@ ja:
       user:
         title: タイトル
         name: 名前
+        nickname: ニックネーム
         email: メールアドレス
         introduction: 自己紹介
         icon: アイコン

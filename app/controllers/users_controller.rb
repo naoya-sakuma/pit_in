@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_logged_in
-  
+
   def show
     @user = current_user
   end
@@ -21,6 +21,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :introduction, :icon)
+    params.require(:user).permit(:name, :nickname, :email, :introduction, :icon)
   end
 end

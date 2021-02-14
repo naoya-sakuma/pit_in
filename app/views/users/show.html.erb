@@ -11,6 +11,7 @@
 
     <div class="user_name_and_intro">
       <h4><%= current_user.name %></h4>
+      <p id="nickname"><%= current_user.nickname %></p>
       <p id="self_introduction"><%= t('view.self_intro') %></p>
       <p class="card intro_card"><%= current_user.introduction %></p>
       <%= link_to t('view.button.edit'), edit_user_registration_path, class: "btn btn-outline-secondary" %>
