@@ -22,6 +22,5 @@ class SharedGoalsController < ApplicationController
   def set_search
     @shared_goals = Goal.where(share: '公開')
     @searched_goal = @shared_goals.ransack(params[:q])
-    @searched_word = params.permit(:title)
   end
 end

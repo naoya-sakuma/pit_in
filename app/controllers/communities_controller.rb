@@ -1,9 +1,10 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:edit, :update, :show]
+  before_action :set_search, only:[:index, :search]
 
   def index
-    @communities = Community.all
-    #@communities = Community.where.not(user_id: current_user.id)
+    @other_communities = Community.all
+    #@other_communities = Community.where.not(user_id: current_user.id)
     @own_communities = Community.where(user_id: current_user.id)
     #@joining_community =
   end
@@ -21,6 +22,11 @@ class CommunitiesController < ApplicationController
     end
   end
 
+  def show
+    @comments = @community.comments
+    @comment = @community.comments.build
+  end
+
   def update
     if @community.update(community_params)
       redirect_to communities_path, notice: '変更が保存されました'
@@ -32,13 +38,8 @@ class CommunitiesController < ApplicationController
   def destroy
   end
 
-  def show
-    @comments = @community.comments
-    @comment = @community.comments.build
-  end
-
   def search
-    @searched_results_goals = @searched_goal.result
+    @searched_results_communities = @searched_other_communities.result
   end
 
   private
@@ -52,8 +53,7 @@ class CommunitiesController < ApplicationController
   end
 
   def set_search
-    @shared_goals = Goal.where(share: '公開')
-    @searched_goal = @shared_goals.ransack(params[:q])
-    @searched_word = params.permit(:title)
+    @other_communities = Community.where.not(user_id: current_user.id)
+    @searched_other_communities = @other_communities.ransack(params[:q])
   end
 end

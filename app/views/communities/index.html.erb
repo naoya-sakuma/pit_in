@@ -17,7 +17,15 @@
 
   <div class="other_comunity_index">
     <strong>コミュニティ一覧</strong>
-    <% @communities.each do |community| %>
+
+    <div class="serch_form">
+      <%= search_form_for @searched_other_communities, url: community_searched_result_communities_path(@other_communities) do |search_form| %>
+        <%= search_form.search_field :title, class: "form-control search_form_window", placeholder: "コミュニティ名を入力" %>
+        <%= search_form.submit t('view.button.search'), class: "btn btn-outline-secondary search_button" %>
+      <% end %>
+    </div>
+
+    <% @other_communities.each do |community| %>
     <div class="other_comunity_each">
       <%= community.title %>
       <%= community.summary %>
