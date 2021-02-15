@@ -9,7 +9,7 @@
   <div class="serch_form">
     <%= search_form_for @searched_goal, url: shared_goal_searched_result_goals_path(@shared_goals) do |search_form| %>
       <%= search_form.search_field :title, class: "form-control search_form_window", placeholder: "目標のタイトルを入力" %>
-      <%= search_form.submit '検索', class: "btn btn-outline-secondary search_button" %>
+      <%= search_form.submit t('view.button.search'), class: "btn btn-outline-secondary search_button" %>
     <% end %>
   </div>
 
