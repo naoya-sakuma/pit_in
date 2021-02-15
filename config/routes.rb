@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   resources :communities do
     resources :comments
   end
+  get "shared_goal/searched_result_goals", to: "shared_goals#search"
 end
