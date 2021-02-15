@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_225952) do
+ActiveRecord::Schema.define(version: 2021_02_15_093841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "communities", force: :cascade do |t|
+    t.string "title"
+    t.string "summary"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_communities_on_user_id"
+  end
 
   create_table "goals", force: :cascade do |t|
     t.string "title"
@@ -29,6 +38,15 @@ ActiveRecord::Schema.define(version: 2021_02_14_225952) do
     t.string "share", default: "非公開"
     t.string "author"
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "isolated_steps", force: :cascade do |t|
+    t.string "title"
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_isolated_steps_on_user_id"
   end
 
   create_table "problems", force: :cascade do |t|
@@ -117,7 +135,9 @@ ActiveRecord::Schema.define(version: 2021_02_14_225952) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "communities", "users"
   add_foreign_key "goals", "users"
+  add_foreign_key "isolated_steps", "users"
   add_foreign_key "problems", "goals"
   add_foreign_key "shared_goals", "users"
   add_foreign_key "solutions", "problems"
