@@ -1,3 +1,8 @@
 .search_form_window {
   width: 60%;
 }
+
+.search_result_guide {
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
