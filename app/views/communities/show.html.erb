@@ -1,0 +1,21 @@
+<h1>uu</h1>
+<h4><%= @community.title %></h4>
+<p id="nickname"><%= @community.summary %></p>
+
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="blog-text">
+    <p><strong>タイトル</strong>：<%= @community.title %></p>
+    <p><strong>内容</strong>：<%= @community.summary %></p>
+  </div>
+  <p>コメント一覧（ここから下の内容が重要）</p>
+  <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+  <div id="comments_area">
+    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'comments/index', locals: { comments: @comments, community: @community } %>
+  </div>
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'comments/form', locals: { comment: @comment, community: @community } %>
+  <%#= link_to '編集', edit_community_path(@community) %> |
+  <%= link_to '戻る', communities_path %>
+</div>

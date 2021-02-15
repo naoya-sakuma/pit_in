@@ -20,6 +20,7 @@
         <% if user_signed_in? %>
           <div class="container">
             <ul class="navbar-nav">
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -50,6 +51,14 @@
 
               <li class="nav-item active">
                 <a class="nav-link" href="/today_jobs">Todo<span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">コミュニティ</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/communities/new">コミュニティを作る</a>
+                  <a class="dropdown-item" href="/communities">コミュニティを探す</a>
+                </div>
               </li>
 
               <li class="nav-item active">
