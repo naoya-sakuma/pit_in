@@ -1,6 +1,11 @@
 class CommunitiesController < ApplicationController
+  before_action :set_community, only: [:edit, :update, :show]
+
   def index
     @communities = Community.all
+    #@communities = Community.where.not(user_id: current_user.id)
+    @own_communities = Community.where(user_id: current_user.id)
+    #@joining_community =
   end
 
   def new
@@ -17,17 +22,26 @@ class CommunitiesController < ApplicationController
   end
 
   def update
+    if @community.update(community_params)
+      redirect_to communities_path, notice: '変更が保存されました'
+    else
+      render :edit
+    end
   end
 
   def destroy
   end
 
-  def shoe
+  def show
   end
 
   private
 
   def community_params
     params.require(:community).permit(:title, :summary)
+  end
+
+  def set_community
+    @community = Community.find(params[:id])
   end
 end
