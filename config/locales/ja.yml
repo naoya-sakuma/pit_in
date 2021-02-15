@@ -237,3 +237,5 @@ ja:
       add_task: タスク追加
       add_step: ステップ追加
       take_in: 取込
+      search: 検索
+      clear: クリア

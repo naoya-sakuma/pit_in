@@ -64,3 +64,4 @@ gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
 gem 'faker'
 gem 'deep_cloneable', '~> 3.0.0'
+gem 'ransack'

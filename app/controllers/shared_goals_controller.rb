@@ -1,4 +1,6 @@
 class SharedGoalsController < ApplicationController
+  before_action :set_search, only:[:index, :search]
+
   def index
     @shared_goals = Goal.where(share: '公開')
   end
@@ -11,4 +13,20 @@ class SharedGoalsController < ApplicationController
     @goal_to_be_added.user.update(nickname: current_user.nickname)
     redirect_to goals_path, notice: '目標を追加しました'
   end
+
+  def search
+    @searched_results_goals = @searched_goal.result
+  end
+
+  private
+  def set_search
+    @shared_goals = Goal.where(share: '公開')
+    @searched_goal = @shared_goals.ransack(params[:q])
+    @searched_word = params.permit(:title)
+  end
+
+  def searched_params
+    params.permit(:title)
+  end
+
 end
