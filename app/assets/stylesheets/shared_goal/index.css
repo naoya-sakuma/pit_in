@@ -1,5 +1,15 @@
+.serch_form {
+  margin-top: 4rem;
+  margin-left: 16rem;
+  margin-right: 0;
+  vertical-align: bottom;
+}
+
 .search_form_window {
+  display: inline;
   width: 60%;
+  margin-top: 1px;
+  vertical-align: middle;
 }
 
 .search_result_guide {
