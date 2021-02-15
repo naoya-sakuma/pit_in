@@ -1,1 +1,11 @@
 <h4>コミュニティ一覧</h4>
+
+
+  <div>
+    <% @communities.each do |community| %>
+    <%= community.title %>
+    <%= community.summary %>
+    <td><%= link_to t('view.edit'), edit_community_path(community), class: "btn btn-outline-secondary goal_button" %></td>
+    <td><%= link_to t('view.destroy'), community, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary goal_button" %></td>
+  </div>
+<% end %>
