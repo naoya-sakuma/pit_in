@@ -33,6 +33,8 @@ class CommunitiesController < ApplicationController
   end
 
   def show
+    @comments = @community.comments
+    @comment = @community.comments.build
   end
 
   private
