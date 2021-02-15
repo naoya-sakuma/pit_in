@@ -1,5 +1,5 @@
 .serch_form {
-  margin-top: 4rem;
+  margin-top: 3rem;
   margin-left: 16rem;
   margin-right: 0;
   vertical-align: bottom;
@@ -13,6 +13,11 @@
 }
 
 .search_result_guide {
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.back_to_shared_goal_button {
   margin-top: 2rem;
   margin-left: 2rem;
 }
