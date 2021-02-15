@@ -1,1 +1,35 @@
-<h1>テスト</h1>
+<div class="container-fluid community_index_container">
+  <h4 class="comunity_index_title">コミュニティ一覧</h4>
+
+  <% if @searched_results_communities.count == 0 %>
+    <small class="plan_index_guide">該当するコミュニティはありません。</small>
+    <p class="search_result_guide">「<%= params[:q][:title] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
+  <% else %>
+    <small class="plan_index_guide">コミュニティ一覧です。追加ボタンで自分の目標に追加しましょう。</small>
+    <p class="search_result_guide">「<%= params[:q][:title] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
+  <% end %>
+
+  <div class="other_comunity_index">
+    <% @searched_results_communities.each do |community| %>
+    <div class="other_comunity_each">
+      <%= community.title %>
+      <%= community.summary %>
+      <td><%= link_to "詳細", community, class: "btn btn-outline-secondary goal_button" %></td>
+      <td><%= link_to "参加（削除）", community, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary goal_button" %></td>
+    </div>
+    <% end %>
+  </div>
+
+  <%= link_to t('view.button.clear'), communities_path, class: "btn btn-outline-secondary back_to_shared_goal_button" %>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
