@@ -3,10 +3,11 @@ class CommunitiesController < ApplicationController
   before_action :set_search, only:[:index, :search]
 
   def index
-    @other_communities = Community.all
-    #@other_communities = Community.where.not(user_id: current_user.id)
+    #@other_communities = Community.all
+    @other_communities = Community.where.not(user_id: current_user.id)
     @own_communities = Community.where(user_id: current_user.id)
     #@joining_community =
+    #@member = current_user.members.find_by(member_id: @community.id)
   end
 
   def new
