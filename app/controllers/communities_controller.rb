@@ -37,6 +37,10 @@ class CommunitiesController < ApplicationController
     @comment = @community.comments.build
   end
 
+  def search
+    @searched_results_goals = @searched_goal.result
+  end
+
   private
 
   def community_params
@@ -45,5 +49,11 @@ class CommunitiesController < ApplicationController
 
   def set_community
     @community = Community.find(params[:id])
+  end
+
+  def set_search
+    @shared_goals = Goal.where(share: '公開')
+    @searched_goal = @shared_goals.ransack(params[:q])
+    @searched_word = params.permit(:title)
   end
 end

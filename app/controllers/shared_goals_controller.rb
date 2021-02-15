@@ -24,9 +24,4 @@ class SharedGoalsController < ApplicationController
     @searched_goal = @shared_goals.ransack(params[:q])
     @searched_word = params.permit(:title)
   end
-
-  def searched_params
-    params.permit(:title)
-  end
-
 end
