@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   resources :problems
   resources :directions
   resources :shared_goals
+  get "shared_goal/searched_result_goals", to: "shared_goals#search"
 end
