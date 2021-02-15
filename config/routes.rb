@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   resources :problems
   resources :directions
   resources :shared_goals
-  resources :communitites
+  resources :communities
 end
