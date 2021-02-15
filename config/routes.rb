@@ -31,4 +31,5 @@ Rails.application.routes.draw do
   end
   get "shared_goal/searched_result_goals", to: "shared_goals#search"
   get "community/searched_result_communities", to: "communities#search"
+  resources :members, only: [:create, :destroy]
 end
