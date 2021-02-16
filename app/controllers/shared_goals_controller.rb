@@ -2,7 +2,7 @@ class SharedGoalsController < ApplicationController
   before_action :set_search, only:[:index, :search]
 
   def index
-    @shared_goals = Goal.where(share: '公開')
+    @shared_goals = Goal.where(share: '公開').page(params[:page]).per(10)
   end
 
   def update
@@ -15,7 +15,7 @@ class SharedGoalsController < ApplicationController
   end
 
   def search
-    @searched_results_goals = @searched_goal.result
+    @searched_results_goals = @searched_goal.result.page(params[:page]).per(10)
   end
 
   private

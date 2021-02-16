@@ -3,7 +3,7 @@ class CommunitiesController < ApplicationController
   before_action :set_search, only:[:index, :search]
 
   def index
-    @communities = Community.all
+    @communities = Community.all.page(params[:page]).per(10)
   end
 
   def new
@@ -13,21 +13,21 @@ class CommunitiesController < ApplicationController
   def create
     @community = current_user.communities.build(community_params)
     if @community.save
-      redirect_to communities_path, notice: '目標が保存されました'
+      redirect_to community_management_communities_path, notice: 'コミュニティが作成されました'
     else
       render :new
     end
   end
 
   def show
-    @comments = @community.comments
+    @comments = @community.comments.page(params[:page]).per(10)
     @comment = @community.comments.build
     @member = current_user.members.find_by(community_id: @community.id)
   end
 
   def update
     if @community.update(community_params)
-      redirect_to communities_path, notice: '変更が保存されました'
+      redirect_to community_management_communities_path, notice: '変更が保存されました'
     else
       render :edit
     end
@@ -35,11 +35,16 @@ class CommunitiesController < ApplicationController
 
   def destroy
     @community.destroy
-    redirect_to communities_path, notice: '削除されました'
+    redirect_to community_management_communities_path, notice: '削除されました'
   end
 
   def search
-    @searched_results_communities = @searched_communities.result
+    @searched_results_communities = @searched_communities.result.page(params[:page]).per(10)
+  end
+
+  def management
+    @own_communities = Community.where(user_id: current_user.id)
+    @other_communities = Community.where.not(user_id: current_user.id)
   end
 
   private

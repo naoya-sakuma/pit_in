@@ -35,7 +35,8 @@ class User < ApplicationRecord
   mount_uploader :icon, ImageUploader
 
   has_many :goals, dependent: :destroy
-  has_many :communities
+  has_many :communities, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :members, dependent: :destroy
 
 end
