@@ -8,20 +8,21 @@
   </div>
 
   <div>
-    <div id="comments_area"><!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
-      <%= render partial: 'comments/index', locals: { comments: @comments, community: @community } %><!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-    </div>
-    <%= render partial: 'comments/form', locals: { comment: @comment, community: @community } %><!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-
-    <div>
-      <%= link_to '戻る', communities_path, class: 'btn btn-outline-secondary' %>
-      <% if @community.user.id != current_user.id %>
-        <% if @member.blank? %>
-          <%= link_to "参加", members_path(community_id: @community.id), method: :post, class: 'btn btn-outline-secondary' %>
-        <% else %>
-          <%= link_to "退出", member_path(id: @member.id), method: :delete, class: 'btn btn-outline-secondary' %>
-        <% end %>
+    <%= link_to '戻る', communities_path, class: 'btn btn-outline-secondary' %>
+    <% if @community.user.id != current_user.id %>
+      <% if @member.blank? %>
+        <%= link_to "参加", members_path(community_id: @community.id), method: :post, class: 'btn btn-outline-secondary' %>
+      <% else %>
+        <%= link_to "退出", member_path(id: @member.id), method: :delete, class: 'btn btn-outline-secondary' %>
       <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <p class="comments_field">コメント一覧</p>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, community: @community } %>
     </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, community: @community } %>
   </div>
 </div>
