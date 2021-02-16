@@ -4,7 +4,7 @@
     <small class="plan_index_guide">該当する目標はありません。</small>
   <% else %>
     <small class="plan_index_guide">公開されている目標一覧です。追加ボタンで自分の目標に追加しましょう。</small>
-    <p class="search_result_guide">「<%= params[:q][:title] %>」の検索結果（全<%= @searched_results_goals.count %>件）</p>
+    <p class="search_result_guide">「<%= params[:q][:title_cont] %>」の検索結果（全<%= @searched_results_goals.count %>件）</p>
   <% end %>
 
   <% @searched_results_goals.each do |goal| %>
