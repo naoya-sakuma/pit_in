@@ -1,50 +1,90 @@
 <div class="container-fluid community_index_container">
   <h4 class="comunity_index_title">コミュニティ一覧</h4>
 
-  <% if @searched_results_communities.count == 0 %>
-    <small class="plan_index_guide">該当するコミュニティはありません。</small>
-    <p class="search_result_guide">「<%= params[:q][:title_cont] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
-  <% else %>
-    <small class="plan_index_guide">コミュニティ一覧です。追加ボタンで自分の目標に追加しましょう。</small>
-    <p class="search_result_guide">「<%= params[:q][:title_cont] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
-  <% end %>
+  <div class="comunity_index">
+    <% if @searched_results_communities.count == 0 %>
+      <small class="plan_index_guide">「<%= params[:q][:title_cont] %>」をタイトルに含むコミュニティはありません。</small>
+      <p class="search_result_guide">「<%= params[:q][:title_cont] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
+    <% else %>
+      <small class="plan_index_guide">コミュニティ一覧です。</small>
+      <p class="search_result_guide">「<%= params[:q][:title_cont] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
+    <% end %>
 
-  <div class="other_comunity_index">
+  <div class="onw_comunity_index">
+    <h5 class="community_index_subtitle">■作成したコミュニティ</h5>
+    <% own_communities = 0 %>
+    <% @searched_results_communities.each do |community| %>
+      <% if community.user_id == current_user.id %>
+        <% own_communities += 1 %>
+        <div class="card community_card onw_comunity_each">
+          <div class="row">
+            <div class="col-8">
+              <h4 class="community_title_in_index"><%= community.title %></h4>
+              <small class="community_summary_in_index"><%= community.summary %></small>
+            </div>
+            <div class="col-4 own_community_button_div">
+              <%= link_to t('view.button.show'), community, class: "btn btn-outline-secondary own_community_button" %>
+              <%= link_to t('view.button.edit'), edit_community_path(community), class: "btn btn-outline-secondary own_community_button" %>
+              <%= link_to t('view.button.delete'), community, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary own_community_button" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <% if own_communities == 0%>
+      <p class="no_community_message_p"><small class="no_community_message">該当するコミュニティがありません。</small></p>
+    <% end %>
+  </div>
+
+  <div class="joined_comunity_index">
     <% joined_communities = 0 %>
-    <h5>参加中のコミュニティ</h5>
+    <h5 class="community_index_subtitle">■参加中のコミュニティ</h5>
     <% @searched_results_communities.each do |community| %>
       <% @member = current_user.members.find_by(community_id: community.id) %>
       <% if @member.present? %>
         <% joined_communities += 1 %>
-        <div class="other_comunity_each">
-          <%= community.title %>
-          <%= community.summary %>
-          <td><%= link_to "詳細", community, class: "btn btn-outline-secondary goal_button" %></td>
+        <div class="card community_card other_comunity_each">
+          <div class="row">
+            <div class="col-8">
+              <h4 class="community_title_in_index"><%= community.title %></h4>
+              <small class="community_summary_in_index"><%= community.summary %></small>
+            </div>
+            <div class="col-4">
+              <ul><%= link_to "詳細", community, class: "btn btn-outline-secondary community_show_button" %></ul>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>
     <% if joined_communities == 0%>
-      <small>参加中のコミュニティはありません。</small>
+      <p class="no_community_message_p"><small class="no_community_message">該当するコミュニティがありません。</small></p>
     <% end %>
   </div>
 
-  <div class="other_comunity_index">
+  <div class="not_joined_comunity_index">
     <% not_joined_communities = 0 %>
-    <h5>その他のコミュニティ</h5>
+    <h5 class="community_index_subtitle">■未参加のコミュニティ</h5>
     <% @searched_results_communities.each do |community| %>
       <% @member = current_user.members.find_by(community_id: community.id) %>
-      <% if @member.blank? %>
+      <% if @member.blank? && community.user_id != current_user.id %>
         <% not_joined_communities += 1 %>
-        <div class="other_comunity_each">
-          <%= community.title %>
-          <%= community.summary %>
-          <td><%= link_to "詳細", community, class: "btn btn-outline-secondary goal_button" %></td>
+        <div class="card community_card other_comunity_each">
+          <div class="row">
+            <div class="col-8">
+              <h4 class="community_title_in_index"><%= community.title %></h4>
+              <small class="community_summary_in_index"><%= community.summary %></small>
+            </div>
+            <div class="col-4">
+              <ul><%= link_to "詳細", community, class: "btn btn-outline-secondary community_show_button" %></ul>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>
     <% if not_joined_communities == 0%>
-      <small>参加できるコミュニティはありません。</small>
+      <p class="no_community_message_p"><small class="no_community_message">該当するコミュニティがありません。</small></p>
     <% end %>
+  </div>
   </div>
 
   <%= link_to t('view.button.clear'), communities_path, class: "btn btn-outline-secondary back_to_shared_goal_button" %>
