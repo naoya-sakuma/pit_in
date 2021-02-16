@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
   before_action :set_community, only: [:create, :edit, :update]
 
   def create
-    @community = Community.find(params[:community_id])
     @comment = @community.comments.build(comment_params)
+    @comment.user_id = current_user.id
     respond_to do |format|
       if @comment.save
         format.js { render :index }
@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:community_id, :content)
+    params.require(:comment).permit(:user_id, :community_id, :content)
   end
 
   def set_community
