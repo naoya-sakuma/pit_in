@@ -9,11 +9,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.text_area :content, id: "comment_content_#{community.id}" %>
-    <%= form.label :content %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row comment_form_field">
+    <%= form.text_field :content, id: "comment_content_#{community.id}", class: "form-control edit_comment_form" %>
+    <%= form.submit t('view.button.post'), class: "btn btn-outline-secondary comment_submit" %>
   </div>
 <% end %>
