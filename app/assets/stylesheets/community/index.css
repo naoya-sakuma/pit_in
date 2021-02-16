@@ -11,7 +11,7 @@
 }
 
 .other_comunity_index {
-  margin-top: 2rem;
+  margin-top: 8rem;
 }
 
 .onw_comunity_each {
@@ -20,4 +20,55 @@
 
 .other_comunity_each {
   margin-top: 1.5rem;
+}
+
+.community_show_button {
+  margin-top: 1rem;
+  margin-left: 10rem;
+}
+
+.community_card {
+  width: 95%;
+  border: 1px solid #C0C0C0;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+
+.community_title_in_index {
+  margin-top: .5rem;
+  margin-left: 1rem;
+}
+
+.community_summary_in_index {
+  display: block;
+  margin-bottom: .5rem;
+  margin-left: 1rem;
+}
+
+.community_index_subtitle {
+  padding-top: 1rem;
+  margin-left: 2rem;
+  margin-top: 3rem;
+}
+
+.no_community_message {
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid #dddddd
+}
+
+.own_community_button_div {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 5rem;
+}
+
+.own_community_button {
+  margin-right: 1rem;
+}
+
+.no_community_message_p {
+  margin-left: 2rem;
 }
