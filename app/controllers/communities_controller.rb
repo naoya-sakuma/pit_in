@@ -13,7 +13,7 @@ class CommunitiesController < ApplicationController
   def create
     @community = current_user.communities.build(community_params)
     if @community.save
-      redirect_to communities_path, notice: '目標が保存されました'
+      redirect_to community_management_communities_path, notice: 'コミュニティが作成されました'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class CommunitiesController < ApplicationController
 
   def update
     if @community.update(community_params)
-      redirect_to communities_path, notice: '変更が保存されました'
+      redirect_to community_management_communities_path, notice: '変更が保存されました'
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class CommunitiesController < ApplicationController
 
   def destroy
     @community.destroy
-    redirect_to communities_path, notice: '削除されました'
+    redirect_to community_management_communities_path, notice: '削除されました'
   end
 
   def search
@@ -43,7 +43,8 @@ class CommunitiesController < ApplicationController
   end
 
   def management
-    @communities = Community.where(user_id: current_user.id).page(params[:page]).per(10)
+    @own_communities = Community.where(user_id: current_user.id)
+    @other_communities = Community.where.not(user_id: current_user.id)
   end
 
   private
