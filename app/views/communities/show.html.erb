@@ -23,4 +23,5 @@
     </div>
     <%= render partial: 'comments/form', locals: { comment: @comment, community: @community } %>
   </div>
+  <%= paginate @comments %>
 </div>

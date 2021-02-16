@@ -20,7 +20,7 @@ class CommunitiesController < ApplicationController
   end
 
   def show
-    @comments = @community.comments
+    @comments = @community.comments.page(params[:page]).per(10)
     @comment = @community.comments.build
     @member = current_user.members.find_by(community_id: @community.id)
   end
