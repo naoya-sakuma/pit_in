@@ -42,6 +42,10 @@ class CommunitiesController < ApplicationController
     @searched_results_communities = @searched_communities.result.page(params[:page]).per(10)
   end
 
+  def management
+    @communities = Community.where(user_id: current_user.id).page(params[:page]).per(10)
+  end
+
   private
 
   def community_params
