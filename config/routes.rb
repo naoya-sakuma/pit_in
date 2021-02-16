@@ -24,9 +24,12 @@ Rails.application.routes.draw do
   resources :today_jobs
   resources :problems
   resources :directions
-  resources :shared_goals
+  resources :shared_goals do
+  end
   resources :communities do
     resources :comments
   end
   get "shared_goal/searched_result_goals", to: "shared_goals#search"
+  get "community/searched_result_communities", to: "communities#search"
+  resources :members, only: [:create, :destroy]
 end

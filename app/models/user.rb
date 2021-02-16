@@ -36,5 +36,6 @@ class User < ApplicationRecord
 
   has_many :goals, dependent: :destroy
   has_many :communities
+  has_many :members, dependent: :destroy
 
 end

@@ -1,0 +1,51 @@
+<div class="container-fluid community_index_container">
+  <h4 class="comunity_index_title">コミュニティ一覧</h4>
+
+  <% if @searched_results_communities.count == 0 %>
+    <small class="plan_index_guide">該当するコミュニティはありません。</small>
+    <p class="search_result_guide">「<%= params[:q][:title] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
+  <% else %>
+    <small class="plan_index_guide">コミュニティ一覧です。追加ボタンで自分の目標に追加しましょう。</small>
+    <p class="search_result_guide">「<%= params[:q][:title] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
+  <% end %>
+
+  <div class="other_comunity_index">
+    <% joined_communities = 0 %>
+    <h5>参加中のコミュニティ</h5>
+    <% @searched_results_communities.each do |community| %>
+      <% @member = current_user.members.find_by(community_id: community.id) %>
+      <% if @member.present? %>
+        <% joined_communities += 1 %>
+        <div class="other_comunity_each">
+          <%= community.title %>
+          <%= community.summary %>
+          <td><%= link_to "詳細", community, class: "btn btn-outline-secondary goal_button" %></td>
+        </div>
+      <% end %>
+    <% end %>
+    <% if joined_communities == 0%>
+      <small>参加中のコミュニティはありません。</small>
+    <% end %>
+  </div>
+
+  <div class="other_comunity_index">
+    <% not_joined_communities = 0 %>
+    <h5>その他のコミュニティ</h5>
+    <% @searched_results_communities.each do |community| %>
+      <% @member = current_user.members.find_by(community_id: community.id) %>
+      <% if @member.blank? %>
+        <% not_joined_communities += 1 %>
+        <div class="other_comunity_each">
+          <%= community.title %>
+          <%= community.summary %>
+          <td><%= link_to "詳細", community, class: "btn btn-outline-secondary goal_button" %></td>
+        </div>
+      <% end %>
+    <% end %>
+    <% if not_joined_communities == 0%>
+      <small>参加できるコミュニティはありません。</small>
+    <% end %>
+  </div>
+
+  <%= link_to t('view.button.clear'), communities_path, class: "btn btn-outline-secondary back_to_shared_goal_button" %>
+</div>

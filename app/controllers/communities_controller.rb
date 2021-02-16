@@ -1,11 +1,10 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:edit, :update, :show]
+  before_action :set_search, only:[:index, :search]
 
   def index
-    @communities = Community.all
-    #@communities = Community.where.not(user_id: current_user.id)
     @own_communities = Community.where(user_id: current_user.id)
-    #@joining_community =
+    @other_communities = Community.where.not(user_id: current_user.id)
   end
 
   def new
@@ -21,6 +20,12 @@ class CommunitiesController < ApplicationController
     end
   end
 
+  def show
+    @comments = @community.comments
+    @comment = @community.comments.build
+    @member = current_user.members.find_by(community_id: @community.id)
+  end
+
   def update
     if @community.update(community_params)
       redirect_to communities_path, notice: '変更が保存されました'
@@ -32,9 +37,8 @@ class CommunitiesController < ApplicationController
   def destroy
   end
 
-  def show
-    @comments = @community.comments
-    @comment = @community.comments.build
+  def search
+    @searched_results_communities = @searched_other_communities.result
   end
 
   private
@@ -45,5 +49,10 @@ class CommunitiesController < ApplicationController
 
   def set_community
     @community = Community.find(params[:id])
+  end
+
+  def set_search
+    @other_communities = Community.where.not(user_id: current_user.id)
+    @searched_other_communities = @other_communities.ransack(params[:q])
   end
 end
