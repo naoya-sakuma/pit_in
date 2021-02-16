@@ -7,6 +7,11 @@
   <div class="blog-text">
     <p><strong>タイトル</strong>：<%= @community.title %></p>
     <p><strong>内容</strong>：<%= @community.summary %></p>
+    <% if @member.present? %>
+      <td><%= link_to "退出", member_path(id: @member.id), method: :delete, class: 'btn btn-outline-secondary' %></td>
+    <% else %>
+      <td><%= link_to "参加", members_path(community_id: @community.id), method: :post, class: 'btn btn-outline-secondary' %></td>
+    <% end %>
   </div>
   <p>コメント一覧（ここから下の内容が重要）</p>
   <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
@@ -16,6 +21,5 @@
   </div>
   <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
   <%= render partial: 'comments/form', locals: { comment: @comment, community: @community } %>
-  <%#= link_to '編集', edit_community_path(@community) %> |
-  <%= link_to '戻る', communities_path %>
+  <%= link_to '戻る', communities_path, class: 'btn btn-outline-secondary' %>
 </div>

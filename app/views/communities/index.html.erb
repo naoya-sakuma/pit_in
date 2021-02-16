@@ -3,7 +3,7 @@
 <small class="community_index_guide">コミュニティの一覧です。</small>
 
   <div class="onw_comunity_index">
-    <strong>作成したコミュティ</strong>
+    <small>作成したコミュニティ</small>
     <% @own_communities.each do |community| %>
     <div class="onw_comunity_each">
       <%= community.title %>
@@ -16,7 +16,7 @@
   </div>
 
   <div class="onw_comunity_index">
-    <strong>参加中のコミュティ</strong>
+    <small>参加中のコミュニティ</small>
     <% @own_communities.each do |community| %>
     <div class="onw_comunity_each">
       <%= community.title %>
@@ -29,22 +29,32 @@
   </div>
 
   <div class="other_comunity_index">
-    <strong>コミュニティ一覧</strong>
 
     <div class="serch_form">
       <%= search_form_for @searched_other_communities, url: community_searched_result_communities_path(@other_communities) do |search_form| %>
-        <%= search_form.search_field :title, class: "form-control search_form_window", placeholder: "コミュニティ名を入力" %>
+        <%= search_form.search_field :title, class: "form-control search_form_window", placeholder: "参加したいコミュニティを検索" %>
         <%= search_form.submit t('view.button.search'), class: "btn btn-outline-secondary search_button" %>
       <% end %>
     </div>
 
+    <small>その他のコミュニティ</small>
     <% @other_communities.each do |community| %>
-    <div class="other_comunity_each">
-      <%= community.title %>
-      <%= community.summary %>
-      <td><%= link_to "詳細", community, class: "btn btn-outline-secondary goal_button" %></td>
-      <td><%= link_to "参加", members_path(community_id: community.id), method: :post, class: 'btn btn-outline-secondary' %></td>
-    </div>
+      <% @member = current_user.members.find_by(community_id: community.id) %>
+      <% if @member.present? %>
+        <div class="other_comunity_each">
+          <%= community.title %>
+          <%= community.summary %>
+          <td><%= link_to "詳細", community, class: "btn btn-outline-secondary goal_button" %></td>
+
+        </div>
+      <% else %>
+        <div class="other_comunity_each">
+          <%= community.title %>
+          <%= community.summary %>
+          <td><%= link_to "詳細", community, class: "btn btn-outline-secondary goal_button" %></td>
+          
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
