@@ -23,7 +23,6 @@
 }
 
 .community_show_button {
-  margin-top: 1rem;
   margin-left: 10rem;
 }
 
@@ -47,6 +46,12 @@
   margin-left: 1rem;
 }
 
+.community_owner_nickname_in_index {
+  display: block;
+  margin-bottom: .5rem;
+  margin-left: 1rem;
+}
+
 .community_index_subtitle {
   padding-top: 1rem;
   margin-left: 2rem;
@@ -60,6 +65,11 @@
 }
 
 .own_community_button_div {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 5rem;
+}
+.other_community_button_div {
   margin-top: auto;
   margin-bottom: auto;
   padding-left: 5rem;

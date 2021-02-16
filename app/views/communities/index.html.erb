@@ -1,6 +1,6 @@
 <div class="container-fluid community_index_container">
   <h4 class="comunity_index_title">コミュニティ一覧</h4>
-  <small class="community_index_guide">コミュニティの一覧です。</small>
+  <small class="community_index_guide">同じ目標を持っている人達のコミュニティです。みんなで目標達成を目指しましょう！</small>
 
   <div class="comunity_index">
     <div class="serch_form">
@@ -20,7 +20,8 @@
             <div class="row">
               <div class="col-8">
                 <h4 class="community_title_in_index"><%= community.title %></h4>
-                <small class="community_summary_in_index"><%= community.summary %></small>
+                <small class="community_summary_in_index">概要：<%= community.summary %></small>
+                <small class="community_owner_nickname_in_index">作成者：<%= community.user.nickname %></small>
               </div>
               <div class="col-4 own_community_button_div">
                 <%= link_to t('view.button.show'), community, class: "btn btn-outline-secondary own_community_button" %>
@@ -47,10 +48,11 @@
             <div class="row">
               <div class="col-8">
                 <h4 class="community_title_in_index"><%= community.title %></h4>
-                <small class="community_summary_in_index"><%= community.summary %></small>
+                <small class="community_summary_in_index">概要：<%= community.summary %></small>
+                <small class="community_owner_nickname_in_index">作成者：<%= community.user.nickname %></small>
               </div>
-              <div class="col-4">
-                <ul><%= link_to "詳細", community, class: "btn btn-outline-secondary community_show_button" %></ul>
+              <div class="col-4 other_community_button_div">
+                <%= link_to "詳細", community, class: "btn btn-outline-secondary community_show_button" %>
               </div>
             </div>
           </div>
@@ -72,10 +74,11 @@
             <div class="row">
               <div class="col-8">
                 <h4 class="community_title_in_index"><%= community.title %></h4>
-                <small class="community_summary_in_index"><%= community.summary %></small>
+                <small class="community_summary_in_index">概要：<%= community.summary %></small>
+                <small class="community_owner_nickname_in_index">作成者：<%= community.user.nickname %></small>
               </div>
-              <div class="col-4">
-                <ul><%= link_to "詳細", community, class: "btn btn-outline-secondary community_show_button" %></ul>
+              <div class="col-4 other_community_button_div">
+                <%= link_to "詳細", community, class: "btn btn-outline-secondary community_show_button" %>
               </div>
             </div>
           </div>
