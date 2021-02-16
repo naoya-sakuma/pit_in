@@ -53,8 +53,6 @@ class CommunitiesController < ApplicationController
   end
 
   def set_search
-    # @other_communities = Community.where.not(user_id: current_user.id)
-    # @searched_other_communities = @other_communities.ransack(params[:q])
     @communities = Community.all
     @searched_communities = @communities.ransack(params[:q])
   end
