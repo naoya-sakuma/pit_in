@@ -1,0 +1,14 @@
+.community_show_container {
+  width: 90%;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.community_title {
+  margin-top: 2rem;
+}
+
+.comments_field {
+  margin-top: 2rem;
+  text-align: center;
+}

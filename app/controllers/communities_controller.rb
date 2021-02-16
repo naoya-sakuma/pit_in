@@ -1,10 +1,9 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: [:edit, :update, :show]
+  before_action :set_community, only: [:edit, :update, :show, :destroy]
   before_action :set_search, only:[:index, :search]
 
   def index
-    @own_communities = Community.where(user_id: current_user.id)
-    @other_communities = Community.where.not(user_id: current_user.id)
+    @communities = Community.all
   end
 
   def new
@@ -35,10 +34,12 @@ class CommunitiesController < ApplicationController
   end
 
   def destroy
+    @community.destroy
+    redirect_to communities_path, notice: '削除されました'
   end
 
   def search
-    @searched_results_communities = @searched_other_communities.result
+    @searched_results_communities = @searched_communities.result
   end
 
   private
@@ -52,7 +53,7 @@ class CommunitiesController < ApplicationController
   end
 
   def set_search
-    @other_communities = Community.where.not(user_id: current_user.id)
-    @searched_other_communities = @other_communities.ransack(params[:q])
+    @communities = Community.all
+    @searched_communities = @communities.ransack(params[:q])
   end
 end
