@@ -91,7 +91,7 @@
       <% end %>
     </div>
   </div>
-
+  <%= paginate @searched_results_communities %>
 
 
   <%= link_to t('view.button.clear'), communities_path, class: "btn btn-outline-secondary back_to_shared_goal_button" %>

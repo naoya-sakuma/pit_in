@@ -34,6 +34,6 @@
       </div>
     </div>
   <% end %>
-
+  <%= paginate @searched_results_goals %>
   <%= link_to t('view.button.clear'), shared_goals_path, class: "btn btn-outline-secondary back_to_shared_goal_button" %>
 </div>

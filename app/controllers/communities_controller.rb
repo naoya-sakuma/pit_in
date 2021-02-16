@@ -3,7 +3,7 @@ class CommunitiesController < ApplicationController
   before_action :set_search, only:[:index, :search]
 
   def index
-    @communities = Community.all
+    @communities = Community.all.page(params[:page]).per(10)
   end
 
   def new
@@ -39,7 +39,7 @@ class CommunitiesController < ApplicationController
   end
 
   def search
-    @searched_results_communities = @searched_communities.result
+    @searched_results_communities = @searched_communities.result.page(params[:page]).per(10)
   end
 
   private

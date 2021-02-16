@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @goals = current_user.goals.page(params[:page]).per(6)
+    @goals = current_user.goals.page(params[:page]).per(10)
   end
 
   def new
