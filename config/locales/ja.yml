@@ -239,3 +239,6 @@ ja:
       take_in: 取込
       search: 検索
       clear: クリア
+    community_info:
+      title: タイトル
+      summary: 概要
