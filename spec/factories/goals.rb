@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :goal do
     title { '取組中のテスト目標' }
     status { '取組中' }
+    share { '公開中' }
     association :user
   end
 
