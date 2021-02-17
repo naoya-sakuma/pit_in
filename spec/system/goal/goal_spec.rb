@@ -1,4 +1,4 @@
-# rspec spec/system/goal_spec.rb
+# bundle exec rspec spec/system/goal/goal_spec.rb
 
 require 'rails_helper'
 RSpec.describe '目標作成機能', type: :system do
@@ -16,7 +16,7 @@ RSpec.describe '目標作成機能', type: :system do
       it 'Titleを入力してください。と表示される' do
         visit new_goal_path
         click_on '保存'
-        expect(page).to have_content 'Titleを入力してください'
+        expect(page).to have_content 'タイトルを入力してください'
       end
     end
 
