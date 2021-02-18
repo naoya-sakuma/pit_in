@@ -46,7 +46,6 @@ RSpec.describe 'コミュニティ関連機能', type: :system do
         end
       end
     end
-
     context '他のユーザーがコミュニティを作成した場合' do
       it 'コミュニティ一覧に表示される' do
         visit communities_path
