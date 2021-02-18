@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_02_18_204209) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.date "day_to_finish"
-    t.string "share", default: "非公開"
     t.string "author"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
@@ -106,7 +105,6 @@ ActiveRecord::Schema.define(version: 2021_02_18_204209) do
     t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "row_order"
     t.index ["task_id"], name: "index_steps_on_task_id"
     t.index ["user_id"], name: "index_steps_on_user_id"
   end
