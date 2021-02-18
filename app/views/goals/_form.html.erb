@@ -56,8 +56,10 @@
       <%= goal.fields_for :problems do |problem| %>
       <h4 class="form_title"><%= t('view.goal_related_info.problem') %></h4>
         <div class="row form_row">
-          <small class="from-explanation">目標達成を妨げている問題を入力してください。</small>
-          <%= problem.text_field :title, class: "col-8 form-control goal_related_info_forms border-primary", id: "problem_form" %>
+          <div class="col-12">
+            <small class="from-explanation">目標達成を妨げている問題を入力してください。</small>
+          </div>
+          <%= problem.text_field :title, class: "col-9 form-control goal_related_info_forms border-primary", id: "problem_form" %>
           <%= problem.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "problem_form_delete" %>
         </div>
 
@@ -66,8 +68,10 @@
           <%= problem.fields_for :solutions do |solution| %>
           <h4 class="form_title"><%= t('view.goal_related_info.solution') %></h4>
             <div class="row form_row">
-              <small class="from-explanation">問題を解決するアイディアを入力してください。</small>
-              <%= solution.text_field :title, class: "col-8 form-control goal_related_info_forms border-danger" %>
+              <div class="col-12">
+                <small class="from-explanation">問題を解決するアイディアを入力してください。</small>
+              </div>
+              <%= solution.text_field :title, class: "col-9 form-control goal_related_info_forms border-danger" %>
               <%= solution.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "solution_form_delete" %>
             </div>
 
@@ -76,8 +80,10 @@
               <%= solution.fields_for :tasks do |task| %>
                 <h4 class="form_title"><%= t('view.goal_related_info.task') %></h4>
                 <div class="row form_row">
-                  <small class="from-explanation">解決案を実行するための行動を入力してください。</small>
-                  <%= task.text_field :title, class: "col-8 form-control goal_related_info_forms border-warning" %>
+                  <div class="col-12">
+                    <small class="from-explanation">解決案を実行するための行動を入力してください。</small>
+                  </div>
+                  <%= task.text_field :title, class: "col-9 form-control goal_related_info_forms border-warning" %>
                   <%= task.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "task_form_delete" %>
                 </div>
 
@@ -87,7 +93,7 @@
                   <small>タスクとして考えた行動をさらに細分化して、より具体的で小さな行動を入力してください。</small>
                   <%= task.fields_for :steps do |step| %>
                     <div class="row form_row">
-                      <%= step.text_field :title, class: "col-8 form-control goal_related_info_forms border-success" %>
+                      <%= step.text_field :title, class: "col-9 form-control goal_related_info_forms border-success" %>
                       <%= step.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "step_form_delete" %>
                     </div>
                   <% end %>
