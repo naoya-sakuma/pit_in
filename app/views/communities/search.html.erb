@@ -5,7 +5,6 @@
     <div class="serch_result_message">
       <% if @searched_results_communities.count == 0 %>
         <small class="plan_index_guide">「<%= params[:q][:title_cont] %>」をタイトルに含むコミュニティはありません。</small>
-        <p class="search_result_guide">「<%= params[:q][:title_cont] %>」の検索結果（全<%= @searched_results_communities.count %>件）</p>
       <% else %>
         <small class="plan_index_guide">同じ目標を持っている人達のコミュニティです。みんなで目標達成を目指しましょう！</small>
         <p class="search_result_guide">「<%= params[:q][:title_cont] %>」の検索結果</p>
