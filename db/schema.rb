@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_221520) do
+ActiveRecord::Schema.define(version: 2021_02_18_045947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,15 +50,6 @@ ActiveRecord::Schema.define(version: 2021_02_16_221520) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
-  create_table "isolated_steps", force: :cascade do |t|
-    t.string "title"
-    t.string "status"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_isolated_steps_on_user_id"
-  end
-
   create_table "members", force: :cascade do |t|
     t.integer "user_id"
     t.integer "community_id"
@@ -73,21 +64,6 @@ ActiveRecord::Schema.define(version: 2021_02_16_221520) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_problems_on_goal_id"
-  end
-
-  create_table "shared_goals", force: :cascade do |t|
-    t.string "title"
-    t.date "day_to_start"
-    t.string "purpose"
-    t.string "status"
-    t.text "when_succeed"
-    t.text "when_fail"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.date "day_to_finish"
-    t.string "share", default: "非公開"
-    t.index ["user_id"], name: "index_shared_goals_on_user_id"
   end
 
   create_table "solutions", force: :cascade do |t|
@@ -156,9 +132,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_221520) do
   add_foreign_key "comments", "users"
   add_foreign_key "communities", "users"
   add_foreign_key "goals", "users"
-  add_foreign_key "isolated_steps", "users"
   add_foreign_key "problems", "goals"
-  add_foreign_key "shared_goals", "users"
   add_foreign_key "solutions", "problems"
   add_foreign_key "steps", "tasks"
   add_foreign_key "steps", "users"
