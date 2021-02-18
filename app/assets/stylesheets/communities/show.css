@@ -12,3 +12,12 @@
   margin-top: 2rem;
   text-align: center;
 }
+
+.guide_for_no_rights_user {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.guide_for_no_rights_user small {
+  border-bottom: 1px solid #dddddd
+}

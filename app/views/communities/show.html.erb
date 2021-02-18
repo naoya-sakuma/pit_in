@@ -21,7 +21,13 @@
     <div id="comments_area">
       <%= render partial: 'comments/index', locals: { comments: @comments, community: @community } %>
     </div>
-    <%= render partial: 'comments/form', locals: { comment: @comment, community: @community } %>
+    <div id="comments_form">
+      <% if @community.user.id == current_user.id || @member.presence %>
+        <%= render partial: 'comments/form', locals: { comment: @comment, community: @community } %>
+      <% else %>
+        <p class="guide_for_no_rights_user"><small>コミュニティ参加者、またはコミュニティ作成者のみコメントを投稿できます。<small></p>
+      <% end %>
+    </div>
   </div>
   <%= paginate @comments %>
 </div>
