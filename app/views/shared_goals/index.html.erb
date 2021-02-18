@@ -1,19 +1,19 @@
 <div class="container-fluid goal_index_container">
   <h4 class="title_in_goal_index">公開中の目標一覧</h4>
-  <% if @shared_goals.count == 0 %>
+  <% if @other_shared_goals.count == 0 %>
     <small class="plan_index_guide">現在公開されている目標はありません。</small>
   <% else %>
     <small class="plan_index_guide">公開されている目標一覧です。追加ボタンで自分の目標に追加しましょう。</small>
   <% end %>
 
   <div class="serch_form">
-    <%= search_form_for @searched_goal, url: shared_goal_searched_result_goals_path(@shared_goals) do |search_form| %>
+    <%= search_form_for @searched_goal, url: shared_goal_searched_result_goals_path(@other_shared_goals) do |search_form| %>
       <%= search_form.search_field :title_cont, class: "form-control search_form_window", placeholder: "目標のタイトルを入力" %>
       <%= search_form.submit t('view.button.search'), class: "btn btn-outline-secondary search_button" %>
     <% end %>
   </div>
 
-  <% @shared_goals.each do |goal| %>
+  <% @other_shared_goals.each do |goal| %>
     <div class="card goal_card">
       <div class="row goal_card_row">
         <div class="col-8">
@@ -40,5 +40,5 @@
       </div>
     </div>
   <% end %>
-  <%= paginate @shared_goals %>
+  <%= paginate @other_shared_goals %>
 </div>
