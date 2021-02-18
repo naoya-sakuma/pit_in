@@ -1,0 +1,2 @@
+class IsolatedStep < ApplicationRecord
+end
