@@ -5,13 +5,14 @@ RSpec.describe '目標関連機能', type: :system do
   describe '目標公開機能' do
     before do
       user = FactoryBot.create(:user)
+      second_user = FactoryBot.create(:second_user)
       goal = FactoryBot.create(:goal, user: user)
-      goal = FactoryBot.create(:third_goal, user: user)
+      third_goal = FactoryBot.create(:third_goal, user: user)
       #user.skip_confirmation!
-      user.save!
+      #user.save!
       visit new_user_session_path
-      fill_in 'メールアドレス', with: 'test@test.com'
-      fill_in 'パスワード', with: 'test@test.com'
+      fill_in 'メールアドレス', with: 'test2@test.com'
+      fill_in 'パスワード', with: 'test2@test.com'
       click_button 'ログイン'
     end
     context '目標の公開状況を公開に設定した場合' do
