@@ -17,6 +17,7 @@ class WeeklyPlansController < ApplicationController
     end
   end
 
+
   private
   def weekly_plan_params
     params.require(:goal).permit(:_destroy, :id,

@@ -42,6 +42,7 @@ class GoalsController < ApplicationController
     redirect_to goals_path, notice: '削除されました'
   end
 
+
   private
   def goal_params
     params.require(:goal).permit(:title, :day_to_start, :day_to_finish, :purpose, :status, :share, :when_succeed, :when_fail, :author,

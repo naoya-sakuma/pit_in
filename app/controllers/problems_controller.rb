@@ -17,6 +17,7 @@ class ProblemsController < ApplicationController
     end
   end
 
+
   private
   def problem_edit_params
     params.require(:goal).permit(:_destroy, :id,

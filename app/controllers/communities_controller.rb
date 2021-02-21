@@ -47,8 +47,8 @@ class CommunitiesController < ApplicationController
     @other_communities = Community.where.not(user_id: current_user.id)
   end
 
-  private
 
+  private
   def community_params
     params.require(:community).permit(:title, :summary)
   end

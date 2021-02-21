@@ -19,6 +19,7 @@ class SharedGoalsController < ApplicationController
     @searched_results_goals = @searched_goal.result.page(params[:page]).per(10)
   end
 
+
   private
   def set_search
     @shared_goals = Goal.where(share: '公開')
