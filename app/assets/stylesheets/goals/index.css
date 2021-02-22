@@ -50,15 +50,7 @@
 
 .goal_button_ul {
   margin-bottom: 7px;
-}
-
-.goal_button {
-  margin-right: 2rem;
-}
-
-.csv_export {
-  margin-top: 2rem;
-  margin-left: 3.6rem;
+  padding: 0;
 }
 
 .pagination {
