@@ -18,4 +18,20 @@
   border-top: 1px solid #DDDDDD;
   padding-top: 2rem;
   margin-bottom: 2rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#change_confirmation {
+  border-top: 1px solid #DDDDDD;
+  margin-top: 5rem;
+  padding-top: 3rem;
+}
+
+#when_change_password_button {
+  margin-bottom: 2rem;
+}
+
+#collapse_content1 {
+  margin-top: 2rem;
 }
