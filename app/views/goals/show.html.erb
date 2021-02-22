@@ -21,16 +21,18 @@
       <li class="list-group-item"><strong>解決済みの問題</strong></li>
       <table border=1>
         <% @goal.problems.each do |problem| %>
+          <% problem.solutions.build if problem.solutions.count.zero? %>
           <% problem.solutions.each_with_index do |solution, solution_index|%>
+            <% solution.tasks.build if solution.tasks.count.zero? %>
             <% solution.tasks.each_with_index do |task, task_index|%>
               <tr>
                 <% if solution_index == 0 && task_index == 0 %>
-                  <td rowspan="<%= problem.tasks.count %>">
+                  <td rowspan="<%= [problem.tasks.count, 1].max %>">
                     <%= problem.title %>
                   </td>
                 <% end %>
                 <% if task_index == 0 %>
-                  <td rowspan="<%= solution.tasks.count %>">
+                  <td rowspan="<%= [solution.tasks.count, 1].max %>">
                     <%= solution.title %>
                   </td>
                 <% end %>
