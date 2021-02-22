@@ -6,9 +6,10 @@
     <small class="plan_index_guide">現在作成されている目標一覧です。編集から取り組む目標を設定してください。</small>
   <% end %>
 
+  <div class="row card_row">
   <% @goals.each do |goal| %>
-    <div class="card goal_card">
-      <div class="row goal_card_row">
+    <div class="card col-auto goal_card">
+      <div class="row no-gutters goal_card_row">
         <div class="col-8">
           <% case goal.status %>
             <% when t('view.holding') %>
@@ -33,5 +34,6 @@
       </div>
     </div>
   <% end %>
+  </div>
   <%= paginate @goals %>
 </div>
