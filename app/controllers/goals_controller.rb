@@ -8,10 +8,10 @@ class GoalsController < ApplicationController
 
   def new
     @goal = Goal.new
-    @problem = @goal.problems.build
-    @solution = @problem.solutions.build
-    @task = @solution.tasks.build
-    @step = @task.steps.build
+    # @problem = @goal.problems.build
+    # @solution = @problem.solutions.build
+    # @task = @solution.tasks.build
+    # @step = @task.steps.build
   end
 
   def create
