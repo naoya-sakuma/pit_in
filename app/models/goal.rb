@@ -2,7 +2,7 @@ class Goal < ApplicationRecord
   belongs_to :user
   has_many :problems, dependent: :destroy
   accepts_nested_attributes_for :problems, allow_destroy: true
-  validates :title,  presence: true
+  validates :title, presence: true
 
   # accepts_nested_attributes_for :problems, allow_destroy: true, reject_if: :reject_create_problem
   # def reject_create_problem(problems_attributes)

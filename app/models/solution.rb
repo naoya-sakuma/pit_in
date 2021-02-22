@@ -2,6 +2,7 @@ class Solution < ApplicationRecord
   belongs_to :problem, inverse_of: :solutions
   has_many :tasks, inverse_of: :solution, dependent: :destroy
   accepts_nested_attributes_for :tasks, allow_destroy: true
+  validates :title, presence: true
 
   # accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: :reject_create_task
   # def reject_create_task(tasks_attributes)
