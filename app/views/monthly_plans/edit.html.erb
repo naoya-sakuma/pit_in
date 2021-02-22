@@ -1,5 +1,5 @@
 <div class="container-fluid plan_edit_container">
-  <%= form_with(model: @goal, url: monthly_plan_path, local: true) do |goal| %>
+  <%= form_with(model: @goal, url: monthly_plan_path, local: true) do |goal_form| %>
     <% if @goal.errors.any? %>
       <div id="error_explanation">
         <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
@@ -38,11 +38,12 @@
       <div class="col-2 status_edit_form">
         <ul class="list-group">
 
-          <%= goal.fields_for :problems do |problem| %>
-            <% if problem.object.status == t('view.unsolved') %>
-              <li class="list-group-item status_selectbox list_head_in_edit"><%= problem.text_field :status, readonly: :status , class: "form-control-plaintext status_edit_select_box list_head_for_select_box" %></li>
-              <%= problem.fields_for :solutions do |solution| %>
-                <li class="list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
+          <%= goal_form.fields_for :problems do |problem_form| %>
+            <% if problem_form.object.status == t('view.unsolved') %>
+              <li class="list-group-item status_selectbox list_head_in_edit"><%= problem_form.text_field :status, readonly: :status , class: "form-control-plaintext status_edit_select_box list_head_for_select_box" %></li>
+              <%= problem_form.fields_for :solutions do |solution_form| %>
+                <%= solution_form.object.title %>
+                <li class="list-group-item status_selectbox"><%= solution_form.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
               <% end %>
             <% end %>
           <% end %>
@@ -50,6 +51,6 @@
       </div>
     </div>
 
-  <p class="actions"><%= goal.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %></p>
+  <p class="actions"><%= goal_form.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %></p>
   <% end %>
 </div>

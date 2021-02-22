@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_211548) do
   create_table "solutions", force: :cascade do |t|
     t.string "title"
     t.string "status", default: "保留中"
-    t.bigint "problem_id"
+    t.bigint "problem_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["problem_id"], name: "index_solutions_on_problem_id"

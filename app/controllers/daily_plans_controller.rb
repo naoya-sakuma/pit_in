@@ -1,9 +1,13 @@
+# メインがtaskなのであればTasksControllerのほうが良いのかも
+# DailyPlanというくくりで処理するのであれば、DailyPlanというモデルを扱うほうが自然かも
 class DailyPlansController < ApplicationController
   before_action :check_logged_in
   before_action :set_goal, only: [:edit, :update]
 
   def index
     @goals = current_user.goals.where(status: '取組中')
+    # daily_planというくくりで考える何らこんな感じのイメージ
+    # @daily_plan = DailyPlan.new(current_user.goals)
   end
 
   def edit
