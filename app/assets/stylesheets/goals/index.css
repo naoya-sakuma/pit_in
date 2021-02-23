@@ -1,16 +1,23 @@
 .goal_index_container {
   margin-top: 2rem;
+
 }
 
 .goal_card {
   border: 1px solid #C0C0C0;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
-  margin-top: 1rem;
+  margin-top: 2rem;
   background-color: #fff;
   border-radius: 0.25rem;
+  width: 45%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.card_row {
   width: 95%;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .goal_badges {
@@ -43,15 +50,7 @@
 
 .goal_button_ul {
   margin-bottom: 7px;
-}
-
-.goal_button {
-  margin-right: 2rem;
-}
-
-.csv_export {
-  margin-top: 2rem;
-  margin-left: 3.6rem;
+  padding: 0;
 }
 
 .pagination {

@@ -14,42 +14,34 @@
     <h4 class="title_in_plan_edit">今月の計画</h4>
     <small class="plan_edit_guide">今月取り組む解決案を取組中に変更して更新してください。</small>
     <p class="goal_title_in_edit"><strong><%= @goal.title %></strong></p>
-    <div class="row plan_edit_zone">
-      <div class="col-10 plan_edit_title">
-        <ul class="list-group">
-          <% @goal.problems.each do |p| %>
-            <% if p.status == t('view.unsolved') %>
-              <li class="list-group-item list_head_in_edit"><strong><%= p.title %></strong></li>
-              <% p.solutions.each do |so| %>
-                <% case so.status %>
+
+    <div class="status_edit_form">
+      <ul class="list-group">
+        <%= goal.fields_for :problems do |problem| %>
+          <% if problem.object.status == t('view.unsolved') %>
+            <div class="row">
+              <li class="col-12 list-group-item status_selectbox list_head_in_edit"><%= problem.object.title %></li>
+              <%= problem.fields_for :solutions do |solution| %>
+                <% case solution.object.status %>
                   <% when t('view.holding') %>
-                    <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+                    <li class="col-10 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
+                    <li class="col-2 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                   <% when t('view.working') %>
-                    <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+                    <li class="col-10 list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
+                    <li class="col-2 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                   <% when t('view.done') %>
-                    <li class="list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= so.status %></span><%= so.title %></li>
+                    <li class="col-10 list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
+                    <li class="col-2 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                 <% end %>
               <% end %>
-            <% end %>
-          <% end%>
-        </ul>
-      </div>
-
-      <div class="col-2 status_edit_form">
-        <ul class="list-group">
-
-          <%= goal.fields_for :problems do |problem| %>
-            <% if problem.object.status == t('view.unsolved') %>
-              <li class="list-group-item status_selectbox list_head_in_edit"><%= problem.text_field :status, readonly: :status , class: "form-control-plaintext status_edit_select_box list_head_for_select_box" %></li>
-              <%= problem.fields_for :solutions do |solution| %>
-                <li class="list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
-              <% end %>
-            <% end %>
+            </div>
           <% end %>
-        </ul>
-      </div>
+        <% end %>
+      </ul>
     </div>
 
-  <p class="actions"><%= goal.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %></p>
+    <div class="update_button_div">
+      <%= goal.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %>
+    </div>
   <% end %>
 </div>

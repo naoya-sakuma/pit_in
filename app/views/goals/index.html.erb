@@ -6,10 +6,11 @@
     <small class="plan_index_guide">現在作成されている目標一覧です。編集から取り組む目標を設定してください。</small>
   <% end %>
 
+  <div class="row card_row">
   <% @goals.each do |goal| %>
-    <div class="card goal_card">
-      <div class="row goal_card_row">
-        <div class="col-8">
+    <div class="card col-auto goal_card">
+      <div class="row no-gutters goal_card_row">
+        <div class="col-10">
           <% case goal.status %>
             <% when t('view.holding') %>
               <h4 class="goal_title"><span class="badge badge-danger badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
@@ -25,7 +26,7 @@
           <ul class="goal_info"><small>達成しないと？：<%= goal.when_fail %></small></ul>
         </div>
 
-        <div class="col-4 goal_buttons">
+        <div class="col-2 goal_buttons">
           <ul class="goal_button_ul"><%= link_to t('view.button.show'), goal, class: "btn btn-outline-secondary goal_button" %></ul>
           <ul class="goal_button_ul"><%= link_to t('view.button.edit'), edit_goal_path(goal), class: "btn btn-outline-secondary goal_button" %></ul>
           <ul class="goal_button_ul"><%= link_to t('view.button.delete'), goal, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary goal_button" %></ul>
@@ -33,5 +34,6 @@
       </div>
     </div>
   <% end %>
+  </div>
   <%= paginate @goals %>
 </div>

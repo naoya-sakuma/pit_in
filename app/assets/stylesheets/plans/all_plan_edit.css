@@ -13,34 +13,29 @@
   margin-bottom: 0;
 }
 
-.plan_edit_title {
-  padding-right: 0;
-}
-
-.status_edit_form {
-  padding-left: 0;
-}
-
 .status_edit_select_box {
   font-size: 10px;
   height: 30px;
-}
-
-.status_selectbox {
-  padding-top: 9px;
-  padding-bottom: 9px;
-  margin: 0;
 }
 
 .list_head_in_edit {
   background-color: #DDDDDD;
 }
 
-.list_head_for_select_box {
-  text-align: center;
-  font-size: 14px;
+.status_edit_form {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.plan_save {
-  margin-top: 1rem;
+.update_button_div {
+  margin-top: 1.5rem;
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
 }
+
+/* .plan_save {
+  margin-top: 1rem;
+  margin-left: .8rem;
+} */

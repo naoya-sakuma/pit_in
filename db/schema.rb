@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_211548) do
+ActiveRecord::Schema.define(version: 2021_02_23_122542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.bigint "community_id"
-    t.text "content"
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -26,16 +26,16 @@ ActiveRecord::Schema.define(version: 2021_02_18_211548) do
   end
 
   create_table "communities", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "summary"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_communities_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.date "day_to_start"
     t.string "purpose"
     t.string "status", default: "保留中"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_211548) do
     t.text "when_fail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.date "day_to_finish"
     t.string "author"
     t.string "share", default: "非公開"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_211548) do
   create_table "problems", force: :cascade do |t|
     t.string "title", null: false
     t.string "status", default: "未解決"
-    t.bigint "goal_id"
+    t.bigint "goal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_problems_on_goal_id"
@@ -91,19 +91,19 @@ ActiveRecord::Schema.define(version: 2021_02_18_211548) do
   end
 
   create_table "solutions", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "status", default: "保留中"
-    t.bigint "problem_id"
+    t.bigint "problem_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["problem_id"], name: "index_solutions_on_problem_id"
   end
 
   create_table "steps", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "status", default: "保留中"
     t.bigint "user_id"
-    t.bigint "task_id"
+    t.bigint "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_steps_on_task_id"
@@ -111,10 +111,10 @@ ActiveRecord::Schema.define(version: 2021_02_18_211548) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "status", default: "保留中"
     t.bigint "user_id"
-    t.bigint "solution_id"
+    t.bigint "solution_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["solution_id"], name: "index_tasks_on_solution_id"

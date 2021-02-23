@@ -51,6 +51,7 @@ RSpec.describe '目標関連機能', type: :system do
     context '目標と一緒に問題を登録した場合' do
       it '目標詳細画面で問題が表示される' do
         visit new_goal_path
+        click_on '問題追加'
         fill_in 'タイトル', with: 'テストタイトル'
         fill_in 'problem_form', with: 'テスト課題'
         click_on '保存'

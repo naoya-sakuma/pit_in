@@ -13,6 +13,7 @@ RSpec.describe '目標関連機能', type: :system do
       click_button 'ログイン'
       visit new_goal_path
       fill_in 'タイトル', with: 'テストタイトル'
+      click_on '問題追加'
       fill_in 'problem_form', with: 'テスト課題'
       click_on '保存'
       click_on '編集'
