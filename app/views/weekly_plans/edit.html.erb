@@ -23,7 +23,7 @@
               <div class="row">
                 <li class="col-12 list-group-item status_selectbox list_head_in_edit"><%= solution.object.title %></li>
                 <%= solution.fields_for :tasks do |task| %>
-                  <% case solution.object.status %>
+                  <% case task.object.status %>
                     <% when t('view.holding') %>
                       <li class="col-10 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= task.object.status %></span><%= task.object.title %></li>
                       <li class="col-2 list-group-item status_selectbox"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
