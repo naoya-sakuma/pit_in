@@ -24,14 +24,14 @@
               <%= problem.fields_for :solutions do |solution| %>
                 <% case solution.object.status %>
                   <% when t('view.holding') %>
-                    <li class="col-9 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
-                    <li class="col-3 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
+                    <li class="col-10 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
+                    <li class="col-2 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                   <% when t('view.working') %>
-                    <li class="col-9 list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
-                    <li class="col-3 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
+                    <li class="col-10 list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
+                    <li class="col-2 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                   <% when t('view.done') %>
-                    <li class="col-9 list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
-                    <li class="col-3 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
+                    <li class="col-10 list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= solution.object.status %></span><%= solution.object.title %></li>
+                    <li class="col-2 list-group-item status_selectbox"><%= solution.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                 <% end %>
               <% end %>
             </div>
@@ -39,6 +39,7 @@
         <% end %>
       </ul>
     </div>
+
     <div class="update_button_div">
       <%= goal.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %>
     </div>
