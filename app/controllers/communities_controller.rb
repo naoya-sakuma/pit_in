@@ -13,7 +13,7 @@ class CommunitiesController < ApplicationController
   def create
     @community = current_user.communities.build(community_params)
     if @community.save
-      redirect_to community_management_communities_path, notice: 'コミュニティが作成されました'
+      redirect_to management_communities_path, notice: 'コミュニティが作成されました'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class CommunitiesController < ApplicationController
 
   def update
     if @community.update(community_params)
-      redirect_to community_management_communities_path, notice: '変更が保存されました'
+      redirect_to management_communities_path, notice: '変更が保存されました'
     else
       render :edit
     end
