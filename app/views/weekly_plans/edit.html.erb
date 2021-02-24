@@ -1,5 +1,5 @@
-<div class="container-fluid plan_edit_container">
-  <%= form_with(model: @goal, url: weekly_plan_path, local: true) do |goal| %>
+_form<div class="container-fluid plan_edit_container">
+  <%= form_with(model: @goal, url: weekly_plan_path, local: true) do |goal_form| %>
     <% if @goal.errors.any? %>
       <div id="error_explanation">
         <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
@@ -17,22 +17,22 @@
 
     <div class="status_edit_form">
       <ul class="list-group">
-        <%= goal.fields_for :problems do |problem| %>
-          <%= problem.fields_for :solutions do |solution| %>
-            <% if solution.object.status == t('view.working') %>
+        <%= goal_form.fields_for :problems do |problem_form| %>
+          <%= problem_form.fields_for :solutions do |solution_form| %>
+            <% if solution_form.object.status == t('view.working') %>
               <div class="row">
-                <li class="col-12 list-group-item status_selectbox list_head_in_edit"><%= solution.object.title %></li>
-                <%= solution.fields_for :tasks do |task| %>
-                  <% case task.object.status %>
+                <li class="col-12 list-group-item status_selectbox list_head_in_edit"><%= solution_form.object.title %></li>
+                <%= solution_form.fields_for :tasks do |task_form| %>
+                  <% case task_form.object.status %>
                     <% when t('view.holding') %>
-                      <li class="col-10 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= task.object.status %></span><%= task.object.title %></li>
-                      <li class="col-2 list-group-item status_selectbox"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
+                      <li class="col-10 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= task_form.object.status %></span><%= task_form.object.title %></li>
+                      <li class="col-2 list-group-item status_selectbox"><%= task_form.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                     <% when t('view.working') %>
-                      <li class="col-10 list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= task.object.status %></span><%= task.object.title %></li>
-                      <li class="col-2 list-group-item status_selectbox"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
+                      <li class="col-10 list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= task_form.object.status %></span><%= task_form.object.title %></li>
+                      <li class="col-2 list-group-item status_selectbox"><%= task_form.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                     <% when t('view.done') %>
-                      <li class="col-10 list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= task.object.status %></span><%= task.object.title %></li>
-                      <li class="col-2 list-group-item status_selectbox"><%= task.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
+                      <li class="col-10 list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= task_form.object.status %></span><%= task_form.object.title %></li>
+                      <li class="col-2 list-group-item status_selectbox"><%= task_form.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                   <% end %>
                 <% end %>
               </div>
@@ -42,7 +42,7 @@
       </ul>
     </div>
     <div class="update_button_div">
-      <%= goal.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %>
+      <%= goal_form.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %>
     </div>
   <% end %>
 </div>

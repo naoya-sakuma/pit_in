@@ -1,5 +1,5 @@
 <div class="container-fluid plan_edit_container">
-  <%= form_with(model: @goal, url: problem_path, local: true) do |goal| %>
+  <%= form_with(model: @goal, url: problem_path, local: true) do |goal_form| %>
     <% if @goal.errors.any? %>
       <div id="error_explanation">
         <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
@@ -32,13 +32,13 @@
 
       <div class="col-2 status_edit_form">
         <ul class="list-group">
-          <%= goal.fields_for :problems do |problem| %>
-            <li class="list-group-item status_selectbox"><%= problem.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %>
+          <%= goal_form.fields_for :problems do |problem_form| %>
+            <li class="list-group-item status_selectbox"><%= problem_form.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %>
           <% end %>
         </ul>
       </div>
     </div>
 
-  <p class="actions"><%= goal.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %></p>
+  <p class="actions"><%= goal_form.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %></p>
   <% end %>
 </div>
