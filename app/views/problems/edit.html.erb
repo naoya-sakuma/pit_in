@@ -14,31 +14,25 @@
     <h4 class="title_in_plan_edit">問題の管理</h4>
     <small class="plan_edit_guide">解決した問題は解決済みに変更してください。</small>
     <p class="goal_title_in_edit"><strong><%= @goal.title %></strong></p>
-    <div class="row plan_edit_zone">
-      <div class="col-10 plan_edit_title">
-        <ul class="list-group">
-          <% @goal.problems.each do |p| %>
-            <% if p.title != "" %>
-              <% case p.status %>
-                <% when t('view.unsolved') %>
-                  <li class="list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= p.status %></span><%= p.title %></li>
-                <% when t('view.solved') %>
-                  <li class="list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= p.status %></span><%= p.title %></li>
-              <% end %>
-            <% end %>
-          <% end%>
-        </ul>
-      </div>
 
-      <div class="col-2 status_edit_form">
-        <ul class="list-group">
+    <div class="status_edit_form">
+      <ul class="list-group">
+        <div class="row">
           <%= goal_form.fields_for :problems do |problem_form| %>
-            <li class="list-group-item status_selectbox"><%= problem_form.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %>
+            <% case problem_form.object.status %>
+              <% when t('view.unsolved') %>
+                <li class="col-10 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= problem_form.object.status %></span><%= problem_form.object.title %></li>
+                <li class="col-2 list-group-item status_selectbox" id="problem_status_selectbox"><%= problem_form.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %>
+              <% when t('view.solved') %>
+                <li class="col-10 list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= problem_form.object.status %></span><%= problem_form.object.title %></li>
+                <li class="col-2 list-group-item status_selectbox" id="problem_status_selectbox"><%= problem_form.select :status, [[t('view.unsolved'), t('view.unsolved')], [t('view.solved'), t('view.solved')]], {}, class: "form-control status_edit_select_box" %>
+            <% end %>
           <% end %>
-        </ul>
-      </div>
+        </div>
+      </ul>
     </div>
-
-  <p class="actions"><%= goal_form.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %></p>
+    <div class="update_button_div">
+      <%= goal_form.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %>
+    </div>
   <% end %>
 </div>
