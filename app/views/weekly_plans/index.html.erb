@@ -9,23 +9,25 @@
         <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
         <div class="card plan_card">
           <% goal.problems.each do |problem| %>
-            <% problem.solutions.each do |solution| %>
-              <% if solution.status == t('view.working') && solution.title != "" %>
-                <% the_number_of_working_solutions += 1 %>
-                <strong class="card-title info_title_in_plan list_head_in_index"><%= solution.title %></strong>
-                <ul class="list-group list-group-flush">
-                  <% solution.tasks.each do |task|%>
-                  <% the_number_of_tasks += 1 %>
-                    <% case task.status %>
-                      <% when t('view.holding') %>
-                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-danger badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                      <% when t('view.working') %>
-                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-primary badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                      <% when t('view.done') %>
-                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-warning badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+            <% if problem.status == t('view.unsolved') %>
+              <% problem.solutions.each do |solution| %>
+                <% if solution.status == t('view.working') && solution.title != "" %>
+                  <% the_number_of_working_solutions += 1 %>
+                  <strong class="card-title info_title_in_plan list_head_in_index"><%= solution.title %></strong>
+                  <ul class="list-group list-group-flush">
+                    <% solution.tasks.each do |task|%>
+                    <% the_number_of_tasks += 1 %>
+                      <% case task.status %>
+                        <% when t('view.holding') %>
+                          <li class="list-group-item task_title_in_weekly"><span class="badge badge-danger badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+                        <% when t('view.working') %>
+                          <li class="list-group-item task_title_in_weekly"><span class="badge badge-primary badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+                        <% when t('view.done') %>
+                          <li class="list-group-item task_title_in_weekly"><span class="badge badge-warning badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                </ul>
+                  </ul>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
