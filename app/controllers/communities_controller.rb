@@ -35,7 +35,7 @@ class CommunitiesController < ApplicationController
 
   def destroy
     @community.destroy
-    redirect_to community_management_communities_path, notice: '削除されました'
+    redirect_to management_communities_path, notice: '削除されました'
   end
 
   def search
