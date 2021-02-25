@@ -22,7 +22,7 @@
         <% if the_number_of_problems != 0 %>
           <%= link_to t('view.button.edit'), edit_problem_path(goal), class: "btn btn-outline-secondary planning_btn" %>
         <% else %>
-          <small class="plan_index_guide">この目標に登録されている問題はありません。目標編集から問題を登録してください。</small>
+          <p class="explanation_when_no_item_to_edit"><small>現在この目標に登録されている問題はありません。目標編集から問題を登録してください。</small></p>
         <% end %>
       </div>
     <% end %>

@@ -35,7 +35,7 @@
         <% if the_number_of_working_tasks != 0 %>
           <%= link_to t('view.button.edit'), edit_daily_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
         <% else %>
-          <small class="plan_index_guide">この目標には取組中のタスクが登録されていません。</small>
+          <p class="explanation_when_no_item_to_edit"><small>現在この目標には取組中のタスクはありません。</small></p>
         <% end %>
       </div>
     <% end %>

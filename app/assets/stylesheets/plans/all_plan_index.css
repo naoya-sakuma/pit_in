@@ -30,3 +30,8 @@
   background-color: #DDDDDD;
   height: 50px;
 }
+
+.explanation_when_no_item_to_edit {
+  text-align: center;
+  margin-top: 1.5rem;
+}

@@ -29,7 +29,7 @@
         <% if the_number_of_unsolved_problems != 0 %>
           <%= link_to t('view.button.edit'), edit_monthly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
         <% else %>
-          <small class="plan_index_guide">この目標に登録されている未解決の問題はありません。目標編集または問題の管理から未解決の問題を登録してください。</small>
+          <p class="explanation_when_no_item_to_edit"><small>現在この目標には未解決の問題はありません。</small></p>
         <% end %>
       </div>
     <% end %>
