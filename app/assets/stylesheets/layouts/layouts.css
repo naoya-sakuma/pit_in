@@ -17,6 +17,27 @@ footer {
   margin-top: 2rem;
 }
 
+.header_icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 300px;
+}
+
+.user_related_menu {
+  margin-bottom: 0;
+}
+
+.user_related_menu_dropdown {
+  height: 2rem;
+}
+
+.user_related_menu_link {
+  display: block;
+  padding: 0;
+  height:100%;
+  color: #fff;
+}
+
 .footer_container {
   width: 70%;
 }
