@@ -26,13 +26,13 @@
                   <%= task_form.fields_for :steps do |step_form| %>
                     <% case step_form.object.status %>
                       <% when t('view.holding') %>
-                        <li class="col-10 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= step_form.object.status %></span><%= task_form.object.title %></li>
+                        <li class="col-10 list-group-item"><span class="badge badge-danger badge-pill goal_badges"><%= step_form.object.status %></span><%= step_form.object.title %></li>
                         <li class="col-2 list-group-item status_selectbox"><%= step_form.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                       <% when t('view.working') %>
-                        <li class="col-10 list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= step_form.object.status %></span><%= task_form.object.title %></li>
+                        <li class="col-10 list-group-item"><span class="badge badge-primary badge-pill goal_badges"><%= step_form.object.status %></span><%= step_form.object.title %></li>
                         <li class="col-2 list-group-item status_selectbox"><%= step_form.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                       <% when t('view.done') %>
-                        <li class="col-10 list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= step_form.object.status %></span><%= task_form.object.title %></li>
+                        <li class="col-10 list-group-item"><span class="badge badge-warning badge-pill goal_badges"><%= step_form.object.status %></span><%= step_form.object.title %></li>
                         <li class="col-2 list-group-item status_selectbox"><%= step_form.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control status_edit_select_box" %>
                     <% end %>
                   <% end %>
