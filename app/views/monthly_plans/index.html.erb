@@ -3,35 +3,33 @@
 
   <div class="d-flex flex-column-reverse">
     <% the_number_of_unsolved_problems = 0 %>
-    <% the_number_of_solutions = 0 %>
     <% @goals.each do |goal| %>
       <div class="planning_information">
         <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
         <div class="card plan_card">
           <ul class="list-group list-group-flush">
+            <% the_number_of_unsolved_problems = goal.problems.where(status: t('view.unsolved')).count %>
             <% goal.problems.each do |problem| %>
-              <% if problem.title != "" && problem.status == t('view.unsolved') %>
-                <% the_number_of_unsolved_problems += 1 %>
+              <% if problem.status == t('view.unsolved') %>
                 <li class="list-group-item info_title_in_plan list_head_in_index"><strong><%= problem.title %></strong></li>
                 <% problem.solutions.each do |solution|%>
-                  <% if solution.title != "" %>
-                    <% the_number_of_solutions += 1 %>
-                    <% case solution.status %>
-                      <% when t('view.holding') %>
-                        <li class="list-group-item solution_title_in_monthly"><span class="badge badge-danger badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
-                      <% when t('view.working') %>
-                        <li class="list-group-item solution_title_in_monthly"><span class="badge badge-primary badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
-                      <% when t('view.done') %>
-                        <li class="list-group-item solution_title_in_monthly"><span class="badge badge-warning badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
-                    <% end %>
+                  <% case solution.status %>
+                    <% when t('view.holding') %>
+                      <li class="list-group-item solution_title_in_monthly"><span class="badge badge-danger badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
+                    <% when t('view.working') %>
+                      <li class="list-group-item solution_title_in_monthly"><span class="badge badge-primary badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
+                    <% when t('view.done') %>
+                      <li class="list-group-item solution_title_in_monthly"><span class="badge badge-warning badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
                   <% end %>
                 <% end %>
               <% end %>
             <% end %>
           </ul>
         </div>
-        <% if the_number_of_solutions != 0 %>
+        <% if the_number_of_unsolved_problems != 0 %>
           <%= link_to t('view.button.edit'), edit_monthly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
+        <% else %>
+          <small class="plan_index_guide">この目標に登録されている未解決の問題はありません。目標編集または問題の管理から未解決の問題を登録してください。</small>
         <% end %>
       </div>
     <% end %>

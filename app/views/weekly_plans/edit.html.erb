@@ -1,4 +1,4 @@
-_form<div class="container-fluid plan_edit_container">
+<div class="container-fluid plan_edit_container">
   <%= form_with(model: @goal, url: weekly_plan_path, local: true) do |goal_form| %>
     <% if @goal.errors.any? %>
       <div id="error_explanation">
