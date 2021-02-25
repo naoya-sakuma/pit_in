@@ -13,7 +13,7 @@ RSpec.describe 'コメント関連機能', type: :system do
     end
     context 'コミュニティ作成者がコメントした場合' do
       it '投稿できる' do
-        visit community_management_communities_path
+        visit management_communities_path
         click_on "詳細", match: :first
         fill_in "comment_content", with: "テストコメント"
         click_on "投稿"
