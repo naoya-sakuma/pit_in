@@ -22,15 +22,6 @@
             <ul class="navbar-nav">
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">マイページ</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/">登録情報</a>
-                  <a class="dropdown-item" href="/users/edit">情報変更</a>
-                  <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
-                </div>
-              </li>
-
-              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">目標</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/goals">目標一覧</a>
@@ -67,9 +58,21 @@
               </li>
             </ul>
 
-            <ul class="navbar-nav justify-content-end">
-              <li class="nav-item active">
-                <a class="nav-link" href="/users/sign_out" data-method="delete">ログアウト<span class="sr-only">(current)</span></a>
+            <ul class="user_related_menu">
+              <li class="nav-item dropdown user_related_menu_dropdown">
+                <a class="nav-link dropdown-toggle user_related_menu_link" href="#" id="navbarDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <% if current_user.icon && current_user.icon.url %>
+                    <%= image_tag(current_user.icon.url, class: "header_icon") %>
+                  <% else %>
+                    <%= image_tag("/default.png", class: "header_icon") %>
+                  <% end %>
+                  <%= current_user.name %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="#navbarDropdownMenu" >
+                  <%= link_to "マイページ", root_path(current_user.id), class: "dropdown-item" %>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                  <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
+                </div>
               </li>
             </ul>
 

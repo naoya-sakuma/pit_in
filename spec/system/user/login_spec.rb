@@ -23,7 +23,8 @@ RSpec.describe 'ユーザー機能', type: :system do
         visit new_user_session_path
         fill_in 'メールアドレス', with: 'test@test.com'
         fill_in 'パスワード', with: 'test@test.com'
-        click_button 'ログイン'
+        click_on 'ログイン'
+        click_on 'テストユーザー'
         click_on 'ログアウト'
         expect(page).to have_content 'アカウント登録'
       end
