@@ -1,4 +1,4 @@
-<%= nested_form_for(@goal, local: true) do |goal| %>
+<%= nested_form_for(@goal, local: true) do |goal_form| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
       <h2><%= @goal.errors.count %>件のエラーがあります。</h2>
@@ -13,109 +13,109 @@
   <div class="goal_info_edit container-fluid form-group">
     <div class="forms_for_goals_table">
       <div class="goal_info_edit_each">
-        <%= goal.label :title, t('view.goal_info.title') %>
-        <%= goal.text_field :title, class: "form-control" %>
+        <%= goal_form.label :title, t('view.goal_info.title') %>
+        <%= goal_form.text_field :title, class: "form-control" %>
       </div>
       <div class="goal_info_edit_each">
-        <%= goal.hidden_field :author, value: current_user.nickname %>
+        <%= goal_form.hidden_field :author, value: current_user.nickname %>
       </div>
       <div class="goal_info_edit_each row">
         <div class="col-3" id="day_to_start_col">
-          <%= goal.label :day_to_start, t('view.goal_info.day_to_start') %>
-          <%= goal.date_field :day_to_start, class: "form-control" %>
+          <%= goal_form.label :day_to_start, t('view.goal_info.day_to_start') %>
+          <%= goal_form.date_field :day_to_start, class: "form-control" %>
         </div>
         <div class="col-3" id="day_to_finish_col">
-          <%= goal.label :day_to_finish, t('view.goal_info.day_to_finish') %>
-          <%= goal.date_field :day_to_finish, class: "form-control" %>
+          <%= goal_form.label :day_to_finish, t('view.goal_info.day_to_finish') %>
+          <%= goal_form.date_field :day_to_finish, class: "form-control" %>
         </div>
         <div class="col-3" id="status_col">
-          <%= goal.label :status, t('view.goal_info.status') %>
-          <%= goal.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control" %>
+          <%= goal_form.label :status, t('view.goal_info.status') %>
+          <%= goal_form.select :status, [[t('view.holding'), t('view.holding')], [t('view.working'), t('view.working')], [t('view.done'), t('view.done')]], {}, class: "form-control" %>
         </div>
         <div class="col-3" id="status_col">
-          <%= goal.label :share, t('view.goal_info.public') %>
-          <%= goal.select :share, [[t('view.goal_info.private'), t('view.goal_info.private')], [t('view.goal_info.public'), t('view.goal_info.public')]], {}, class: "form-control" %>
+          <%= goal_form.label :share, t('view.goal_info.public') %>
+          <%= goal_form.select :share, [[t('view.goal_info.private'), t('view.goal_info.private')], [t('view.goal_info.public'), t('view.goal_info.public')]], {}, class: "form-control" %>
         </div>
       </div>
       <div class="goal_info_edit_each">
-        <%= goal.label :purpose, t('view.goal_info.purpose') %>
-        <%= goal.text_field :purpose, class: "form-control" %>
+        <%= goal_form.label :purpose, t('view.goal_info.purpose') %>
+        <%= goal_form.text_field :purpose, class: "form-control" %>
       </div>
       <div class="goal_info_edit_each">
-        <%= goal.label :when_succeed, t('view.goal_info.when_succeed') %>
-        <%= goal.text_area :when_succeed, class: "form-control" %>
+        <%= goal_form.label :when_succeed, t('view.goal_info.when_succeed') %>
+        <%= goal_form.text_area :when_succeed, class: "form-control" %>
       </div>
       <div class="goal_info_edit_each" id="goal_info_edit_each_end">
-        <%= goal.label :when_fail, t('view.goal_info.when_fail') %>
-        <%= goal.text_area :when_fail, class: "form-control" %>
+        <%= goal_form.label :when_fail, t('view.goal_info.when_fail') %>
+        <%= goal_form.text_area :when_fail, class: "form-control" %>
       </div>
     </div>
 
     <!-- problem -->
     <div class="container-fluid card border-primary problem_form_card" id="goal_related_info_top">
-      <%= goal.fields_for :problems do |problem| %>
+      <%= goal_form.fields_for :problems do |problem_form| %>
       <h4 class="form_title"><%= t('view.goal_related_info.problem') %></h4>
         <div class="row form_row">
           <div class="col-12">
             <small class="from-explanation">目標達成を妨げている問題を入力してください。</small>
           </div>
-          <%= problem.text_field :title, class: "col-9 form-control goal_related_info_forms border-primary", id: "problem_form" %>
-          <%= problem.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "problem_form_delete" %>
+          <%= problem_form.text_field :title, class: "col-9 form-control goal_related_info_forms border-primary", id: "problem_form" %>
+          <%= problem_form.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "problem_form_delete" %>
         </div>
 
   　　  <!-- solution -->
         <div class="problem container-fluid card border-danger solution_form_card">
-          <%= problem.fields_for :solutions do |solution| %>
+          <%= problem_form.fields_for :solutions do |solution_form| %>
           <h4 class="form_title"><%= t('view.goal_related_info.solution') %></h4>
             <div class="row form_row">
               <div class="col-12">
                 <small class="from-explanation">問題を解決するアイディアを入力してください。</small>
               </div>
-              <%= solution.text_field :title, class: "col-9 form-control goal_related_info_forms border-danger" %>
-              <%= solution.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "solution_form_delete" %>
+              <%= solution_form.text_field :title, class: "col-9 form-control goal_related_info_forms border-danger" %>
+              <%= solution_form.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "solution_form_delete" %>
             </div>
 
             <!-- task -->
             <div class="container-fluid card border-warning task_form_card">
-              <%= solution.fields_for :tasks do |task| %>
+              <%= solution_form.fields_for :tasks do |task_form| %>
                 <h4 class="form_title"><%= t('view.goal_related_info.task') %></h4>
                 <div class="row form_row">
                   <div class="col-12">
                     <small class="from-explanation">解決案を実行するための行動を入力してください。</small>
                   </div>
-                  <%= task.text_field :title, class: "col-9 form-control goal_related_info_forms border-warning" %>
-                  <%= task.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "task_form_delete" %>
+                  <%= task_form.text_field :title, class: "col-9 form-control goal_related_info_forms border-warning" %>
+                  <%= task_form.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "task_form_delete" %>
                 </div>
 
                 <!-- step -->
                 <div class="container-fluid card border-success step_form_card">
                   <h4 class="form_title"><%= t('view.goal_related_info.step') %></h4>
                   <small>タスクとして考えた行動をさらに細分化して、より具体的で小さな行動を入力してください。</small>
-                  <%= task.fields_for :steps do |step| %>
+                  <%= task_form.fields_for :steps do |step_form| %>
                     <div class="row form_row">
-                      <%= step.text_field :title, class: "col-9 form-control goal_related_info_forms border-success" %>
-                      <%= step.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "step_form_delete" %>
+                      <%= step_form.text_field :title, class: "col-9 form-control goal_related_info_forms border-success" %>
+                      <%= step_form.link_to_remove t('view.button.delete'), class: "col-2 goal_related_info_forms_delete", id: "step_form_delete" %>
                     </div>
                   <% end %>
-                  <%= task.link_to_add t('view.button.add_step'), :steps, id: "step_form_add"  %>
+                  <%= task_form.link_to_add t('view.button.add_step'), :steps, id: "step_form_add"  %>
                 </div>
                 <!-- step -->
 
               <% end %>
-              <%= solution.link_to_add t('view.button.add_task'), :tasks, id: "task_form_add" %>
+              <%= solution_form.link_to_add t('view.button.add_task'), :tasks, id: "task_form_add" %>
             </div>
             <!-- task -->
 
           <% end %>
-          <%= problem.link_to_add t('view.button.add_solution'), :solutions, id: "solution_form_add" %>
+          <%= problem_form.link_to_add t('view.button.add_solution'), :solutions, id: "solution_form_add" %>
         </div>
         <!-- solution -->
 
         <% end %>
-        <%= goal.link_to_add t('view.button.add_problem'), :problems, id: "problem_form_add" %>
+        <%= goal_form.link_to_add t('view.button.add_problem'), :problems, id: "problem_form_add" %>
       </div>
       <!-- problem -->
 
-    <%= goal.submit t('view.button.save'), class: "btn btn-outline-secondary goal_submit" %>
+    <%= goal_form.submit t('view.button.save'), class: "btn btn-outline-secondary goal_submit" %>
   <% end %>
 </div>

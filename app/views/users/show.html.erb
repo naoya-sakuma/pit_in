@@ -13,9 +13,10 @@
       <h4><%= current_user.name %></h4>
       <p id="nickname"><%= current_user.nickname %></p>
       <p id="self_introduction"><%= t('view.self_intro') %></p>
-      <!-- <p class="card intro_card"><%#= safe_join(current_user.introduction.split("\n"), tag(:br)) %></p> -->
-      <p class="card intro_card"><%= current_user.introduction %></p>
-      <%= link_to t('view.button.edit'), edit_user_registration_path, class: "btn btn-outline-secondary" %>
+      <div class="card intro_card">
+        <%= simple_format(current_user.introduction) %>
+      </div>
+        <%= link_to t('view.button.edit'), edit_user_registration_path, class: "btn btn-outline-secondary", id: "user_info_edit_button" %>
     </div>
 
   </div>

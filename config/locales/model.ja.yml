@@ -20,6 +20,14 @@ ja:
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
       goal:
-        title: タイトル
+        title: 目標のタイトル
+      problems:
+        title: 問題のタイトル
+      problems/solutions:
+        title: 解決案のタイトル
+      problems/solutions/tasks:
+        title: タスクのタイトル
+      problems/solutions/tasks/steps:
+        title: ステップのタイトル
       community:
         title: タイトル

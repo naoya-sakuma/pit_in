@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <%= form_with(model: @community, local: true) do |community| %>
+  <%= form_with(model: @community, local: true) do |community_form| %>
     <% if @community.errors.any? %>
       <div id="error_explanation">
         <h2><%= @community.errors.count %>件のエラーがあります。</h2>
@@ -12,14 +12,14 @@
     <% end %>
 
     <div class="goal_info_edit_each">
-      <%= community.label :title, t('view.community_info.title') %>
-      <%= community.text_field :title, class: "form-control", placeholder: '作成するコミュニティの名前を入力してください。' %>
+      <%= community_form.label :title, t('view.community_info.title') %>
+      <%= community_form.text_field :title, class: "form-control", placeholder: '作成するコミュニティの名前を入力してください。' %>
     </div>
     <div class="goal_info_edit_each">
-      <%= community.label :summary, t('view.community_info.summary') %>
-      <%= community.text_field :summary, class: "form-control" %>
+      <%= community_form.label :summary, t('view.community_info.summary') %>
+      <%= community_form.text_field :summary, class: "form-control" %>
     </div>
 
-    <%= community.submit t('view.button.save'), class: "btn btn-outline-secondary goal_submit" %>
+    <%= community_form.submit t('view.button.save'), class: "btn btn-outline-secondary goal_submit" %>
   <% end %>
 </div>

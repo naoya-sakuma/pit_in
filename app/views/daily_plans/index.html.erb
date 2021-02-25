@@ -3,37 +3,39 @@
 
   <div class="d-flex flex-column-reverse">
     <% the_number_of_working_tasks = 0 %>
-    <% the_number_of_steps = 0 %>
     <% @goals.each do |goal| %>
       <div class="planning_information">
         <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
         <div class="card plan_card">
           <% goal.problems.each do |problem| %>
-            <% problem.solutions.each do |solution| %>
-              <% solution.tasks.each do |task|%>
-                <% if task.status == t('view.working') %>
-                  <% the_number_of_working_tasks += 1 %>
-                  <strong class="card-title info_title_in_plan list_head_in_index"><%= task.title %></strong>
-                  <ul class="list-group list-group-flush">
-                    <% task.steps.each do |step|%>
-                    <% the_number_of_steps += 1 %>
-                      <% case step.status %>
-                        <% when t('view.holding') %>
-                          <li class="list-group-item step_title_in_daily"><span class="badge badge-danger badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
-                        <% when t('view.working') %>
-                          <li class="list-group-item step_title_in_daily"><span class="badge badge-primary badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
-                        <% when t('view.done') %>
-                          <li class="list-group-item step_title_in_daily"><span class="badge badge-warning badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+            <% if problem.status == t('view.unsolved') %>
+              <% problem.solutions.each do |solution| %>
+                <% the_number_of_working_tasks = solution.tasks.where(status: t('view.working')).count %>
+                <% solution.tasks.each do |task|%>
+                  <% if task.status == t('view.working') %>
+                    <strong class="card-title info_title_in_plan list_head_in_index"><%= task.title %></strong>
+                    <ul class="list-group list-group-flush">
+                      <% task.steps.each do |step|%>
+                        <% case step.status %>
+                          <% when t('view.holding') %>
+                            <li class="list-group-item step_title_in_daily"><span class="badge badge-danger badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                          <% when t('view.working') %>
+                            <li class="list-group-item step_title_in_daily"><span class="badge badge-primary badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                          <% when t('view.done') %>
+                            <li class="list-group-item step_title_in_daily"><span class="badge badge-warning badge-pill goal_badges"><%= step.status %></span><%= step.title %></li>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </ul>
+                    </ul>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
           <% end %>
         </div>
-        <% if the_number_of_steps != 0 %>
+        <% if the_number_of_working_tasks != 0 %>
           <%= link_to t('view.button.edit'), edit_daily_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
+        <% else %>
+          <p class="explanation_when_no_item_to_edit"><small>現在この目標には取組中のタスクはありません。</small></p>
         <% end %>
       </div>
     <% end %>

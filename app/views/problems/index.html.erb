@@ -8,21 +8,21 @@
         <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
         <div class="card plan_card">
           <ul class="list-group list-group-flush">
+            <% the_number_of_problems = goal.problems.count %>
             <% goal.problems.each do |problem| %>
-              <% if problem.title != "" %>
-                <% the_number_of_problems += 1 %>
-                <% case problem.status %>
-                  <% when t('view.unsolved') %>
-                    <li class="list-group-item solution_title_in_monthly"><span class="badge badge-danger badge-pill goal_badges"><%= problem.status %></span><%= problem.title %></li>
-                  <% when t('view.solved') %>
-                    <li class="list-group-item solution_title_in_monthly"><span class="badge badge-primary badge-pill goal_badges"><%= problem.status %></span><%= problem.title %></li>
-                <% end %>
+              <% case problem.status %>
+                <% when t('view.unsolved') %>
+                  <li class="list-group-item solution_title_in_monthly"><span class="badge badge-danger badge-pill goal_badges"><%= problem.status %></span><%= problem.title %></li>
+                <% when t('view.solved') %>
+                  <li class="list-group-item solution_title_in_monthly"><span class="badge badge-primary badge-pill goal_badges"><%= problem.status %></span><%= problem.title %></li>
               <% end %>
             <% end %>
           </ul>
         </div>
         <% if the_number_of_problems != 0 %>
           <%= link_to t('view.button.edit'), edit_problem_path(goal), class: "btn btn-outline-secondary planning_btn" %>
+        <% else %>
+          <p class="explanation_when_no_item_to_edit"><small>現在この目標に登録されている問題はありません。目標編集から問題を登録してください。</small></p>
         <% end %>
       </div>
     <% end %>

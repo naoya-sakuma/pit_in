@@ -6,14 +6,16 @@
     <% @goals.each do |goal| %>
       <div class="today_jobs_list">
         <% goal.problems.each do |problem| %>
-          <% problem.solutions.each do |solution| %>
-            <% solution.tasks.each do |task|%>
-              <% task.steps.each do |step|%>
-                <% if step.status == t('view.working') && step.title != "" %>
-                  <% the_number_of_contents += 1%>
-                  <ul class="list-group">
-                    <li class="list-group-item today_job"><%= step.title %></li>
-                  </ul>
+        　<% if problem.status == t('view.unsolved') %>
+            <% problem.solutions.each do |solution| %>
+              <% solution.tasks.each do |task|%>
+                <% task.steps.each do |step|%>
+                  <% if step.status == t('view.working') && step.title != "" %>
+                    <% the_number_of_contents += 1%>
+                    <ul class="list-group">
+                      <li class="list-group-item today_job"><%= step.title %></li>
+                    </ul>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>

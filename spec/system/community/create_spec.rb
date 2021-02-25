@@ -13,7 +13,7 @@ RSpec.describe 'コミュニティ関連機能', type: :system do
     end
     context 'コミュニティを作成したユーザーでログインしている場合' do
       it '作成したコミュニティ欄にそのコミュニティが表示される' do
-        visit community_management_communities_path
+        visit management_communities_path
         within(".onw_comunity_index") do
           expect(page).to have_content "テストコミュニティ1"
         end
@@ -40,7 +40,7 @@ RSpec.describe 'コミュニティ関連機能', type: :system do
     end
     context '他のユーザーがコミュニティを作成している場合' do
       it '作成したコミュニティに表示されない' do
-        visit community_management_communities_path
+        visit management_communities_path
         within(".onw_comunity_index") do
           expect(page).not_to have_content "テストコミュニティ2"
         end

@@ -13,7 +13,7 @@ RSpec.describe 'コミュニティ関連機能', type: :system do
     end
     context 'コミュニティを編集した場合' do
       it '編集内容が反映される' do
-        visit community_management_communities_path
+        visit management_communities_path
         click_on "編集", match: :first
         fill_in "タイトル", with: "編集されたテストコミュニティ1"
         click_on "保存"
@@ -22,7 +22,7 @@ RSpec.describe 'コミュニティ関連機能', type: :system do
     end
     context 'コミュニティ編集時、タイトルなしで保存した場合' do
       it 'タイトルを入力してくださいと表示される' do
-        visit community_management_communities_path
+        visit management_communities_path
         click_on "編集", match: :first
         fill_in "タイトル", with: ""
         click_on "保存"
