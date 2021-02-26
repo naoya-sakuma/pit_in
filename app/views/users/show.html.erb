@@ -5,7 +5,7 @@
       <% if current_user.icon.present? %>
         <%= image_tag current_user.icon.url %>
       <% else %>
-        <p class="unregistered_pic">プロフィール画像未登録</p>
+        <%= image_tag "/default.png", class: "default_user_icon" %>
       <% end %>
     </div>
 
