@@ -17,6 +17,14 @@ footer {
   margin-top: 2rem;
 }
 
+.navbar_container {
+  padding: 0;
+}
+
+.navbar-brand {
+  margin-right: 0;
+}
+
 .header_icon {
   width: 30px;
   height: 30px;
@@ -29,6 +37,7 @@ footer {
 
 .user_related_menu_dropdown {
   height: 2rem;
+  list-style: none;
 }
 
 .user_related_menu_link {
