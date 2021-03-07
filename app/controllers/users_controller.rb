@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :check_logged_in
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = current_user
   end
