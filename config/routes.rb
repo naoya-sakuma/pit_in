@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  resources :users
   resources :monthly_plans
   resources :weekly_plans
   resources :daily_plans
