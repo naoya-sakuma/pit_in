@@ -1,4 +1,6 @@
-<h1>user一覧</h1>
-<% @users.each do |user| %>
-  <p><%= user.name %></p>
-<% end %>
+<div class="container-fluid today_jobs_index">
+  <h4 class="user_index_page_title">ユーザー一覧</h4>
+  <% @users.each do |user| %>
+    <p><%= user.name %></p>
+  <% end %>
+</div>
