@@ -1,6 +1,9 @@
 <div class="container-fluid today_jobs_index">
   <h4 class="user_index_page_title">ユーザー一覧</h4>
   <% @users.each do |user| %>
-    <p><%= user.name %></p>
+    <div class="card">
+      <p><%= user.name %></p>
+      <p><%= user.nickname %></p>
+    </div>
   <% end %>
 </div>
