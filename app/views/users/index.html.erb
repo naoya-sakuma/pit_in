@@ -1,9 +1,14 @@
 <div class="container-fluid today_jobs_index">
   <h4 class="user_index_page_title">ユーザー一覧</h4>
-  <% @users.each do |user| %>
-    <div class="card">
-      <p><%= user.name %></p>
-      <p><%= user.nickname %></p>
-    </div>
-  <% end %>
+  <div class="row user_card_row">
+    <% @users.each do |user| %>
+      <div class="col-auto card user_card">
+        <p>ユーザーネーム：<%= user.nickname %></p>
+        <% user.goals.each do |goal| %>
+          <p><%= goal.title %></p>
+        <% end %>
+        <p>全<%= user.goals.count %>件の目標</p>
+      </div>
+    <% end %>
+  </div>
 </div>
