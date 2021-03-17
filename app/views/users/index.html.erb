@@ -3,11 +3,19 @@
   <div class="row user_card_row">
     <% @users.each do |user| %>
       <div class="col-auto card user_card">
-        <p>ユーザーネーム：<%= user.nickname %></p>
-        <% user.goals.each do |goal| %>
-          <p><%= goal.title %></p>
-        <% end %>
-        <p>全<%= user.goals.count %>件の目標</p>
+        <div class="row">
+          <div class="col-10">
+            <p>ユーザーネーム：<%= user.nickname %></p>
+            <% user.goals.each do |goal| %>
+              <p><%= goal.title %></p>
+            <% end %>
+            <p>全<%= user.goals.count %>件の目標</p>
+          </div>
+
+          <div class="col-2">
+            <ul class="goal_button_ul"><%= link_to t('view.button.show'), user, class: "btn btn-outline-secondary goal_button" %></ul>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
