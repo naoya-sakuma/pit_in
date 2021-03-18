@@ -13,3 +13,17 @@
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
+.user_show_button_ul {
+  padding: 0;
+  text-align: center;
+
+}
+
+.user_show_button_col {
+
+}
+
+.user_show_button {
+  margin-top: 50px;
+}

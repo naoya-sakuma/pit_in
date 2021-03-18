@@ -4,7 +4,7 @@
     <% @users.each do |user| %>
       <div class="col-auto card user_card">
         <div class="row">
-          <div class="col-10">
+          <div class="col-9">
             <p>ユーザーネーム：<%= user.nickname %></p>
             <% user.goals.each do |goal| %>
               <p><%= goal.title %></p>
@@ -12,8 +12,8 @@
             <p>全<%= user.goals.count %>件の目標</p>
           </div>
 
-          <div class="col-2">
-            <ul class="goal_button_ul"><%= link_to t('view.button.show'), user, class: "btn btn-outline-secondary goal_button" %></ul>
+          <div class="col-3 user_show_button_col">
+            <ul class="user_show_button_ul"><%= link_to t('view.button.show'), user, class: "btn btn-outline-secondary user_show_button" %></ul>
           </div>
         </div>
       </div>
