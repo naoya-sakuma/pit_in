@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  resources :users
   resources :monthly_plans
   resources :weekly_plans
   resources :daily_plans
@@ -36,8 +37,5 @@ Rails.application.routes.draw do
       get :management
     end
   end
-  #get "shared_goal/searched_result_goals", to: "shared_goals#search"
-  #get "community/searched_result_communities", to: "communities#search"
-  #get "community/management_communities", to: "communities#management"
   resources :members, only: [:create, :destroy]
 end

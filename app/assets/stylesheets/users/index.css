@@ -1,0 +1,29 @@
+.user_card_row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user_card {
+  border: 1px solid #C0C0C0;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+  margin-top: 2rem;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  width: 45%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.user_show_button_ul {
+  padding: 0;
+  text-align: center;
+
+}
+
+.user_show_button_col {
+
+}
+
+.user_show_button {
+  margin-top: 50px;
+}
