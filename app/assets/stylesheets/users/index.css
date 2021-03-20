@@ -20,8 +20,8 @@
 
 }
 
-.user_show_button_col {
-
+.user_nickname {
+  border-bottom: 1px solid #dddddd;
 }
 
 .user_show_button {

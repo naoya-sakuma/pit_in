@@ -4,8 +4,10 @@
     <% @users.each do |user| %>
       <div class="col-auto card user_card">
         <div class="row">
+          <div class="col-12 user_nickname">
+            <p><%= user.nickname %></p>
+          </div>
           <div class="col-9">
-            <p>ユーザーネーム：<%= user.nickname %></p>
             <% user.goals.each do |goal| %>
               <p><%= goal.title %></p>
             <% end %>
