@@ -70,7 +70,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="#navbarDropdownMenu" >
                   <%= link_to "マイページ", user_path(current_user.id), class: "dropdown-item" %>
-                  <%= link_to "ユーザー一覧", connections_path, class: "dropdown-item" %>
+                  <%= link_to "ユーザー一覧", other_users_path, class: "dropdown-item" %>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                   <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
                 </div>

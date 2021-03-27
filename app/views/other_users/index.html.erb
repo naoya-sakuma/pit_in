@@ -3,19 +3,18 @@
   <small small class="plan_index_guide">詳細から公開中の目標確認とフォローができます。目標達成の仲間を探しましょう！</small>
 
   <div class="row user_card_row">
-    <% @users.each do |user| %>
+    <% @other_users.each do |other_user| %>
       <div class="col-auto card user_card">
         <div class="row">
           <div class="col-12 user_nickname">
-            <h4 class="user_card_nickname"><%= user.nickname %></h4>
+            <h4 class="user_card_nickname"><%= other_user.nickname %></h4>
           </div>
           <div class="col-9">
-            <p>作成したコミュニティ：<%= user.communities.count %>件</p>
-            <p>作成した目標：<%= user.goals.count %>件</p>
+            <p>全<%= other_user.goals.count %>件の目標</p>
           </div>
 
           <div class="col-3 user_show_button_col">
-            <ul class="user_show_button_ul"><%= link_to t('view.button.show'), user, class: "btn btn-outline-secondary user_show_button" %></ul>
+            <ul class="user_show_button_ul"><%= link_to t('view.button.show'), other_user, class: "btn btn-outline-secondary user_show_button" %></ul>
           </div>
         </div>
       </div>
