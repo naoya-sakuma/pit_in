@@ -58,4 +58,30 @@
 
   </div>
 
+  <div class="onw_comunity_index">
+    <h4 class="community_index_subtitle">コミュニティ一覧</h4>
+    <% own_communities_count = 0 %>
+    <% @own_communities.each do |community| %>
+      <% if community.user_id == current_user.id %>
+      <p class="no_community_message_p"><small class="no_community_message"><%= @other_user.name %>さんが作成したコミュニティ一覧です。</small></p>
+        <% own_communities_count += 1 %>
+        <div class="card community_card onw_comunity_each">
+          <div class="row">
+            <div class="col-8">
+              <h4 class="community_title_in_index"><%= community.title %></h4>
+              <small class="community_summary_in_index">概要：<%= community.summary %></small>
+              <small class="community_owner_nickname_in_index">作成者：<%= community.user.nickname %></small>
+            </div>
+            <div class="col-4 own_community_button_div">
+              <%= link_to t('view.button.show'), community, class: "btn btn-outline-secondary own_community_button" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <% if own_communities_count == 0%>
+      <p class="no_community_message_p"><small class="no_community_message"><%= @other_user.name %>さんが作成したコミュニティはありません。</small></p>
+    <% end %>
+  </div>
+
 </div>
