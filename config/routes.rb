@@ -38,5 +38,5 @@ Rails.application.routes.draw do
     end
   end
   resources :members, only: [:create, :destroy]
-  resources :connections, only: [:index, :show]
+  resources :other_users, only: [:index, :show]
 end
