@@ -1,9 +1,9 @@
 class ConnectionsController < ApplicationController
   def index
-    @users = User.all
+    @other_users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
+    @other_user = User.find(params[:id])
   end
 end
