@@ -10,7 +10,8 @@
             <h4 class="user_card_nickname"><%= user.nickname %></h4>
           </div>
           <div class="col-9">
-            <p>全<%= user.goals.count %>件の目標</p>
+            <p>作成したコミュニティ：<%= user.communities.count %>件</p>
+            <p>作成した目標：<%= user.goals.count %>件</p>
           </div>
 
           <div class="col-3 user_show_button_col">
