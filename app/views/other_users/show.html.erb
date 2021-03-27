@@ -1,0 +1,23 @@
+<div class="container user_container">
+  <div class="row user_info">
+
+    <div class="img-thumbnail float-left user_icon">
+      <% if @other_user.icon.present? %>
+        <%= image_tag @other_user.icon.url %>
+      <% else %>
+        <%= image_tag "/default.png", class: "default_user_icon" %>
+      <% end %>
+    </div>
+
+    <div class="user_name_and_intro">
+      <h4><%= @other_user.name %></h4>
+      <p id="nickname"><%= @other_user.nickname %></p>
+      <p id="self_introduction"><%= t('view.self_intro') %></p>
+      <div class="card intro_card">
+        <%= simple_format(@other_user.introduction) %>
+      </div>
+        <%= link_to t('view.button.edit'), edit_user_registration_path, class: "btn btn-outline-secondary", id: "user_info_edit_button" %>
+    </div>
+
+  </div>
+</div>

@@ -14,14 +14,19 @@
   margin-right: 1rem;
 }
 
+.user_card_nickname {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .user_show_button_ul {
   padding: 0;
   text-align: center;
 
 }
 
-.user_show_button_col {
-
+.user_nickname {
+  border-bottom: 1px solid #dddddd;
 }
 
 .user_show_button {

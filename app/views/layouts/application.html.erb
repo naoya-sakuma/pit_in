@@ -53,6 +53,14 @@
                 </div>
               </li>
 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">繋がり</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "ユーザーを探す", other_users_path, class: "dropdown-item" %>
+                  <%= link_to "友達一覧（仮）", other_users_path, class: "dropdown-item" %>
+                  <%= link_to "フォロワー（仮）", other_users_path, class: "dropdown-item" %>
+              </li>
+
               <li class="nav-item active">
                 <a class="nav-link" href="/directions">使い方<span class="sr-only">(current)</span></a>
               </li>
@@ -69,8 +77,7 @@
                   <%= current_user.name %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="#navbarDropdownMenu" >
-                  <%= link_to "マイページ", root_path(current_user.id), class: "dropdown-item" %>
-                  <%= link_to "ユーザー一覧", users_path, class: "dropdown-item" %>
+                  <%= link_to "マイページ", user_path(current_user.id), class: "dropdown-item" %>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                   <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
                 </div>
