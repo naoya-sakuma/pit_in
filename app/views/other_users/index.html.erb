@@ -2,13 +2,13 @@
   <h4 class="user_index_page_title">ユーザー一覧</h4>
   <small small class="plan_index_guide">詳細から公開中の目標確認とフォローができます。目標達成の仲間を探しましょう！</small>
 
-  <div class="row user_card_row">
+  <div class="row other_user_card_row">
     <% @other_users.each do |other_user| %>
-      <div class="col-auto card user_card">
+      <div class="col-auto card other_user_card">
         <div class="row">
-          <div class="col-12 user_nickname">
+          <div class="col-12 other_user_nickname">
             <% if other_user.icon && other_user.icon.url %>
-              <h4 class = "user_card_nickname">
+              <h4 class = "other_user_card_nickname">
                 <%= image_tag(other_user.icon.url, class: "header_icon") %>
                 <%= other_user.nickname %>
               </h4>
@@ -24,7 +24,7 @@
             <p>作成したコミュニティ：<%= other_user.communities.count %>件</p>
           </div>
 
-          <div class="col-3 user_show_button_col">
+          <div class="col-3 other_user_show_button_col">
             <ul class="user_show_button_ul"><%= link_to t('view.button.show'), other_user_path(other_user.id), class: "btn btn-outline-secondary user_show_button" %></ul>
           </div>
         </div>
