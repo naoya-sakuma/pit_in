@@ -19,13 +19,13 @@
               </h4>
             <% end %>
           </div>
-          <div class="col-9">
+          <div class="col-9 own_goals_and_communities">
             <p>作成した目標：<%= other_user.goals.count %>件</p>
             <p>作成したコミュニティ：<%= other_user.communities.count %>件</p>
           </div>
 
           <div class="col-3 other_user_show_button_col">
-            <ul class="user_show_button_ul"><%= link_to t('view.button.show'), other_user_path(other_user.id), class: "btn btn-outline-secondary user_show_button" %></ul>
+            <ul class="other_user_show_button_ul"><%= link_to t('view.button.show'), other_user_path(other_user.id), class: "btn btn-outline-secondary other_user_show_button" %></ul>
           </div>
         </div>
       </div>

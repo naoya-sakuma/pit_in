@@ -22,11 +22,14 @@
 .other_user_show_button_ul {
   padding: 0;
   text-align: center;
-
 }
 
 .other_user_nickname {
   border-bottom: 1px solid #dddddd;
+}
+
+.own_goals_and_communities {
+  margin-top: 15px;
 }
 
 .other_user_show_button {
