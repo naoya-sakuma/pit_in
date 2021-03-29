@@ -1,0 +1,54 @@
+.user_container {
+  margin-top: 50px;
+}
+
+.img-thumbnail {
+  position: relative;
+  overflow: hidden;
+  margin-right: 1rem;
+  height: 250px;
+  width: 250px;
+  text-align: center;
+  border-radius: 50%;
+}
+.user_icon {
+  margin-left: auto;
+}
+
+.user_icon img {
+  padding-top: 30px;
+}
+
+.default_user_icon {
+  width: 300px;
+  height: 340px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.user_name_and_intro {
+  margin-right: auto;
+}
+
+.intro_card {
+  height: 200px;
+  width: 500px;
+}
+
+.unregistered_pic {
+  margin-top: 6.5rem;
+}
+
+#self_introduction {
+  margin-bottom: 5px;
+}
+
+#nickname {
+  margin-bottom: 5px;
+}
+
+#user_info_edit_button {
+  margin-top: 1.5rem;
+}
