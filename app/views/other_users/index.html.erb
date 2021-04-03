@@ -12,11 +12,13 @@
                 <%= image_tag(other_user.icon.url, class: "header_icon") %>
                 <%= other_user.nickname %>
               </h4>
+              <%= render 'follow_form', user: other_user %>
             <% else %>
               <h4 class="other_user_card_nickname">
                 <%= image_tag("/default.png", class: "header_icon") %>
                 <%= other_user.nickname %>
               </h4>
+              <%= render 'follow_form', user: other_user %>
             <% end %>
           </div>
           <div class="col-9 own_goals_and_communities">
