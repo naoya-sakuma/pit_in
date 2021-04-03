@@ -25,6 +25,10 @@ footer {
   margin-right: 0;
 }
 
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+
 .header_icon {
   width: 30px;
   height: 30px;
@@ -57,7 +61,7 @@ footer {
 
 .footer_item_titles {
   color: black;
-  text-decoration:underline;
+  text-decoration: underline;
   text-decoration-color: black;
 }
 
