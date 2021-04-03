@@ -1,8 +1,9 @@
-.user_container {
+.other_user_container {
   margin-top: 50px;
 }
 
-.img-thumbnail {
+/* ここからユーザー情報部分 */
+.other_user_img-thumbnail {
   position: relative;
   overflow: hidden;
   margin-right: 1rem;
@@ -11,15 +12,15 @@
   text-align: center;
   border-radius: 50%;
 }
-.user_icon {
+.other_user_icon {
   margin-left: auto;
 }
 
-.user_icon img {
+.other_user_icon img {
   padding-top: 30px;
 }
 
-.default_user_icon {
+.default_other_user_icon {
   width: 300px;
   height: 340px;
   position: absolute;
@@ -28,27 +29,20 @@
   transform: translate(-50%, -50%);
 }
 
-.user_name_and_intro {
+.other_user_name_and_intro {
   margin-right: auto;
 }
 
-.intro_card {
+.other_user_intro_card {
   height: 200px;
   width: 500px;
 }
 
-.unregistered_pic {
-  margin-top: 6.5rem;
-}
-
-#self_introduction {
+#other_user_self_introduction {
   margin-bottom: 5px;
 }
 
-#nickname {
+#other_user_nickname {
   margin-bottom: 5px;
 }
-
-#user_info_edit_button {
-  margin-top: 1.5rem;
-}
+/* ここまでユーザー情報部分 */
