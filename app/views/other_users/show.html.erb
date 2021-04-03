@@ -19,42 +19,40 @@
     </div>
   </div>
 
-  <div class="">
+  <div class="user_show_goal_index">
     <h4>公開中の目標</h4>
     <% if @shared_goals.count == 0 %>
       <small class="plan_index_guide"><%= @other_user.name %>さんが公開している目標はありません。</small>
     <% else %>
       <small class="plan_index_guide"><%= @other_user.name %>作成した公開中の目標一覧です。</small>
     <% end %>
-
-    <div class="row card_row">
+    <div class="row user_show_goal_card_row">
       <% @shared_goals.each do |goal| %>
-        <div class="card col-auto goal_card">
-          <div class="row no-gutters goal_card_row">
+        <div class="card col-auto user_show_goal_card">
+          <div class="row no-gutters">
+            
             <div class="col-10">
               <% case goal.status %>
                 <% when t('view.holding') %>
-                  <h4 class="goal_title"><span class="badge badge-danger badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
+                  <h4 class="user_show_goal_title"><span class="badge badge-danger badge-pill user_show_goal_badges"><%= goal.status %></span><%= goal.title %></h4>
                 <% when t('view.working') %>
-                  <h4 class="goal_title"><span class="badge badge-primary badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
+                  <h4 class="user_show_goal_title"><span class="badge badge-primary badge-pill user_show_goal_badges"><%= goal.status %></span><%= goal.title %></h4>
                 <% when t('view.done') %>
-                  <h4 class="goal_title"><span class="badge badge-warning badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
+                  <h4 class="user_show_goal_title"><span class="badge badge-warning badge-pill user_show_goal_badges"><%= goal.status %></span><%= goal.title %></h4>
               <% end %>
-
-              <ul class="goal_info"><small>期間：<%= goal.day_to_start %>〜<%= goal.day_to_finish %></small></ul>
-              <ul class="goal_info"><small>目的：<%= goal.purpose %></small></ul>
-              <ul class="goal_info"><small>達成すると？：<%= goal.when_succeed %></small></ul>
-              <ul class="goal_info"><small>達成しないと？：<%= goal.when_fail %></small></ul>
+              <ul class="user_show_goal_info"><small>期間：<%= goal.day_to_start %>〜<%= goal.day_to_finish %></small></ul>
+              <ul class="user_show_goal_info"><small>目的：<%= goal.purpose %></small></ul>
+              <ul class="user_show_goal_info"><small>達成すると？：<%= goal.when_succeed %></small></ul>
+              <ul class="user_show_goal_info"><small>達成しないと？：<%= goal.when_fail %></small></ul>
             </div>
 
-            <div class="col-2 goal_buttons">
-              <ul class="goal_button_ul"><%= link_to t('view.button.show'), goal, class: "btn btn-outline-secondary goal_button" %></ul>
+            <div class="col-2 user_show_goal_buttons">
+              <ul class="user_show_goal_button_ul"><%= link_to t('view.button.show'), goal, class: "btn btn-outline-secondary user_show_goal_button" %></ul>
             </div>
           </div>
         </div>
       <% end %>
     </div>
-
   </div>
 
   <div class="onw_comunity_index">
