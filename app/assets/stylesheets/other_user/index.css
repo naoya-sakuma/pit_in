@@ -19,6 +19,10 @@
   margin-bottom: 5px;
 }
 
+.follow_button_div {
+  margin: auto;
+}
+
 .other_user_show_button_ul {
   padding: 0;
   text-align: center;
