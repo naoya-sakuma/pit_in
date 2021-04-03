@@ -9,7 +9,7 @@
         <div class="card plan_card">
           <% goal.problems.each do |problem| %>
             <% if problem.status == t('view.unsolved') %>
-              <% the_number_of_working_solutions = problem.solutions.where(status: t('view.working')).count %>
+              <% the_number_of_working_solutions += problem.solutions.where(status: t('view.working')).count %>
               <% problem.solutions.each do |solution| %>
                 <% if solution.status == t('view.working') %>
                   <strong class="card-title info_title_in_plan list_head_in_index"><%= solution.title %></strong>

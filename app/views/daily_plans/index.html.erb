@@ -10,7 +10,7 @@
           <% goal.problems.each do |problem| %>
             <% if problem.status == t('view.unsolved') %>
               <% problem.solutions.each do |solution| %>
-                <% the_number_of_working_tasks = solution.tasks.where(status: t('view.working')).count %>
+                <% the_number_of_working_tasks += solution.tasks.where(status: t('view.working')).count %>
                 <% solution.tasks.each do |task|%>
                   <% if task.status == t('view.working') %>
                     <strong class="card-title info_title_in_plan list_head_in_index"><%= task.title %></strong>

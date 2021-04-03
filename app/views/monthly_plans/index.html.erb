@@ -8,7 +8,7 @@
         <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
         <div class="card plan_card">
           <ul class="list-group list-group-flush">
-            <% the_number_of_unsolved_problems = goal.problems.where(status: t('view.unsolved')).count %>
+            <% the_number_of_unsolved_problems += goal.problems.where(status: t('view.unsolved')).count %>
             <% goal.problems.each do |problem| %>
               <% if problem.status == t('view.unsolved') %>
                 <li class="list-group-item info_title_in_plan list_head_in_index"><strong><%= problem.title %></strong></li>
