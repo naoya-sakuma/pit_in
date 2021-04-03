@@ -39,5 +39,5 @@ Rails.application.routes.draw do
   end
   resources :members, only: [:create, :destroy]
   resources :other_users, only: [:index, :show]
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:index, :create, :destroy]
 end
