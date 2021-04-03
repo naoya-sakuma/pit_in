@@ -100,7 +100,7 @@ https://docs.google.com/spreadsheets/d/1b3sEMgdfR3RLh4Kkh6fZXlQey_Td5pEcs41A1cb4
 https://docs.google.com/spreadsheets/d/1JNdn30eWSvzWOYhq7uVBd1YfIeUQhNr7jq3DHI5_qBc/edit?usp=sharing
 
 
-## 使用予定Gem
+## 使用技術
 - devise
 - omniauth
 - omniauth-google-oauth2
@@ -110,21 +110,10 @@ https://docs.google.com/spreadsheets/d/1JNdn30eWSvzWOYhq7uVBd1YfIeUQhNr7jq3DHI5_
 
 - kaminari', '~> 0.17.0
 
-- ranked-model
 - query-ui-rails
-
-- twitter
-
-## 卒業課題要件
-- 就業Term内の技術
-  - devise
-  - omniauth
-  - omniauth-google-oauth2
-  - AWS
-
-- カリキュラム外の技術
-  - nested_form
-
-  目標のCSV出力機能をカリキュラム外の技術として採用しておりましたが、アプリ制作過程で使われる場面がないと考え外しました。
-  なお、この機能はカタログ設計で「高」に含んでおりません。
-  代わりに、目標作成ページで関連テーブルへのフォームを動的に追加するためにnested_form（Gem）を使用しました。こちらをカリキュラム外の技術としています。
+- nested_form
+- devise
+- omniauth
+- omniauth-google-oauth2
+- AWS
+- ranked-model
