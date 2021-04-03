@@ -30,7 +30,7 @@
       <% @shared_goals.each do |goal| %>
         <div class="card col-auto user_show_goal_card">
           <div class="row no-gutters">
-            
+
             <div class="col-10">
               <% case goal.status %>
                 <% when t('view.holding') %>
@@ -55,29 +55,27 @@
     </div>
   </div>
 
-  <div class="onw_comunity_index">
-    <h4 class="community_index_subtitle">コミュニティ一覧</h4>
-    <% own_communities_count = 0 %>
+  <div class="other_user_onw_comunity_index">
+    <h4>コミュニティ一覧</h4>
+    <% if @own_communities.count == 0 %>
+      <p class="community_message_p"><small class="community_message"><%= @other_user.name %>さんが作成したコミュニティはありません。</small></p>
+    <% else %>
+      <p class="community_message_p"><small class="community_message"><%= @other_user.name %>さんが作成したコミュニティ一覧です。</small></p>
+    <% end %>
+
     <% @own_communities.each do |community| %>
-      <% if community.user_id == current_user.id %>
-      <p class="no_community_message_p"><small class="no_community_message"><%= @other_user.name %>さんが作成したコミュニティ一覧です。</small></p>
-        <% own_communities_count += 1 %>
-        <div class="card community_card onw_comunity_each">
-          <div class="row">
-            <div class="col-8">
-              <h4 class="community_title_in_index"><%= community.title %></h4>
-              <small class="community_summary_in_index">概要：<%= community.summary %></small>
-              <small class="community_owner_nickname_in_index">作成者：<%= community.user.nickname %></small>
-            </div>
-            <div class="col-4 own_community_button_div">
-              <%= link_to t('view.button.show'), community, class: "btn btn-outline-secondary own_community_button" %>
-            </div>
+      <div class="card other_user_community_card">
+        <div class="row">
+          <div class="col-8">
+            <h4 class="other_user_community_title_in_index"><%= community.title %></h4>
+            <small class="other_user_community_summary_in_index">概要：<%= community.summary %></small>
+            <small class="other_user_community_owner_nickname_in_index">作成者：<%= community.user.nickname %></small>
+          </div>
+          <div class="col-4 other_user_own_community_button_div">
+            <%= link_to t('view.button.show'), community, class: "btn btn-outline-secondary" %>
           </div>
         </div>
-      <% end %>
-    <% end %>
-    <% if own_communities_count == 0%>
-      <p class="no_community_message_p"><small class="no_community_message"><%= @other_user.name %>さんが作成したコミュニティはありません。</small></p>
+      </div>
     <% end %>
   </div>
 

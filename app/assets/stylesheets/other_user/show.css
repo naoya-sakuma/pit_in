@@ -2,6 +2,7 @@
   margin-top: 50px;
 }
 
+
 /* ここからユーザー情報部分 */
 .other_user_img-thumbnail {
   position: relative;
@@ -47,7 +48,12 @@
 }
 /* ここまでユーザー情報部分 */
 
+
 /* ここから目標情報部分 */
+.user_show_goal_index {
+  margin-top: 5rem;
+}
+
 .user_show_goal_card_row {
   width: 95%;
   margin-right: auto;
@@ -97,3 +103,46 @@
   text-align: right;
 }
 /* ここまで目標情報部分 */
+
+
+/* ここからコミュニティ情報部分 */
+.other_user_onw_comunity_index {
+  margin-top: 5rem;
+}
+
+.community_message {
+  border-bottom: 1px solid #dddddd
+}
+
+.other_user_community_card {
+  width: 95%;
+  border: 1px solid #C0C0C0;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+}
+
+.other_user_community_title_in_index {
+  margin-top: .5rem;
+  margin-left: 1rem;
+}
+
+.other_user_community_summary_in_index {
+  display: block;
+  margin-bottom: .5rem;
+  margin-left: 1rem;
+}
+
+.other_user_community_owner_nickname_in_index {
+  display: block;
+  margin-bottom: .5rem;
+  margin-left: 1rem;
+}
+
+.other_user_own_community_button_div {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 5rem;
+}
+/* ここまでコミュニティ情報部分 */
