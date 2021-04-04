@@ -16,6 +16,7 @@
       <div class="card other_user_intro_card">
         <%= simple_format(@other_user.introduction) %>
       </div>
+        <%= render 'follow_form', user: @other_user %>
     </div>
   </div>
 

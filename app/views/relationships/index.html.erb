@@ -1,0 +1,40 @@
+<div class="container-fluid today_jobs_index">
+  <h4 class="user_index_page_title">友達一覧</h4>
+  <small small class="plan_index_guide">フォロー中のユーザー一覧です。</small>
+
+  <div class="row other_user_card_row">
+    <% @following_users.each do |following_user| %>
+      <div class="col-auto card other_user_card">
+        <div class="row">
+          <div class="col-12 other_user_nickname">
+            <% if following_user.icon && following_user.icon.url %>
+              <div class="row">
+                <h4 class="col-9 other_user_card_nickname">
+                  <%= image_tag(following_user.icon.url, class: "header_icon") %>
+                  <%= following_user.nickname %>
+                </h4>
+                <%= render 'follow_form', user: following_user, class: 'col-3' %>
+              </div>
+            <% else %>
+              <div class="row">
+                <h4 class="col-9 other_user_card_nickname">
+                  <%= image_tag("/default.png", class: "header_icon") %>
+                  <%= following_user.nickname %>
+                </h4>
+                <%= render 'follow_form', user: following_user, class: 'col-3' %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-9 own_goals_and_communities">
+            <p>作成した目標：<%= following_user.goals.count %>件</p>
+            <p>作成したコミュニティ：<%= following_user.communities.count %>件</p>
+          </div>
+
+          <div class="col-3 other_user_show_button_col">
+            <ul class="other_user_show_button_ul"><%= link_to t('view.button.show'), other_user_path(following_user.id), class: "btn btn-outline-secondary other_user_show_button" %></ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
