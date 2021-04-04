@@ -7,7 +7,7 @@ http://18.179.225.15/
 目標と行動をセットで管理することで日々の「何をしなにといけないんだっけ？」を防ぎます。  
 目標公開&追加機能、コミュニティ機能により目標達成をさらにサポートします。  
 
-コンセプト詳細　　
+コンセプト詳細  
 https://docs.google.com/document/d/1bwG-5f8E5uE5BhwU-GzPnuyiz9VgSfm7L3aU7NS-DUw/edit
 
 
