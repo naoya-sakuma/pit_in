@@ -1,14 +1,12 @@
 <div class="container-fluid today_jobs_index">
   <h4 class="user_index_page_title">友達一覧</h4>
-  <% if @searched_results_other_users.count == 0 %>
+  <% if @searched_results_following_users.count == 0 %>
     <small class="plan_index_guide">該当するユーザーは存在しません。</small>
     <p class="search_result_guide">「<%= params[:q][:nickname_cont] %>」の検索結果</p>
   <% else %>
     <small class="plan_index_guide">フォロー中のユーザー一覧です。</small>
     <p class="search_result_guide">「<%= params[:q][:nickname_cont] %>」の検索結果</p>
   <% end %>
-
-  <small small class="plan_index_guide">フォロー中のユーザー一覧です。</small>
 
   <div class="row other_user_card_row">
     <% @searched_results_following_users.each do |following_user| %>
@@ -45,4 +43,5 @@
       </div>
     <% end %>
   </div>
+  <%= paginate @searched_results_following_users %>
 </div>

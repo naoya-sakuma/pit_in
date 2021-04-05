@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
   before_action :set_search, only:[:index, :search]
 
   def index
-    @following_users = current_user.following
+    @following_users = current_user.following.page(params[:page]).per(10)
   end
 
   respond_to? :js

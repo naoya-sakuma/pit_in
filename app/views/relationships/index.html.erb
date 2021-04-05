@@ -3,7 +3,7 @@
   <small small class="plan_index_guide">フォロー中のユーザー一覧です。</small>
 
   <div class="serch_form">
-    <%= search_form_for @searched_following_users, url: search_other_users_path(@following_users) do |search_form| %>
+    <%= search_form_for @searched_following_users, url: search_relationships_path(@following_users) do |search_form| %>
       <%= search_form.search_field :nickname_cont, class: "form-control search_form_window", placeholder: "ユーザーの名前を入力" %>
       <%= search_form.submit t('view.button.search'), class: "btn btn-outline-secondary search_button" %>
     <% end %>
@@ -44,4 +44,5 @@
       </div>
     <% end %>
   </div>
+  <%= paginate @following_users %>
 </div>
