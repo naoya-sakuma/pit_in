@@ -38,6 +38,14 @@ Rails.application.routes.draw do
     end
   end
   resources :members, only: [:create, :destroy]
-  resources :other_users, only: [:index, :show]
-  resources :relationships, only: [:index, :create, :destroy]
+  resources :other_users, only: [:index, :show] do
+    collection do
+      get :search
+    end
+  end
+  resources :relationships, only: [:index, :create, :destroy] do
+    collection do
+      get :search
+    end
+  end
 end

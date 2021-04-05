@@ -1,16 +1,15 @@
 <div class="container-fluid today_jobs_index">
   <h4 class="user_index_page_title">ユーザー一覧</h4>
-  <small small class="plan_index_guide">詳細から公開中の目標確認とフォローができます。目標達成の仲間を探しましょう！</small>
-
-  <div class="serch_form">
-    <%= search_form_for @searched_other_users, url: search_other_users_path(@other_users) do |search_form| %>
-      <%= search_form.search_field :nickname_cont, class: "form-control search_form_window", placeholder: "ユーザーの名前を入力" %>
-      <%= search_form.submit t('view.button.search'), class: "btn btn-outline-secondary search_button" %>
-    <% end %>
-  </div>
+  <% if @searched_results_other_users.count == 0 %>
+    <small class="plan_index_guide">該当するユーザーは存在しません。</small>
+    <p class="search_result_guide">「<%= params[:q][:nickname_cont] %>」の検索結果</p>
+  <% else %>
+    <small class="plan_index_guide">詳細から公開中の目標確認とフォローができます。目標達成の仲間を探しましょう！</small>
+    <p class="search_result_guide">「<%= params[:q][:nickname_cont] %>」の検索結果</p>
+  <% end %>
 
   <div class="row other_user_card_row">
-    <% @other_users.each do |other_user| %>
+    <% @searched_results_other_users.each do |other_user| %>
       <div class="col-auto card other_user_card">
         <div class="row">
           <div class="col-12 other_user_nickname">
@@ -44,5 +43,5 @@
       </div>
     <% end %>
   </div>
-  <%= paginate @other_users %>
+  <%= paginate @searched_results_other_users %>
 </div>
