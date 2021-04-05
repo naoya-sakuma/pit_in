@@ -43,5 +43,9 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :relationships, only: [:index, :create, :destroy]
+  resources :relationships, only: [:index, :create, :destroy] do
+    collection do
+      get :search
+    end
+  end
 end
