@@ -1,6 +1,6 @@
 class OtherUsersController < ApplicationController
   def index
-    @other_users = User.all.where.not(id: current_user.id)
+    @other_users = User.all.where.not(id: current_user.id).page(params[:page]).per(10)
   end
 
   def show
