@@ -1,5 +1,6 @@
 <div class="container-fluid goal_index_container">
   <h4 class="title_in_goal_index">公開中の目標一覧</h4>
+
   <% if @searched_results_goals.count == 0 %>
     <small class="plan_index_guide">該当する目標はありません。</small>
   <% else %>
@@ -7,33 +8,28 @@
     <p class="search_result_guide">「<%= params[:q][:title_cont] %>」の検索結果</p>
   <% end %>
 
-  <% @searched_results_goals.each do |goal| %>
-    <div class="card goal_card">
-      <div class="row goal_card_row">
-        <div class="col-8">
-          <% case goal.status %>
-            <% when t('view.holding') %>
-              <h4 class="goal_title"><span class="badge badge-danger badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
-            <% when t('view.working') %>
-              <h4 class="goal_title"><span class="badge badge-primary badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
-            <% when t('view.done') %>
-              <h4 class="goal_title"><span class="badge badge-warning badge-pill goal_badges"><%= goal.status %></span><%= goal.title %></h4>
-          <% end %>
+  <%= link_to t('view.button.clear'), shared_goals_path, class: "btn btn-outline-secondary goal_search_clear_button" %>
 
-          <ul class="goal_info"><small>作成者：<%= goal.author %></small></ul>
-          <ul class="goal_info"><small>期間：<%= goal.day_to_start %>〜<%= goal.day_to_finish %></small></ul>
-          <ul class="goal_info"><small>目的：<%= goal.purpose %></small></ul>
-          <ul class="goal_info"><small>達成すると？：<%= goal.when_succeed %></small></ul>
-          <ul class="goal_info"><small>達成しないと？：<%= goal.when_fail %></small></ul>
-        </div>
+  <div class="row card_row">
+    <% @searched_results_goals.each do |goal| %>
+      <div class="card col-auto goal_card">
+        <div class="row no-gutters goal_card_row">
+          <div class="col-10">
+            <h4 class="goal_title"><%= goal.title %></h4>
+            <ul class="goal_info"><small>作成者：<%= goal.author %></small></ul>
+            <ul class="goal_info"><small>期間：<%= goal.day_to_start %>〜<%= goal.day_to_finish %></small></ul>
+            <ul class="goal_info"><small>目的：<%= goal.purpose %></small></ul>
+            <ul class="goal_info"><small>達成すると？：<%= goal.when_succeed %></small></ul>
+            <ul class="goal_info"><small>達成しないと？：<%= goal.when_fail %></small></ul>
+          </div>
 
-        <div class="col-4 goal_buttons">
-          <ul class="goal_button_ul"><%= link_to t('view.button.show'), goal, class: "btn btn-outline-secondary goal_button" %></ul>
-          <ul class="goal_button_ul"><%= link_to t('view.button.take_in'), shared_goal_path(goal), method: :patch, class: "btn btn-outline-secondary goal_button" %></ul>
+          <div class="col-2 goal_buttons">
+            <ul class="goal_button_ul"><%= link_to t('view.button.show'), goal, class: "btn btn-outline-secondary goal_button" %></ul>
+            <ul class="goal_button_ul"><%= link_to t('view.button.take_in'), shared_goal_path(goal), method: :patch, class: "btn btn-outline-secondary goal_button" %></ul>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
   <%= paginate @searched_results_goals %>
-  <%= link_to t('view.button.clear'), shared_goals_path, class: "btn btn-outline-secondary back_to_shared_goal_button" %>
 </div>
