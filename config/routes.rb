@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update]
-　resources :goals
+  resources :goals
   resources :monthly_plans, only: [:index, :edit, :update]
   resources :weekly_plans, only: [:index, :edit, :update]
   resources :daily_plans, only: [:index, :edit, :update]
