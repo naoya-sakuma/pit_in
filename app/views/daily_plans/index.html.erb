@@ -2,7 +2,7 @@
   <h4 class="title_in_plan_index">今日の計画</h4>
 
   <div class="d-flex flex-column-reverse">
-    <% the_number_of_working_tasks = 0 %>
+    <% the_number_of_working_tasks_for_all_goals = 0 %>
 
     <% @goals.each do |goal| %>
       <div class="planning_information">
@@ -11,8 +11,8 @@
           <% the_number_of_working_tasks_for_all_goals += goal.tasks.where(status: t('view.working')).count %>
           <% goal.tasks.each do |task| %>
             <% if task.solution.problem.status == t('view.unsolved') && task.status == t('view.working') %>
-
               <strong class="card-title info_title_in_plan list_head_in_index"><%= task.title %></strong>
+
               <ul class="list-group list-group-flush">
                 <% task.steps.each do |step|%>
                   <% case step.status %>
@@ -25,12 +25,14 @@
                   <% end %>
                 <% end %>
               </ul>
-
+              
             <% end %>
           <% end %>
         </div>
 
-        <% if goal.tasks.where(status: t('view.working')).count != 0 %>
+        <% if goal.steps.count == 0 %>
+          <p class="explanation_when_no_item_to_edit"><small>各タスクに対して登録されているステップがありません。<small></p>
+        <% elsif goal.problems.where(status: t('view.unsolved')).count > 0 && goal.tasks.where(status: t('view.working')).count > 0 %>
           <%= link_to t('view.button.edit'), edit_daily_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
         <% else %>
           <p class="explanation_when_no_item_to_edit"><small>現在この目標には取組中のタスクはありません。</small></p>
