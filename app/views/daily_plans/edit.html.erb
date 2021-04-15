@@ -20,7 +20,8 @@
         <%= goal_form.fields_for :problems do |problem_form| %>
           <%= problem_form.fields_for :solutions do |solution_form| %>
             <%= solution_form.fields_for :tasks do |task_form| %>
-              <% if task_form.object.status == t('view.working') %>
+              <% if problem_form.object.status == t('view.unsolved') && task_form.object.status == t('view.working') %>
+
                 <div class="row">
                   <li class="col-12 list-group-item status_selectbox list_head_in_edit"><%= task_form.object.title %></li>
                   <%= task_form.fields_for :steps do |step_form| %>
@@ -37,6 +38,7 @@
                     <% end %>
                   <% end %>
                 </div>
+                
               <% end %>
             <% end %>
           <% end %>
