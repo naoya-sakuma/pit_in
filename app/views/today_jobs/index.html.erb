@@ -2,30 +2,24 @@
   <h4 class="today_jobs_page_title">今日のToDo</h4>
 
   <div class="d-flex flex-column-reverse">
-    <% the_number_of_contents = 0%>
-    <div class="today_jobs_list">
-      <% @goals.each do |goal| %>
-        <% goal.problems.each do |problem| %>
-        　<% if problem.status == t('view.unsolved') %>
-            <% problem.solutions.each do |solution| %>
-              <% solution.tasks.each do |task| %>
-                <% task.steps.each do |step| %>
-                  <% if step.status == t('view.working') && step.title != "" %>
-                    <% the_number_of_contents += 1%>
-                    <ul class="list-group">
-                      <li class="list-group-item today_job"><%= step.title %></li>
-                    </ul>
-                  <% end %>
-                <% end %>
-              <% end %>
-            <% end %>
+
+    <% the_number_of_steps = 0%>
+    <% @goals.each do |goal| %>
+      <div class="today_jobs_list">
+        <p class="goal_title_in_today_jobs"><strong><%= goal.title %></strong></p>
+        <% goal.steps.each do |step| %>
+          <% if step.status == t('view.working') && step.title != "" && step.task.solution.problem.status == t('view.unsolved') %>
+            <% the_number_of_steps += 1%>
+            <ul class="list-group">
+              <li class="list-group-item today_job"><%= step.title %></li>
+            </ul>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <div>
-      <% if the_number_of_contents == 0 %>
+      <% if the_number_of_steps == 0 %>
         <small small class="plan_index_guide">現在取り組み中のステップはありません。今日の計画から取り組むステップを登録してください。</small>
       <% else %>
         <small class="plan_index_guide">今日取組中のステップ一覧です。</small>
