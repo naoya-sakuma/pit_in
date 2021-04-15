@@ -1,4 +1,5 @@
 <div class="container-fluid plan_edit_container">
+  
   <%= form_with(model: @goal, url: weekly_plan_path, local: true) do |goal_form| %>
     <% if @goal.errors.any? %>
       <div id="error_explanation">
@@ -41,8 +42,10 @@
         <% end %>
       </ul>
     </div>
+
     <div class="update_button_div">
       <%= goal_form.submit t('view.button.update'), class: "btn btn-outline-secondary plan_save" %>
     </div>
+
   <% end %>
 </div>
