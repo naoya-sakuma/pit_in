@@ -13,20 +13,20 @@
           <% goal.solutions.each do |solution| %>
             <% if solution.problem.status == t('view.unsolved') && solution.status == t('view.working') %>
               <strong class="card-title info_title_in_plan list_head_in_index"><%= solution.title %></strong>
-
-                <ul class="list-group list-group-flush">
-                  <% solution.tasks.each do |task|%>
-                    <% case task.status %>
-                      <% when t('view.holding') %>
-                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-danger badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                      <% when t('view.working') %>
-                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-primary badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                      <% when t('view.done') %>
-                        <li class="list-group-item task_title_in_weekly"><span class="badge badge-warning badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
-                    <% end %>
+              
+              <ul class="list-group list-group-flush">
+                <% solution.tasks.each do |task|%>
+                  <% case task.status %>
+                    <% when t('view.holding') %>
+                      <li class="list-group-item task_title_in_weekly"><span class="badge badge-danger badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+                    <% when t('view.working') %>
+                      <li class="list-group-item task_title_in_weekly"><span class="badge badge-primary badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
+                    <% when t('view.done') %>
+                      <li class="list-group-item task_title_in_weekly"><span class="badge badge-warning badge-pill goal_badges"><%= task.status %></span><%= task.title %></li>
                   <% end %>
-                </ul>
-                
+                <% end %>
+              </ul>
+
             <% end %>
           <% end %>
         </div>
