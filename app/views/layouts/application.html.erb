@@ -19,37 +19,37 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="container navbar_container">
           <% if user_signed_in? %>
-
+            <!-- ここからログイン状態のヘッダー -->
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">目標</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/goals">目標一覧</a>
-                  <a class="dropdown-item" href="/goals/new">目標作成</a>
-                  <a class="dropdown-item" href="/shared_goals">公開目標</a>
+                  <%= link_to "目標一覧", goals_path, class: "dropdown-item" %>
+                  <%= link_to "目標作成", new_goal_path, class: "dropdown-item" %>
+                  <%= link_to "公開目標", shared_goals_path, class: "dropdown-item" %>
                 </div>
               </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">計画</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/problems">問題の管理</a>
-                  <a class="dropdown-item" href="/monthly_plans">今月の計画</a>
-                  <a class="dropdown-item" href="/weekly_plans">今週の計画</a>
-                  <a class="dropdown-item" href="/daily_plans">今日の計画</a>
+                  <%= link_to "問題の管理", problems_path, class: "dropdown-item" %>
+                  <%= link_to "今月の計画", monthly_plans_path, class: "dropdown-item" %>
+                  <%= link_to "今週の計画", weekly_plans_path, class: "dropdown-item" %>
+                  <%= link_to "今日の計画", daily_plans_path, class: "dropdown-item" %>
                 </div>
               </li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="/today_jobs">Todo<span class="sr-only">(current)</span></a>
+                <%= link_to "To Do", today_jobs_path, class: "nav-link" %>
               </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">コミュニティ</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/communities/management">コミュニティを管理</a>
-                  <a class="dropdown-item" href="/communities">コミュニティを探す</a>
-                  <a class="dropdown-item" href="/communities/new">コミュニティを作る</a>
+                  <%= link_to "コミュニティを管理", management_communities_path, class: "dropdown-item" %>
+                  <%= link_to "コミュニティを探す", communities_path, class: "dropdown-item" %>
+                  <%= link_to "コミュニティを作る", new_community_path, class: "dropdown-item" %>
                 </div>
               </li>
 
@@ -61,7 +61,7 @@
               </li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="/directions">使い方<span class="sr-only">(current)</span></a>
+                <%= link_to "使い方", directions_path, class: "nav-link" %>
               </li>
             </ul>
 
@@ -78,21 +78,23 @@
                 <div class="dropdown-menu" aria-labelledby="#navbarDropdownMenu" >
                   <%= link_to "マイページ", user_path(current_user.id), class: "dropdown-item" %>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                  <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
+                  <%= link_to "退会", user_registration_path, method: :delete, class: "dropdown-item", data: { confirm: "アカウントを削除します。本当によろしいですか?" } %>
                 </div>
               </li>
             </ul>
-
+            <!-- ここまでログイン状態のヘッダー -->
           <% else %>
+            <!-- ここからログアウト状態のヘッダー -->
             <ul class="navbar-nav mr-0">
               <li class="nav-item active">
-                <a class="nav-link" href="/users/sign_up">新規登録<span class="sr-only">(current)</span></a>
+                <%= link_to "新規登録",  new_user_registration_path, class: "nav-link" %>
               </li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="/users/sign_in">ログイン<span class="sr-only">(current)</span></a>
+                <%= link_to "ログイン",  new_user_session_path, class: "nav-link" %>
               </li>
             </ul>
+            <!-- ここまでログアウト状態のヘッダー -->
           <% end %>
         </div>
       </div>
@@ -109,42 +111,43 @@
 
   <footer class="py-4 text-light">
     <div class="container-fluid footer_container text-center">
-
       <section class="row footer_section">
         <% if user_signed_in? %>
+            <!-- ここからログイン状態のフッター -->
             <ul class="col-4 logedin_items">
               <h6 class="footer_item_titles">マイページ</h6>
-              <a class="dropdown-item" href="/">登録情報</a>
-              <a class="dropdown-item" href="/users/edit">情報変更</a>
-              <a class="dropdown-item" href="/users" data-method="delete" data-confirm="アカウントを削除します。本当によろしいですか？">退会</a>
+              <%= link_to "登録情報", user_path(current_user.id), class: "dropdown-item" %>
+              <%= link_to "情報変更", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "退会", user_registration_path, method: :delete, class: "dropdown-item", data: { confirm: "アカウントを削除します。本当によろしいですか?" } %>
             </ul>
 
             <ul class="col-4 logedin_items">
               <h6 class="footer_item_titles">目標</h6>
-              <a class="dropdown-item" href="/goals">目標一覧</a>
-              <a class="dropdown-item" href="/goals/new">目標作成</a>
+              <%= link_to "目標一覧", goals_path, class: "dropdown-item" %>
+              <%= link_to "目標作成", new_goal_path, class: "dropdown-item" %>
+              <%= link_to "公開目標", shared_goals_path, class: "dropdown-item" %>
             </ul>
 
             <ul class="col-4 logedin_items">
               <h6 class="footer_item_titles">計画</h6>
-              <a class="dropdown-item" href="/monthly_plans">今月の計画</a>
-              <a class="dropdown-item" href="/weekly_plans">今週の計画</a>
-              <a class="dropdown-item" href="/daily_plans">今日の計画</a>
-              <a class="dropdown-item" href="/today_jobs">今日のTodo</a>
+              <%= link_to "今月の計画", monthly_plans_path, class: "dropdown-item" %>
+              <%= link_to "今週の計画", weekly_plans_path, class: "dropdown-item" %>
+              <%= link_to "今日の計画", daily_plans_path, class: "dropdown-item" %>
+              <%= link_to "To Do", today_jobs_path, class: "dropdown-item" %>
             </ul>
+            <!-- ここまでログイン状態のフッター -->
         <% else %>
+            <!-- ここからログアウト状態のフッター -->
             <ul class="col-6 unlogedin_items">
-              <a class="dropdown-item" href="/users/sign_up">新規登録<span class="sr-only">(current)</span></a>
+              <%= link_to "新規登録",  new_user_registration_path, class: "dropdown-item" %>
             </ul>
-
             <ul class="col-6 unlogedin_items">
-              <a class="dropdown-item" href="/users/sign_in">ログイン<span class="sr-only">(current)</span></a>
+              <%= link_to "ログイン",  new_user_session_path, class: "dropdown-item" %>
             </ul>
+            <!-- ここまでログアウト状態のフッター -->
         <% end %>
       </section>
-
       <p class="copyright"><small>Copyright ©︎2021 Pit In, All Rights Reserved</small></p>
     </div>
   </footer>
-
 </html>
