@@ -1,5 +1,5 @@
 <div class="container-fluid plan_edit_container">
-  
+
   <%= form_with(model: @goal, url: weekly_plan_path, local: true) do |goal_form| %>
     <% if @goal.errors.any? %>
       <div id="error_explanation">
@@ -20,7 +20,7 @@
       <ul class="list-group">
         <%= goal_form.fields_for :problems do |problem_form| %>
           <%= problem_form.fields_for :solutions do |solution_form| %>
-            <% if solution_form.object.status == t('view.working') %>
+            <% if problem_form.object.status == t('view.unsolved') && solution_form.object.status == t('view.working') %>
               <div class="row">
                 <li class="col-12 list-group-item status_selectbox list_head_in_edit"><%= solution_form.object.title %></li>
                 <%= solution_form.fields_for :tasks do |task_form| %>
