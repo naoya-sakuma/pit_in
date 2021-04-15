@@ -25,9 +25,6 @@ class CommunitiesController < ApplicationController
     @member = current_user.members.find_by(community_id: @community.id)
   end
 
-  def edit
-  end
-
   def update
     if @community.update(community_params)
       redirect_to management_communities_path, notice: '変更が保存されました'
