@@ -2,17 +2,19 @@
   <h4 class="title_in_plan_index">今月の計画</h4>
 
   <div class="d-flex flex-column-reverse">
-    <% the_number_of_unsolved_problems = 0 %>
+    <% the_number_of_unsolved_problems_for_all_goals = 0 %>
+
     <% @goals.each do |goal| %>
       <div class="planning_information">
         <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
-        
+
         <div class="card plan_card">
-          <ul class="list-group list-group-flush">
-            <% the_number_of_unsolved_problems += goal.problems.where(status: t('view.unsolved')).count %>
-            <% goal.problems.each do |problem| %>
-              <% if problem.status == t('view.unsolved') %>
-                <li class="list-group-item info_title_in_plan list_head_in_index"><strong><%= problem.title %></strong></li>
+          <% the_number_of_unsolved_problems_for_all_goals += goal.problems.where(status: t('view.unsolved')).count %>
+          <% goal.problems.each do |problem| %>
+            <% if problem.status == t('view.unsolved') %>
+              <strong class="card-title info_title_in_plan list_head_in_index"><%= problem.title %></strong>
+
+              <ul class="list-group list-group-flush">
                 <% problem.solutions.each do |solution|%>
                   <% case solution.status %>
                     <% when t('view.holding') %>
@@ -23,13 +25,16 @@
                       <li class="list-group-item solution_title_in_monthly"><span class="badge badge-warning badge-pill goal_badges"><%= solution.status %></span><%= solution.title %></li>
                   <% end %>
                 <% end %>
-              <% end %>
+              </ul>
+
             <% end %>
-          </ul>
+          <% end %>
         </div>
 
-        <% if the_number_of_unsolved_problems != 0 %>
-          <%= link_to t('view.button.edit'), edit_monthly_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
+        <% if goal.solutions.count == 0 %>
+          <p class="explanation_when_no_item_to_edit"><small>各問題に対して登録されている解決案がありません。<small></p>
+        <% elsif goal.problems.where(status: t('view.unsolved')).count > 0 %>
+          <%= link_to t('view.button.edit'), edit_daily_plan_path(goal), class: "btn btn-outline-secondary planning_btn" %>
         <% else %>
           <p class="explanation_when_no_item_to_edit"><small>現在この目標には未解決の問題はありません。</small></p>
         <% end %>
@@ -38,7 +43,7 @@
     <% end %>
 
     <div>
-      <% if the_number_of_unsolved_problems == 0 %>
+      <% if the_number_of_unsolved_problems_for_all_goals == 0 %>
         <small class="plan_index_guide">現在未解決の問題はありません。目標の編集から新しい問題を登録してください。</small>
       <% else %>
         <small class="plan_index_guide">取組中の目標に設定されている「未解決の問題とその解決案」を表示しています。編集ボタンから今月取り組む解決案を選択してください。</small><br/>
