@@ -7,6 +7,7 @@
     <% @goals.each do |goal| %>
       <div class="planning_information">
         <p class="goal_title_in_planning"><strong><%= goal.title %></strong></p>
+
         <div class="card plan_card">
           <% the_number_of_working_tasks_for_all_goals += goal.tasks.where(status: t('view.working')).count %>
           <% goal.tasks.each do |task| %>
@@ -25,7 +26,7 @@
                   <% end %>
                 <% end %>
               </ul>
-              
+
             <% end %>
           <% end %>
         </div>
