@@ -6,10 +6,13 @@
   border-bottom: 1px solid #dddddd
 }
 
-.today_jobs_list {
-  margin-top: 1rem;
+.goal_title_in_today_jobs {
+  font-size: 22px;
+  padding-left: 1rem;
+  /* margin-top: 2rem; */
+  margin-bottom: 0;
 }
 
-.today_job {
-  margin-top: 1rem;
+.today_jobs_list {
+  margin-top: 2rem;
 }
