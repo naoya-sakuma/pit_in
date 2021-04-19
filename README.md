@@ -19,6 +19,7 @@ https://docs.google.com/document/d/1bwG-5f8E5uE5BhwU-GzPnuyiz9VgSfm7L3aU7NS-DUw/
 - Nginx
 - Puma
 - AWS
+- Docker / Docker-compose
 - Capistrano3
 - RSpec
 
