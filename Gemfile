@@ -50,7 +50,7 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rubocop', require: false
-gem 'devise'
+gem 'devise', git: "https://github.com/heartcombo/devise"
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
