@@ -15,21 +15,31 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+
+      # ここから追記箇所
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      # ここまで追記箇所
+
       - run:
           name: Bundler install
           command: |
             gem update --system
             gem install bundler -v 2.1.4
 
-      # 以下を追記
+      # 以下、追記箇所
       - save_cache:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-      # - run: mv config/database.yml.ci config/database.yml
-      # # Database setup
-      # - run: bundle exec rake db:create
-      # - run: bundle exec rake db:schema:load
+
+      - run: mv config/database.yml.ci config/database.yml
+      # Database setup
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
 
       - run:
           name: run tests
