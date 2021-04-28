@@ -22,6 +22,10 @@ jobs:
             gem install bundler -v 2.1.4
 
       # 以下を追記
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       # - run: mv config/database.yml.ci config/database.yml
       # # Database setup
       # - run: bundle exec rake db:create
