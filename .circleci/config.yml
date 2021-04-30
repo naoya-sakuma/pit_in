@@ -1,52 +1,70 @@
+# version: 2.1
+# orbs:
+#   ruby: circleci/ruby@0.1.2
+#
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/ruby:2.6.5-stretch-node
+#         environment:
+#           BUNDLE_RETRY: 3
+#           BUNDLE_PATH: vendor/bundle
+#           BUNDLER_VERSION: 2.1.4
+#           # DATABASE_URL: postgres://postgres:password@localhost:5432/myapp_test
+#           DATABASE_URL: postgres://postgres:password@localhost:5432/pit_in_test
+#           RAILS_ENV: test
+#     executor: ruby/default
+#     steps:
+#       - checkout
+#
+#       # ここから追記箇所
+#       - restore_cache:
+#           keys:
+#             - v1-dependencies-{{ checksum "Gemfile.lock" }}
+#             # fallback to using the latest cache if no exact match is found
+#             - v1-dependencies-
+#       # ここまで追記箇所
+#
+#       - run:
+#           name: Bundler install
+#           command: |
+#             gem update --system
+#             gem install bundler -v 2.1.4
+#
+#       # 以下、追記箇所
+#       - save_cache:
+#           paths:
+#             - ./vendor/bundle
+#           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+#
+#       - run: bundle install
+#       - run: bundle exec rake db:create
+#       - run: bundle exec rake db:schema:load
+#
+#       - run:
+#           name: run tests
+#           command: |
+#             mkdir /tmp/test-results
+#             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+#               circleci tests split --split-by=timings)"
+#
+#             bundle exec rspec \
+#               --format progress \
+#               --format RspecJunitFormatter \
+#               --out /tmp/test-results/rspec.xml \
+#               --format progress \
+#               $TEST_FILES
+
 version: 2.1
 orbs:
-  ruby: circleci/ruby@1.1.2
+  ruby: circleci/ruby@0.1.2
 
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.5-stretch-node
+      - image: circleci/ruby:2.6.5
     working_directory: ~/Pit_in
     steps:
       - checkout:
         path: ~/Pit_in
       - ruby/install-deps
-
-  test:
-    docker:
-      - image: circleci/ruby:2.6.5-stretch-node
-      - image: circleci/postgres:13.2
-        enviroment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: pit_in_test
-          POSTGRES_PASSWORD: password
-    environment:
-      BUNDLE_JOBS: "3"
-      BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
-      PGUSER: circleci-demo-ruby
-      PGPASSWORD: ""
-      RAILS_ENV: test
-    steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: "yarn.lock"
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      # Run rspec in parallel
-      - ruby/rspec-test
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
