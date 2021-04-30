@@ -68,3 +68,9 @@ jobs:
       - checkout:
         path: ~/Pit_in
       - ruby/install-deps
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
