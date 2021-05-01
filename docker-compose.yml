@@ -21,6 +21,12 @@ services:
       - "3000:3000"
     volumes:
       - .:/myproject
+  # ここからciのために追加
+  chrome:
+    image: selenium/standalone-chrome:3.141.59-dubnium
+    ports:
+      - 4444:4444
+  #　ここまでciのために追加
 volumes:
   postgresql-data:
     driver: local
