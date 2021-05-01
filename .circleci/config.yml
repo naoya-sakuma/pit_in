@@ -9,7 +9,7 @@ jobs:
           BUNDLE_PATH: vendor/bundle
           DATABASE_URL: postgres://postgres:password@localhost:5432/myapp_test
           RAILS_ENV: test
-      - image: circleci/postgres:13.2-alpine
+      - image: circleci/postgres:13.2
     steps:
       - checkout
       - restore_cache:
