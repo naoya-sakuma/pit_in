@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/Pit/in
+    working_directory: ~/my-app
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
@@ -9,7 +9,7 @@ jobs:
           BUNDLE_PATH: vendor/bundle
           DATABASE_URL: postgres://postgres:password@localhost:5432/pit_in_test
           RAILS_ENV: test
-      - image: circleci/postgres:13.2
+      - image: circleci/postgres:13-alpine
     steps:
       - checkout
       - restore_cache:
