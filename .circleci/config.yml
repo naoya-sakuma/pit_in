@@ -14,7 +14,7 @@ jobs:
         - image: circleci/postgres:13.2-postgis-ram
         #　追記
         - image: selenium/standalone-chrome-debug
-            logging:
+            logging: >
               driver: none
         # 追記
           environment:
