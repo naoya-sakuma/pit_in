@@ -12,6 +12,11 @@ jobs:
             RAILS_ENV: test
         #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
         - image: circleci/postgres:13.2-postgis-ram
+        #　追記
+        - image: selenium/standalone-chrome-debug
+            logging:
+              driver: none
+        # 追記
           environment:
             #それぞれ設定
             POSTGRES_USER: postgres
