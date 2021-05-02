@@ -15,6 +15,8 @@ services:
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     tty: true
     stdin_open: true
+    environment: #以下2行追記
+    - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
     depends_on:
       - db
     ports:
