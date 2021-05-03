@@ -23,14 +23,6 @@ services:
       - "3000:3000"
     volumes:
       - .:/myproject
-  # ここからciのために追加
-    environment:
-      - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
-  selenium_chrome:
-    image: selenium/standalone-chrome-debug
-    logging:
-      driver: none
-  #　ここまでciのために追加
 volumes:
   postgresql-data:
     driver: local

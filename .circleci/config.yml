@@ -11,12 +11,7 @@ jobs:
             DATABASE_URL: postgres://postgres:password@localhost:5432/pit_in_test
             RAILS_ENV: test
         #使ってるデータベースとバージョンを指定する。# 「host: localhost」でアクセスできるサービスコンテナイメージ。
-        - image: circleci/postgres:13.2-postgis-ram
-        #　追記
-        # - image: selenium/standalone-chrome-debug
-        #     logging:
-        #       driver: none
-        # 追記
+        - image: circleci/postgres:13-alpine
           environment:
             #それぞれ設定
             POSTGRES_USER: postgres

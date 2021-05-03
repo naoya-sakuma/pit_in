@@ -44,7 +44,6 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver' #自動テスト用に追加
   gem 'webdrivers'
   gem 'database_rewinder'
 end
