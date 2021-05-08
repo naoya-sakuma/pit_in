@@ -2,10 +2,8 @@ version: 2
 jobs:
    build:
       docker:
-        #アプリのバージョンを指定
         - image: circleci/ruby:2.6.5-node
           environment:
-            #自身の登録しているユーザに変える。
             POSTGRES_USER: postgres
             PGHOST: 127.0.0.1
             DATABASE_URL: postgres://postgres:password@localhost:5432/pit_in_test
@@ -19,7 +17,6 @@ jobs:
             # POSTGRES_HOST_AUTH_METHOD: trust
             POSTGRES_PASSWORD: password
             POSTGRES_DB: pit_in_test
-      #自身のアプリ名にする
       working_directory: ~/pit_in
       steps:
         - checkout
@@ -41,7 +38,6 @@ jobs:
             paths:
               - ./vendor/bundle
 
-        #↓追加する
         - run:
             name: DBの起動を待つ
             command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
